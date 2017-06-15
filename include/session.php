@@ -1,6 +1,6 @@
 <?php
 
-//include ("include/config.php");
+require_once ("config.php");
 
 function createSessionDmian(){
 	$Host = strtolower($_SERVER['HTTP_HOST']);
@@ -70,7 +70,7 @@ function INTS(){
 			unset($_COOKIE["authData"]);
 			unset($_SESSION);
 			if($mainDomain!=strtolower($_SERVER['HTTP_HOST'])){
-				header("Location: http://".$mainDomain."/");
+				header("Location: ".SITE_PROTOCOL.$mainDomain."/");
 				exit();
 			}
 		}else{
@@ -81,7 +81,7 @@ function INTS(){
 				unset($_COOKIE["authData"]);
 				unset($_SESSION);
 				if($mainDomain!=strtolower($_SERVER['HTTP_HOST'])){
-					header("Location: http://".$mainDomain."/");
+					header("Location: ".SITE_PROTOCOL.$mainDomain."/");
 					exit();
 				}
 			}
@@ -130,10 +130,10 @@ function getURI(){
 			{
 				if($obj->TenantID!=""){
 					if ($obj->TenantID==strtolower($_SERVER['HTTP_HOST'])){
-						header("Location: http://".$obj->TenantID."/".str_replace("index.html","",$obj->Shell)."");
+						header("Location: ".SITE_PROTOCOL.$obj->TenantID."/".str_replace("index.html","",$obj->Shell)."");
 						exit();
 					}else{
-						header("Location: http://".$obj->TenantID."/s.php?securityToken=".$_COOKIE["securityToken"]);
+						header("Location: ".SITE_PROTOCOL.$obj->TenantID."/s.php?securityToken=".$_COOKIE["securityToken"]);
 						exit();	
 					}
 				}

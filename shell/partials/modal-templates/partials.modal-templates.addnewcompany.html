@@ -1,0 +1,60 @@
+<div class="addCompanyModalViewHolder" style="width:500px; height:auto;">
+  <md-content layout-padding>
+    <form name="addCompanyform" ng-submit="pushCompanyDetails">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Company Name</label>
+          <input md-maxlength="40" required name="companyName" ng-model="newCompany.name">
+          <div ng-messages="addCompanyform.companyName.$error">
+            <div ng-message="required">Company Name is required</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Business Location</label>
+          <md-select required name="companyLocation" ng-model="newCompany.country">
+            <md-option ng-repeat="country in countries" value="{{country.name}}">
+              {{country.name}}
+            </md-option>
+          </md-select>
+          <div ng-messages="addCompanyform.companyLocation.$error">
+            <div ng-message="required">Company Location is required</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Owner Name</label>
+          <input md-maxlength="40" required name="ownername" ng-model="newCompany.ownername">
+          <div ng-messages="addCompanyform.ownername.$error">
+            <div ng-message="required">Owner Name is required</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Admin Email Address</label>
+          <input required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" name="emailaddress" ng-model="newCompany.emailaddress">
+          <div ng-messages="addCompanyform.emailaddress.$error">
+            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">Your email must be between 10 and 100 characters long and look like an e-mail address.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Enter the first 5 characters of your company name</label>
+          <input ng-maxlength="5" ng-minlength="5" required name="companyAbreviation" ng-model="newCompany.companyAbreviation">
+          <div ng-messages="addCompanyform.companyAbreviation.$error">
+            <div ng-message="required">This is required.</div>
+            <div ng-message="maxlength">Company name abreviation cant be longer than 5 characters.</div>
+            <div ng-message="minlength">Company name abreviation has to be atleast 5 characters long.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </form>
+    <div style="width:100%; height:60px;" layout="column" layout-align="center center">
+      <md-button class="md-raised md-primary" ng-click="pushCompanyDetails()">Add Company</md-button>
+    </div>
+  </md-content>
+</div>

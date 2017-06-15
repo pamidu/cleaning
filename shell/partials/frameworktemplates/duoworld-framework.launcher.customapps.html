@@ -1,0 +1,37 @@
+<div id="dw-child-test-app-1" class="md-child-application-container" layout="column" layout-align="start center">
+	<div id="dw-child-application-header-control-bar" layout="row" layout-align="space-between center">
+		<div class="dw-child-application-header-control-bar-left-section" layout="row" layout-align="center center">
+			<img class="dw-child-application-header-icon" ng-src="{{routedAppIconUri}}" err-src="images/appIcons/untitledapplication.png" width="24" height="24">
+			<span class="dw-child-application-header-title">{{routedAppName}}</span>
+		</div>
+		<div class="dw-child-application-header-control-bar-right-section">
+			<!-- <md-button class="md-icon-button animatedHeaderControl" aria-label="More Application Controls">
+		        <md-icon md-svg-icon="icons/ic_more_vert_24px.svg" alt="more controls" class="cad24"></md-icon>
+		        <md-tooltip>More</md-tooltip>
+		    </md-button> -->
+			<md-button class="md-icon-button animatedHeaderControl" aria-label="Minimise Application" ng-click="childApplicationMinimise()">
+		        <md-icon md-svg-icon="icons/ic_fullscreen_exit_24px.svg" alt="minimise" class="cad24"></md-icon>
+		        <md-tooltip>Minimise</md-tooltip>
+		    </md-button>
+		    <md-button class="md-icon-button animatedHeaderControl" aria-label="Close Application" ng-click="childApplicationClose()">
+		    	<md-icon md-svg-icon="icons/ic_close_24px.svg" alt="close" class="cad24"></md-icon>
+		    	<md-tooltip>Close</md-tooltip>
+		    </md-button>
+		</div>		
+	</div>
+	<div class="dw-childapp-backgroundcover defaultView" layout="column" layout-align="center center">
+		<div class="dw-childapp-splash-container" layout="column" layout-align="end center">
+			<div class="dw-childapp-splash-logo-container" layout="column" layout-align="center center">
+				<img ng-src="{{routedAppIconUri}}" err-src="images/appIcons/untitledapplication.png" class="dw-childapp-splash-logo top-splash-elements-entry" width="100" height="100"/>
+			</div>
+			<div class="dw-childapp-splash-text-container" layout="column" layout-align="space-around center">
+				<span class="dw-childapp-splash-title bottom-splash-elements-entry">{{routedAppName}}</span>
+				<md-progress-circular  class="dw-childapp-splash-loadingspinner bottom-splash-elements-entry" md-mode="indeterminate"></md-progress-circular>
+				<span class="dw-childapp-splash-loadingtextindicator bottom-splash-elements-entry">loading</span>
+			</div>
+		</div>
+	</div>
+	<div class="customeAppContainer">
+		<div id="idRenderDiv"></div>
+	</div>
+</div>

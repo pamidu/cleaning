@@ -1,0 +1,44 @@
+#customDialogBox {
+  overflow: hidden;
+}
+#customDialogBox md-toolbar {
+  min-height: 48px;
+}
+#customDialogBox md-toolbar .md-toolbar-tools {
+  height: 48px;
+  max-height: 48px;
+}
+#customDialogBox .content .email-form .dialogContent.pad_32 {
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+#customDialogBox .content .email-form .dialogContent md-autocomplete.no-float > md-autocomplete-wrap > md-input-container {
+  font-size: 15px;
+}
+#customDialogBox .content .email-form .dialogContent md-autocomplete.no-float > md-autocomplete-wrap > md-input-container > label {
+  -webkit-transform: translate3d(1px, 28px, 0) scale(1) !important;
+  transform: translate3d(1px, 28px, 0) scale(1) !important;
+  color: #BDBDBD;
+}
+#customDialogBox .content .email-form .dialogContent md-autocomplete.no-float > md-autocomplete-wrap > md-input-container.md-input-has-value > label {
+  display: none !important;
+}
+#customDialogBox .footersection {
+  width: 100%;
+  padding: 12px 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+#customDialogBox .footersection button {
+  float: right;
+  margin: 0px;
+}
+#customDialogBox .footersection button:nth-child(2) {
+  margin-right: 12px;
+}
+
+.md-backdrop{
+position: fixed;
+height: 0px;
+}

@@ -1,0 +1,63 @@
+<style>
+    .dialogHeader{
+        width:100%;
+        height:48px;
+        background:rgb(35,91,145);
+        color:#fff;
+        font-size:18px;
+        font-weight:300;    
+    }
+
+    .dialogHeader .title{
+        padding-left:16px;
+    }
+
+    .dialogHeader .control{
+        width:48px;
+        height:48px;  
+    }
+
+    .liveTip{
+        width:100%;
+        padding:5px;
+        background:rgba(220,220,220,0.4);
+        /*color:rgba(0,0,0,0.6);   */
+        color:rgb(35,91,145)
+    }
+
+    .liveTip p{
+        text-align:center; 
+    }
+</style>
+<!-- join company process HTML -->
+<div id="joinCompanyView" class="companyProcessContainer">
+	<div class="dialogHeader" layout="row" layout-align="start center">
+        <div class="title" flex>Join Company</div>
+        <div class="control" layout="column" layout-align="center center">
+            <md-button class="md-accent" ng-click="ceaseDialog()">
+                <md-icon md-svg-icon="icons/ic_close_24px.svg"></md-icon>
+            </md-button>
+        </div>
+    </div>
+    <div class="liveTip">
+		<p>You can only join a company if its administrator accepts your request.</p>
+	</div>	
+	<section class="companyProcessForm" layout="column" layout-align="center center" style="padding:10px;">
+		<form name="joinCompanyForm" ng-submit="submitJoinCompanyDetails(joinCompanyDetails)" autocomplete="off">
+			<div layout="row">
+				<md-input-container md-no-float class="md-block" flex="70">
+					<input required id="TenantID" type="text" name="TenantID" placeholder="Tenant ID" ng-model="joinCompanyDetails.TenantID">
+					<div ng-messages="joinCompanyForm.TenantID.$error">
+						<div ng-message="required">a valid Tenant ID is required.</div>
+					</div>
+				</md-input-container>
+				<md-input-container md-no-float class="md-block" flex="30">
+					<input disabled id="domainPostfix" type="text" name="companyDomainPostFix" placeholder=".12thDoor.com">
+				</md-input-container>
+			</div>			
+			<div class="md-actions" layout="column" layout-align="center center">
+				<md-button class="md-raised md-primary" style="width:100%" type="submit"><span class="loginBtnLabel">Request an Invite</span></md-button>
+			</div>
+		</form>
+	</section>
+</div>

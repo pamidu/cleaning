@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp">
+<head>
+	<link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
+	<!-- <link rel="stylesheet" href="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/> -->
+	<link rel="stylesheet" href="css/child_app_styles.min.css">
+	<link rel="stylesheet" type="text/css" href="css/tenantexplor.css">
+
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<!-- <script src="scripts/vendor/jquery.isotope.js"></script> -->
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-material/angular-material.js"></script>
+	<script type="text/javascript" src="js/StackBlur.js"></script>
+	<script src="js/uimicrokernel.js"></script>
+	<!-- <script src="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="bower_components/ng-scrollbars/dist/scrollbars.min.js"></script> -->
+	<script src="js/tenantexlporrCard.js"></script>
+	<style type="text/css">
+		.banner{
+			width: 100%;
+			height: 138px;
+			z-index: 10;
+			background-color:#4E95BF;
+			position: fixed;
+		}
+		
+	</style>
+</head>
+<body ng-clock ng-controller="AppCtrl">
+	<!-- START  md-childApp-contentContainerSection-->
+
+	<div class="banner"></div>
+
+	<div id="md-childApp-contentContainerSection" style="z-index: 11;position: relative;">
+		<!-- START header_container-->
+		<div class="header_container" style="padding:50px;">
+			<!-- START md-whiteframe-->
+			<md-whiteframe class="md-whiteframe-z1" layout="row" layout-align="start start" style="background-color: #FFFFFF;max-width: 960px;height:40px;">
+			<!-- START GLOBAL TENANTS SEARCH-->
+			<md-autocomplete ng-show="explore" flex style="z-index:99;" ng-keypress="enter($event,ctrl.searchText)" ng-disabled="$root.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.display" md-min-length="0" placeholder="Search Global Tenants">
+			<md-item-template>
+			<span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+		</md-item-template>
+	</md-autocomplete>
+	<!-- START GLOBAL TENANTS SEARCH-->
+	<!-- START SUBSCRIBED TENANTS SEARCH-->
+	<md-autocomplete ng-hide="explore" flex style="z-index:99;" ng-keypress="enter(ctrl.searchText)" ng-disabled="$root.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.display" md-min-length="0" placeholder="Search Subscribed Tenants">
+	<md-item-template>
+	<span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+</md-item-template>
+</md-autocomplete>
+<!-- END SUBSCRIBED TENANTS SEARCH-->
+<!-- START MD-MENUE-->
+<div layout style="width:50px;">
+	<md-menu md-position-mode="target-right target" style="z-index:99;box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.14), 0px 2px 2px 0px rgba(0, 0, 0, 0.098), 0px 1px 5px 0px rgba(0, 0, 0, 0.084); background:rgb(250,250,250); height:40px; width:50px;">
+	<md-button type="button" aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()" style="line-height: 0px; height: 40px;">
+	<md-icon md-menu-origin md-svg-src="icons/ic_menu_24px.svg"></md-icon>
+</md-button>
+<md-menu-content width="2">
+<md-menu-item>
+<md-button ng-click="private(Private)">
+<p flex>Private</p>
+<md-icon md-menu-align-target md-svg-icon=""></md-icon>
+</md-button>
+</md-menu-item>
+<md-menu-item>
+<md-button  ng-click="public(Public)">
+<p flex>Public</p>
+<md-icon md-menu-align-target md-svg-icon=""></md-icon>
+</md-button>
+</md-menu-item>
+<md-menu-item>
+<md-button ng-click="all(data)">
+<p flex>All</p>
+<md-icon md-menu-align-target md-svg-icon=""></md-icon>
+</md-button>
+</md-menu-item>
+</md-menu-content>
+</md-menu>
+</div>
+<!-- END MD-MENUE-->
+</md-whiteframe>
+<!-- END md-whiteframe-->
+<!-- START TABS -->
+<div style="" class="md-default-theme">
+	<md-tabs md-dynamic-height md-border-bottom md-selected="selectedIndex" >
+	<md-tab ng-repeat="tab in tabs" md-on-select="onTabChange()">
+	<md-tab-label>
+	{{tab.title}}
+</md-tab-label>
+<md-tab-body>
+<div ng-include="tab.url"></div>
+</md-tab-body>
+</md-tab>
+</md-tabs>
+</div>
+<!-- END TABS -->
+</div>
+<!-- END header_container-->
+</div>
+<!-- END  md-childApp-contentContainerSection-->
+</body>
+</html>

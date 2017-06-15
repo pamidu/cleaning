@@ -1,0 +1,299 @@
+/*Layout style hooks (Registration Page)*/
+
+#registerViewHolderFrame {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(215deg, #ffffff, #ffffff);
+    background-size: 300% 300%;
+    overflow: hidden;
+    -webkit-animation: loaderFrameBG 8s ease infinite;
+    -moz-animation: loaderFrameBG 8s ease infinite;
+    animation: loaderFrameBG 8s ease infinite;
+}
+.registerApplicationFormViewframe {
+    width: 450px;
+    height: auto;
+    min-height: 250px;
+    margin-bottom: 20px;
+    /*background:rgba(255,255,255,1);*/
+}
+.loginview_company_logoholder {
+    border-bottom: 1px solid rgba(100, 100, 100, 0.2);
+}
+.loginview_company_formholder {
+    width: 100%;
+    height: auto;
+}
+.viewLeftSection {
+    width: calc(100% - 600px);
+    height: 100%;
+}
+.viewRightSection {
+    width: 600px;
+    height: 100%;
+}
+.container {
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+.slider {
+    width: 100%;
+    height: 300px;
+}
+.slider ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+    transition: all .6s ease-in-out;
+}
+.slider li {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    float: left;
+}
+.slider li img {
+    width: 100%;
+    border: none;
+    min-height: 100%;
+}
+.icons {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50px);
+}
+.icons span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 .3em;
+    background-color: #D6D6D6;
+    cursor: pointer;
+}
+.active {
+    background-color: #fff !important;
+}
+.registerViewHeaderTextHolder {}
+.registerViewHeaderTextHolder h2,
+h5 {
+    font-weight: 300;
+    text-align: center;
+    margin: 0 !important;
+}
+.registerViewHeaderTextHolder h2 {
+    font-size: 36px;
+}
+.registerViewHeaderTextHolder b {
+    color: #235B91;
+    font-weight: 400;
+}
+.registerViewHeaderTextHolder h5 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/**/
+
+/*Custom User Menu Context Styling - Start*/
+#user_menu_context .topBar_profileComponent{
+    width:48px;
+    height:48px;
+    cursor:pointer; 
+}
+
+.userProfileContext{
+    height:400px !important; 
+    background:#333 !important; 
+    padding:0px !important;
+}
+
+.userInfoSummary{
+    width:100%;
+    height:352px; 
+}
+
+#user_menu_context .profileWidgetControls{
+    height:48px;
+    width:100%; 
+}
+
+.profileWidgetControls {
+    width: 100%;
+    height: 48px;
+    background: rgba(255, 255, 255,1);
+}
+
+/*User Context Widget Styling*/
+
+#userContextWidget{
+    height:auto; 
+    min-height:400px; 
+    background:rgba(255,255,255,1); 
+    padding:0 !important;
+    overflow:hidden;
+}
+
+#userContextWidget .profile_context_view{
+    width:100%; 
+    height:100%;
+}
+
+#userContextWidget .profile_context_view .profile_details_container{
+    width:100%; 
+    min-height:352px; 
+    background:rgb(35,91,145);
+}
+
+#userContextWidget .profile_context_view .user_controls_container{
+    width:100%; 
+    min-height:48px; 
+    background:rgba(255,255,255,1);
+}
+
+#userContextWidget .profile_context_view .profile_details_container .profile_summary_section{
+    width:100%;
+    height:282px;  
+} 
+
+#userContextWidget .profile_context_view .profile_details_container .profile_summary_section .profile_img_container{
+    width:100%;
+    height:200px;  
+}
+
+#userContextWidget .profile_context_view .profile_details_container .profile_summary_section .profile_name_container{
+    width:100%;
+    height:82px;
+    color:#fff; 
+}
+
+#userContextWidget .profile_context_view .profile_details_container .profile_summary_section .profile_name_container span:nth-child(1){
+    font-size:24px;
+    font-weight:300;  
+}
+
+#userContextWidget .profile_context_view .profile_details_container .tennant_summary_section{
+    width:100%;
+    height:70px;
+    background:rgba(235,235,235,1);  
+}
+
+#userContextWidget .profile_context_view .profile_details_container .tennant_summary_section span:nth-child(1){
+    font-size:16px;
+    font-weight:500;
+    color:rgba(0,0,0,0.54); 
+}
+
+#userContextWidget .profile_context_view .profile_details_container .tennant_summary_section md-button{
+    color:rgb(35,91,145); 
+}
+
+#userContextWidget .profile_context_view .profile_details_container .tennant_summary_section button{
+    max-width:160px !important;
+    text-overflow: ellipsis;
+}
+
+#userContextWidget .profile_context_view .user_controls_container{
+    width:100%;
+    height:48px;  
+}
+
+#userContextWidget .tenant_context_view{
+    width:100%; 
+    height:100%;
+}
+
+#userContextWidget .tennant_context_view .tennant_tool_container{
+    width:100%;
+    height:48px;  
+}
+
+#userContextWidget .tennant_context_view .tenant_list_container{
+    width:100%;
+    height:calc(100% - 48px);  
+}
+
+/*add or join company ui styling - start*/
+
+.companyProcessContainer{
+    width:500px;
+    height:auto;
+    background:#fff;
+    border-radius:5px;   
+}
+
+.companyProcessContainer .companyProcessBanner{
+    width:100%; 
+    height:100px;
+    background:rgb(35,91,145);
+    color:#fff; 
+}
+
+.companyProcessContainer .companyProcessBanner h1{
+    font-size:30px;
+    font-weight:300 !important;    
+}
+
+.companyProcessContainer .companyProcessForm{
+    width:100%;
+    height:auto; 
+}
+
+.companyProcessContainer .companyProcessForm .note{
+    color:#333;
+    background:rgba(235,235,235,1); 
+    padding:10px;
+    text-align:left;
+    border-radius:5px;
+    font-weight:500;
+    width:80%
+    margin-left:10%;  
+}
+
+/*add or join company ui styling - end*/
+
+
+/*Custom User Menu Context Styling - End*/
+
+
+/*Animation hooks*/
+
+@-webkit-keyframes loaderFrameBG {
+    0% {
+        background-position: 94% 0%
+    }
+    50% {
+        background-position: 7% 100%
+    }
+    100% {
+        background-position: 94% 0%
+    }
+}
+@-moz-keyframes loaderFrameBG {
+    0% {
+        background-position: 94% 0%
+    }
+    50% {
+        background-position: 7% 100%
+    }
+    100% {
+        background-position: 94% 0%
+    }
+}
+@keyframes loaderFrameBG {
+    0% {
+        background-position: 94% 0%
+    }
+    50% {
+        background-position: 7% 100%
+    }
+    100% {
+        background-position: 94% 0%
+    }
+}

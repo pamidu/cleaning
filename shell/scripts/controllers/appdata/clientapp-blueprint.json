@@ -1,0 +1,125 @@
+[
+	{
+		"tabID": "tab1",
+		"tabIndex": 0,
+		"tabTitle": "User Details",
+		"panelContent":[
+			{
+				"component": "mdeFormLayout",
+				"layout": "row",
+				"layoutAlignment": "space-around center",
+				"inputGroup":[
+					{
+	                	"component": "mdeInput",
+	                	"flexValue":50,
+	                	"inputType": "text",
+	                	"elementLabel": "First Name"
+	                },
+	                {
+	                	"component": "mdeInput",
+	                	"flexValue":50,
+	                	"inputType": "text",
+	                	"elementLabel": "Last Name"
+	                }
+				]
+			},
+			{
+				"component": "mdeFormLayout",
+				"layout": "row",
+				"layoutAlignment": "space-around center",
+				"inputGroup":[
+					{
+	                	"component": "mdeInput",
+	                	"flexValue":100,
+	                	"inputType": "text",
+	                	"elementLabel": "Address"
+	                }
+				]
+			},
+			{
+				"component": "mdeFormLayout",
+				"layout": "row",
+				"layoutAlignment": "space-around center",
+				"inputGroup":[
+					{
+	                	"component": "mdeInput",
+	                	"flexValue":50,
+	                	"inputType": "text",
+	                	"elementLabel": "State"
+	                },
+	                {
+	                	"component": "mdeInput",
+	                	"flexValue":50,
+	                	"inputType": "text",
+	                	"elementLabel": "City"
+	                }
+				]
+			}
+		]
+	},
+	{
+		"tabID": "tab2",
+		"tabIndex": 1,
+		"tabTitle": "Account Details",
+		"panelContent":[
+			{	
+				"formName": "personalDetails",
+				"component": "mdeFormLayout",
+				"layout": "row",
+				"layoutAlignment": "space-around center",
+				"inputGroup":[
+					{
+	                	"component": "mdeInput",
+	                	"flexValue":33,
+	                	"inputType": "text",
+	                	"elementLabel": "Username"
+	                },
+	                {
+	                	"component": "mdeInput",
+	                	"flexValue":"33",
+	                	"inputType": "password",
+	                	"elementLabel": "Password"
+	                },
+	                {
+	                	"component": "mdeInput",
+	                	"flexValue":33,
+	                	"inputType": "password",
+	                	"elementLabel": "Confirm Password"
+	                }
+				]
+			},
+			{
+				"component": "mdeFormLayout",
+				"layout": "row",
+				"layoutAlignment": "space-around center",
+				"inputGroup":[
+					{
+	                	"component": "mdeInput",
+	                	"flexValue":50,
+	                	"inputType": "email",
+	                	"elementLabel": "Email"
+	                },
+	                {
+	                	"component": "mdeInput",
+	                	"flexValue":50,
+	                	"inputType": "text",
+	                	"elementLabel": "Gravatar Url"
+	                }
+				]
+			},
+			{
+				"component": "mdeFormLayout",
+				"layout": "row",
+				"layoutAlignment": "space-around center",
+				"inputGroup":[
+	                {
+	                	"component": "mdeInput",
+	                	"flexValue":50,
+	                	"inputType": "text",
+	                	"elementLabel": "Website"
+	                }
+				]
+			}
+		]
+	}
+]

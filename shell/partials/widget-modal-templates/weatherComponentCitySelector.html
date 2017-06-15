@@ -1,0 +1,19 @@
+<md-dialog style="min-width:40vw;">
+    <md-content layout-padding>
+        <p style="font-family:sans-serif;">Change City</p>
+        <md-divider></md-divider>
+        <md-input-container>
+            <label>City</label>
+            <!--
+            <md-select ng-model="city">
+                <md-option ng-repeat="city in cities" value="{{city}}">{{city}}</md-option>
+            </md-select>
+-->
+            <input ng-model="city">
+        </md-input-container>
+        <div class="md-actions" layout="row">
+            <md-button class="md-priamry" ng-click="weatherComponentCitySelectorChange(city);">Change</md-button>
+            <md-button ng-click="closeWidgetOptions();">Close</md-button>
+        </div>
+    </md-content>
+</md-dialog>

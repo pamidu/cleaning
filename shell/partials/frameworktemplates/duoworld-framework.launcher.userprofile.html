@@ -1,0 +1,331 @@
+<style>
+
+    .duoworld-framework-launcher-application-container{
+        background:#fff; 
+    }
+
+    #divA {
+        cursor: pointer;
+    }
+
+    #divB {
+        display: none;
+        cursor: pointer;
+    }
+
+    #divA:hover {
+        opacity: 0.7;
+    }
+
+    #divA:hover + #divB {
+        display: block;
+    }
+
+    #emailBox {
+        width: calc(100% - 18px);
+    }
+
+    .iconColor {
+        color: #9e9e9e !important;
+    }
+    
+   /* .md-input[disabled] {
+        color: white !important;
+    }*/
+    
+    @-webkit-keyframes scaleAnimation {
+        from {
+            -webkit-transform: scale(.1)
+        }
+        to {
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @-moz-keyframes scaleAnimation {
+        from {
+            -moz-transform: scale(.1)
+        }
+        to {
+            -moz-transform: scale(1)
+        }
+    }
+
+    @-o-keyframes scaleAnimation {
+        from {
+            -o-transform: scale(.1) translate(0)
+        }
+        to {
+            -o-transform: scale(1)
+        }
+    }
+
+    #cancelbtn {
+        -webkit-animation: scaleAnimation .5s 1 ease;
+        -moz-animation: scaleAnimation .5s 1 ease;
+        -o-animation: scaleAnimation .5s 1 ease
+    }
+    
+    .highlight_card {
+        background: #555555;
+    }
+
+    md-input-container.md-default-theme .md-input[disabled], md-input-container .md-input[disabled], md-input-container.md-default-theme .md-input [disabled], md-input-container .md-input [disabled]{
+        border-bottom-color: rgb(224,224,224) !important;
+    }
+
+    .tabsdemoDynamicHeight md-content h1:first-child {
+        margin-top: 53px;
+    }
+
+    .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+        background: white;
+        position: fixed;
+    }
+
+    md-tabs{
+        background:rgb(255,255,255) !important;
+        color:rgb(35,91,145);
+    }
+
+    md-tabs > md-tabs-wrapper{
+        border-style:none !important; 
+    }
+
+    .md-tab{
+        color:rgba(0,0,0,0.54) !important;
+    }
+
+    .md-tab .md-active{
+        color:rgb(35,91,145) !important;
+    }
+
+</style>
+<!-- custom app template -->
+<frameworkapp-container routedappname="'User Profile'" routedappiconuri="$root.profilePicture" accentpalette="$root.shellConfig.themeconfiguration.accentpalette">
+
+<!-- custom app default mark up - start -->
+    <div id="dw-child-application-header-control-bar" layout="row" layout-align="space-between center">
+        <div class="dw-child-application-header-control-bar-left-section" layout="row" layout-align="center center">
+            <img class="dw-child-application-header-icon" ng-src="{{$root.profilePicture}}" err-src="images/appIcons/contacts.png" width="24" height="24">
+            <span class="dw-child-application-header-title">Profile</span>
+        </div>
+        <div class="dw-child-application-header-control-bar-right-section">
+            <md-button class="md-icon-button animatedHeaderControl" aria-label="Minimise Application" ng-click="childApplicationMinimise()">
+                <md-icon md-svg-icon="icons/ic_fullscreen_exit_24px.svg" alt="minimise" class="cad24"></md-icon>
+                <md-tooltip>Minimise</md-tooltip>
+            </md-button>
+            <md-button class="md-icon-button animatedHeaderControl" aria-label="Close Application" ng-click="childApplicationClose()">
+                <md-icon md-svg-icon="icons/ic_close_24px.svg" alt="close" class="cad24"></md-icon>
+                <md-tooltip>Close</md-tooltip>
+            </md-button>
+        </div>
+    </div>
+    <div class="dw-childapp-backgroundcover defaultView" layout="column" layout-align="center center">
+        <div class="dw-childapp-splash-container" layout="column" layout-align="end center">
+            <div class="dw-childapp-splash-logo-container" layout="column" layout-align="center center">
+                <img ng-src="{{$root.profilePicture}}" err-src="images/appIcons/contacts.png" class="dw-childapp-splash-logo top-splash-elements-entry" width="100" height="100"/>
+            </div>
+            <div class="dw-childapp-splash-text-container" layout="column" layout-align="space-around center">
+                <span class="dw-childapp-splash-title bottom-splash-elements-entry">Profile</span>
+                <md-progress-circular  class="dw-childapp-splash-loadingspinner bottom-splash-elements-entry" md-mode="indeterminate"></md-progress-circular>
+                <span class="dw-childapp-splash-loadingtextindicator bottom-splash-elements-entry">loading</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- custom app container - start -->
+    <div class="customeAppContainer" layout="column" layout-align="start center" style="overflow:auto;">
+
+        <div style="width:100%;" layout="column" layout-align="start center" ng-controller="duoworld-framework-shell-launcher-userprofile-ctrl">
+            <div class="card-container" style="padding:20px;width:100%;">
+                <!--WHITEFRAME START-->
+                <md-whiteframe class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout="row" layout-align="center center" style="margin:0 auto;max-width:960px;">
+                    <md-tabs md-dynamic-height md-border-bottom style="width:100%;background: #c1c1c1;">
+                        <md-tab label="User Profile" style="color:white">
+                            <md-whiteframe class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout="column" layout-align="center center" style="margin:0 auto;max-width:960px;height:250px;background:#424242;">
+                                <bgblur-component blurimg-src="{{$root.profilePicture}}" blurimg-intensity="50" blurimage-class="bg-blur" style="width: 100% !important;
+                                height: 250px !important;
+                                position: absolute;
+                                top: 0px;"></bgblur-component>
+                                <div layout="column" layout-align="center center" style="z-index:10;">
+                                    <input id="myInput" type="file" file-model="myFile" style="visibility:hidden;" onchange="angular.element(this).scope().fileChanged(this)">
+                                    <img id="divA" ng-src="{{$root.profilePicture}}" err-src="images/appIcons/contacts.png" style="width:100px;height:100px;margin: 0 auto;border-radius: 100px;" ng-mouseenter="changeProfilePicture = true" />
+
+                                    <center style="z-index:2;">
+                                        <div ng-click="editProfilePic($event);" style="position: relative;
+                                        height: 100px;
+                                        width: 100px;
+                                        background-color: rgba(48, 49, 50, 0.44);
+                                        margin-top: -100px;
+                                        border-radius: 100%; cursor:pointer;" ng-show="changeProfilePicture" ng-mouseleave="changeProfilePicture = false" layout="row" layout-align="center center">
+                                        <md-icon md-svg-icon="icons/ic_edit_24px.svg" class="cad24" alt="edit Profile Pic"></md-icon>
+                                    </div>
+
+                                    <div style="position: relative;
+                                    height: 100px;
+                                    width: 100px;
+                                    margin-top: -100px;
+                                    z-index:2;
+                                    border-radius: 100%;" ng-if="progressCircle" layout="row" layout-sm="column" layout-align="space-around">
+                                    <md-progress-circular style="padding-top: 20px !important; z-index:2;" md-mode="indeterminate"></md-progress-circular>
+                                </div>
+
+                            </center>
+
+                            <h2 style="color:white">{{content.Name}}</h2>
+
+                        </div>
+
+
+                    </md-whiteframe>
+                    <div layout="row" layout-align="end center" style="background:#fff;">
+                        <md-button class="md-fab md-primary" type="button" aria-label="add" style="margin-right:12.5% !important;margin-top:-28px !important;" ng-show="showEdit" ng-click="editProfile()">
+                            <md-icon md-svg-src="icons/ic_mode_edit_24px.svg" style="width:30px;"></md-icon>
+                            <md-tooltip md-direction="bottom">Edit</md-tooltip>
+                        </md-button>
+                        <md-button id="cancelbtn" class="md-fab md-mini md-primary" type="button" aria-label="add" style="margin-right:5% !important;margin-top:-28px !important;background:#db4437;" ng-hide="showEdit" ng-click="cancelChanges()">
+                            <md-icon md-svg-src="icons/ic_close_24px.svg" style="width:30px;fill:white;"></md-icon>
+                        </md-button>
+                        <md-button class="md-fab md-primary" type="button" aria-label="add" style="margin-right:12.5% !important;margin-top:-28px !important;" ng-hide="showEdit" ng-click="saveProfile()">
+                            <md-icon md-svg-src="icons/ic_save_24px.svg" style="width:30px;"></md-icon>
+                            <md-tooltip md-direction="bottom">Save</md-tooltip>
+                        </md-button>
+                    </div>
+                    <md-content class="md-padding">
+                        <form name="editForm" ng-submit="submit()">
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                                    <label>Email</label>
+                                    <md-icon md-svg-icon="icons/ic_email_24px.svg" class="iconColor"></md-icon>
+                                    <input ng-required="true" type="email" name="email" ng-pattern="/^.+@.+\..+$/" ng-model="content.Email" ng-disabled="true" id="emailBox">
+                                    <div ng-messages="editForm.email.$error">
+                                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                            Invalid Email
+                                        </div>
+                                    </div>
+                                </md-input-container>
+
+                                <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                                    <md-icon md-svg-icon="icons/ic_lock_24px.svg" class="iconColor"></md-icon>
+                                    <md-button style="margin-left: 30% !important;" ng-click="changePassword($event)">Change Password</md-button>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                                    <label>Name</label>
+                                    <md-icon md-svg-icon="icons/ic_person_24px.svg" class="iconColor"></md-icon>
+                                    <input ng-required="true" name="name" ng-pattern="" ng-model="content.Name" ng-disabled="showEdit">
+                                    <div ng-messages="editForm.name.$error">
+                                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+
+                                        </div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                                    <label>Phone Number</label>
+                                    <md-icon md-svg-icon="icons/ic_call_24px.svg" class="iconColor"></md-icon>
+                                    <input ng-required="true" name="phoneNumber" ng-model="content.PhoneNumber" type="text" ng-pattern="/^[0-9 ]*$/" ng-disabled="showEdit">
+                                    <div class="hint" style="margin-left: 35px;">7xxxxxxxx</div>
+                                </md-input-container>
+                            </div>
+
+                            <div layout="row">
+                                <md-icon md-svg-icon="icons/ic_my_location_24px.svg" class="iconColor" style="margin-top: 18px;margin-right: 10px;color:white" hide-xs></md-icon>
+                                <md-input-container class=" md-block" flex-gt-sm style="width:100%">
+                                    <label>Billing Address</label>
+                                    <textarea ng-required="true" minlength="null" md-maxlength="160" maxlength="160" rows="5" ng-model="content.BillingAddress" ng-disabled="showEdit"></textarea>
+                                </md-input-container>
+                            </div>
+
+                            <div ng-show="showMore">
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Country</label>
+                                        <md-icon md-svg-icon="icons/ic_home_24px.svg" class="iconColor"></md-icon>
+                                        <input ng-required="false" name="country" ng-pattern="" ng-model="content.Country" ng-disabled="showEdit">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Zip Code</label>
+                                        <md-icon md-svg-icon="icons/ic_place_24px.svg" class="iconColor"></md-icon>
+                                        <input ng-required="false" name="zipCode" ng-pattern="" ng-model="content.ZipCode" ng-disabled="showEdit">
+                                    </md-input-container>
+                                </div>
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Company</label>
+                                        <md-icon md-svg-icon="icons/ic_work_24px.svg" class="iconColor"></md-icon>
+                                        <input ng-required="false" name="country" ng-pattern="" ng-model="content.Company" ng-disabled="showEdit">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm hide-xs>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div layout-gt-sm="row" layout-align="center center" ng-hide="showMore">
+                                <md-button class="md-fab md-mini md-primary" aria-label="Show More" ng-click="toggleShowMore()" style="background:#db4437">
+                                    <md-icon md-svg-icon="icons/ic_expand_more_24px.svg" style="fill:white"></md-icon>
+                                    <md-tooltip md-direction="right">Additional Information</md-tooltip>
+                                </md-button>
+                            </div>
+                        </form>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Order History" ng-disabled="!showEdit">
+                    <md-whiteframe class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center" style="margin:0 auto;max-width:960px;height:250px;background:url('img/cover.png');background-color: rgba(0, 0, 0, 0.4);
+                    background-blend-mode: multiply;">
+                    <div layout="column">
+
+                    </div>
+
+                </md-whiteframe>
+
+
+                <md-content class="md-padding" style="max-height:300px;">
+                    <div layout="row" layout-align="space-around center" style="padding-top:0px;padding-bottom:5px;font-weight:700;font-size:16px">
+                        <div flex layout="row" layout-align="start center">
+                            <div style="height:40px;"></div>
+                            <span>Date/ Time</span>
+                        </div>
+                        <span flex>Order Number</span>
+                        <span flex="40">Product/ Service</span>
+                        <span flex>Total</span>
+                        <span flex>Status</span>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-list>
+                        <div flex="100">
+                            <center ng-if="paymentHistory.length == 0" style="padding:20px;font-size:30px;font-weight:700">No Payment History Yet!</center>
+                        </div>
+                    </md-list>
+                    <md-divider></md-divider>
+</md-content>
+</md-tab>
+
+<md-tab label="Manage User">
+    <md-content>
+        <div class="userSumary">
+            <span>1</span>
+        </div>
+    </md-content>
+</md-tab>
+
+</md-tabs>
+
+</md-whiteframe>
+<!--WHITEFRAME END-->
+</div>
+<!--CARD CONTAINER END-->
+
+</div>
+</div>
+</frameworkapp-container>
+
+<div style="position: fixed;
+bottom: 0px;
+right: 0px;
+z-index: 2000;
+width: 100vw;
+height: 100vh;
+background-color: rgba(0,0,0,0.26);" ng-show="showGlobalProgress" layout="column" layout-align="center center">
+<md-progress-circular md-mode='indeterminate' md-diameter="150" style="z-index:2000;"></md-progress-circular>
+</div>

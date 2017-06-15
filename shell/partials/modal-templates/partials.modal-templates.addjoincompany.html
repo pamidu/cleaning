@@ -1,0 +1,87 @@
+<!-- partials.modal-templates.addjoincompany.html -->
+<style>
+  .addJoinCompanyDialogHolder{
+    width:700px;
+    height:auto;
+    background:rgba(255,255,255,1);
+  }
+</style>
+<md-dialog aria-label="Add or Join Company">
+  <div class="addJoinCompanyDialogHolder" layout="row" layout-align"start start">
+    <div class="content-left-area" style="width:300px; min-height:100%;" layout="column" layout-align="center center">
+      <img src="images/tennantassets/12thDoorCygilBlue.png" width="200" height="221" style="opacity:0.7;">
+    </div>
+    <div class="content-right-area" style="width:calc(100% - 300px); height:100%;">
+      <md-tabs md-dynamic-height md-stretch-tabs="always">
+        <md-tab label="Add Company">
+          <md-content class="md-padding">
+            <form name="addCompanyForm" ng-submit="pushCompanyDetails">
+              <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Company Name</label>
+                  <input md-maxlength="40" required name="companyName" ng-model="addcompany.name">
+                  <div ng-messages="addCompanyForm.companyName.$error">
+                    <div ng-message="required">Company Name is required</div>
+                  </div>
+                </md-input-container>
+              </div>
+              <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Account URL</label>
+                  <input md-maxlength="40" required name="accountUrl" ng-model="addcompany.accounturl">
+                  <div ng-messages="addCompanyForm.accounturl.$error">
+                    <div ng-message="required">Account URL is required.</div>
+                  </div>
+                </md-input-container>
+              </div>
+              <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Business Location</label>
+                  <md-select required name="companyLocation" ng-model="addCompany.businessLocation">
+                    <md-option ng-repeat="country in countries" value="{{country.name}}">
+                      {{country.name}}
+                    </md-option>
+                  </md-select>
+                  <div ng-messages="addCompanyForm.businessLocation.$error">
+                    <div ng-message="required">Business Location is required</div>
+                  </div>
+                </md-input-container>
+              </div>
+            </form>
+          </md-content>
+          <div style="width:100%; height:48px; padding:0px 10px 0px 10px;" layout="row" layout-align="end center">
+            <md-button class="md-primary">Done</md-button>
+          </div>
+        </md-tab>
+        <md-tab label="Join Company">
+          <md-content class="md-padding">
+            <p>You will recive notification via email once you have been added</p>
+            <form name="addCompanyForm" ng-submit="pushCompanyDetails">
+              <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Administrator's Email</label>
+                  <input name="adminMail" ng-model="requestinvite.adminmail" required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"/>
+                  <div ng-messages="addCompanyForm.adminMail.$error">
+                    <div ng-message="required">Administrator'e email is required</div>
+                  </div>
+                </md-input-container>
+              </div>
+              <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Company Name</label>
+                  <input md-maxlength="40" required name="companyName" ng-model="requestinvite.companyName">
+                  <div ng-messages="addCompanyForm.companyName.$error">
+                    <div ng-message="required">Company name is required</div>
+                  </div>
+                </md-input-container>
+              </div>
+            </form>
+          </md-content>
+          <div style="width:100%; height:48px; padding:0px 10px 0px 10px;" layout="row" layout-align="end center">
+            <md-button class="md-primary">Request Invite</md-button>
+          </div>
+        </md-tab>
+      </md-tabs>
+    </div>
+  </div>
+</md-dialog>

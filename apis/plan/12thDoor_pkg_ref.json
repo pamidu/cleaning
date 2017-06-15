@@ -1,0 +1,63 @@
+ [{
+  "code": "12_pkg_personal",
+  "type": "free",
+  "name": "PERSONAL",
+  "price": "0.00",
+  "subscriptionunit":null,
+  "subscriptionqty": 1,
+  "customizable":false,
+  "rules": [
+   {"tag": "user", "sign": "<=", "amount": "1", "expiry": null },
+   {"tag": "invoice", "sign": "<=", "amount": "60", "expiry": {"uom": "year", "value": "1"}}
+  ]
+ },
+ {
+  "code": "12_pkg_mini_team",
+  "type": "base",
+  "name": "We Are A Mini Team",
+  "price": "8.00",
+  "subscriptionunit":"month",
+  "subscriptionqty": 1,
+  "customizable":false,
+  "rules": [
+   {"tag": "user", "sign": "<=", "amount": "5", "expiry": null },
+   {"tag": "storage", "sign": "<=", "amount": "10", "expiry": {"uom": "month", "value": "1"} },
+   {"tag": "bandwidth", "sign": "<=", "amount": "100", "expiry": {"uom": "month", "value": "1"}}
+  ]
+ },
+ {
+  "code": "12_pkg_business_perY",
+  "type": "base",
+  "name": "BUSINESS",
+  "price": "120.00",
+  "subscriptionunit":"year",
+  "subscriptionqty": 1,
+  "customizable":true,
+  "rules": [
+   {"tag": "user", "sign": "==", "amount": "3", "expiry":"0 0 1 1-12 *" }
+  ]
+ },
+ {
+  "code": "12_alacart_user_perM",
+  "type": "alacart",
+  "name": "PER USER MONTHLY",
+  "price": "4.00",
+  "subscriptionunit":"month",
+  "subscriptionqty": 1,
+  "customizable":true,
+  "rules": [
+   {"tag": "user", "sign": "==", "amount": "1", "expiry":"0 0 1 1-12 *" }
+  ]
+ },
+ {
+  "code": "12_alacart_user_perY",
+  "type": "alacart",
+  "name": "PER USER YEARLY",
+  "price": "40.00",
+  "subscriptionunit":"year",
+  "subscriptionqty": 1,
+  "customizable":true,
+  "rules": [
+   {"tag": "user", "sign": "==", "amount": "1", "expiry":"0 0 1 1-12 *" }
+  ]
+ }]

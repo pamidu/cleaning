@@ -1,0 +1,18 @@
+{
+	"tennantName": "Duo World", 
+	"tennantCygilDetails":{ 
+		"tennantCygilUrl": "images/tennantassets/duoworldlogin.png",
+		"tennantCygilDimention": {
+			"height": 157, 
+			"width": 400
+		},
+		"tennantBanner": "images/tennantassets/duoworldbanner.png", 
+		"tennantBannerDimention": {
+			"height": 131, 
+			"width": 500
+		}, 
+		"tennantCygilPlaceHolder":"Duo World"
+	}, 
+	"tennatAppName": "Duo World Application Docker", 
+	"tennantAppVersionNumber": "v1.0 Alpha"
+}

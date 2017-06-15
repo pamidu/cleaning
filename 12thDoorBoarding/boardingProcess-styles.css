@@ -1,0 +1,319 @@
+/*platformentry-styles*/
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+md-input-container{
+	margin:7px !important;
+}
+
+body{
+	position:absolute;
+	top:0;
+	left:0;
+	position: relative;
+	height: 100%;
+	width:100%; 
+	overflow:hidden;
+	background:#F5F5F5; 
+}
+
+#viewContainer{
+	position:absolute;
+	z-index:5;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;      
+}
+
+.commonContentShell{
+	width:500px;
+	padding:32px; 
+}
+
+
+.mainIntroNavSection{
+	width:auto; 
+}
+
+#containerMainText{
+	width:100%;
+	padding-bottom:32px;  
+}
+
+#containerMainText span:nth-child(1){
+	font-size:24px;
+	font-weight:500;  
+}
+
+#containerMainText span:nth-child(2){
+	font-size:15px;  
+}
+
+#formContainer form{
+	width:100%;
+}
+
+#formContainer form md-input-container{
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+#formContainer form md-input-container:nth-child(3){
+	margin-bottom:24px !important;
+}
+
+#formContainer form md-input-container:nth-child(4){
+	margin-bottom:24px !important;
+}
+
+#formContainer .md-actions{
+	margin-top:32px;
+}
+
+.navOptionsContainer{
+	width:100%;
+	padding:10px;  
+}
+
+.navOptionsContainer .process{
+	padding:32px 36px;
+	background:#ffffff;
+	border:1px solid rgba(0,0,0,0.084);
+	border-radius:3px; 
+}
+
+.navOptionsContainer .process button{
+	width:160px;
+	margin-top:32px; 
+}
+
+.navOptionsContainer .process:nth-child(1){
+	margin-right:16px;
+}
+
+.navOptionsContainer .process:nth-child(2){
+	margin-left:16px;
+}
+
+.navText{
+	display:block; 
+	font-size:18px;
+	color:rgba(0,0,0,0.7);
+	margin-bottom:20px;
+	text-align:center;   
+}
+
+.createCompanyIntroSection{
+	border-right:1px solid rgba(0,0,0,0.1);
+	padding:10px; 
+}
+
+.joinCompanyIntroSection{
+	border-left:1px solid rgba(255,255,255,0.1);
+	padding:10px;
+}
+
+
+.cygilHolder{
+	position:absolute;
+	z-index:10; 
+	bottom:20px;
+	right:20px;
+	display:block;
+	width:296px;
+	height:328px;
+	background:red; 
+	background:url(12thDoorCygil_white.png);
+	opacity:0.1;        
+}
+
+#cygilContainer{
+	width:250px;
+	background: #235b91 url('12thDoorCygil_black_alpha.png') no-repeat -150% 100%;
+	background-size:85%; 
+}
+
+#cygilContainer img{
+	margin-top:30px; 
+	width:190px;
+	height:50px;   
+}
+
+#successContainer{
+	width:100%;
+	padding:20px 0px 30px 0px;    
+}
+
+.secondaryAction{
+	width:100%;
+	height:auto;
+	font-size:14px; 
+	font-weight:700; 
+}
+
+.secondaryAction span{
+	display:block; 
+	cursor:pointer;
+	padding:5px 0px 5px 0px;   
+}
+
+.secondaryAction span:nth-child(1){
+	font-size:16px; 
+	font-weight:normal; 
+	color:rgba(150,150,150,1); 
+}
+
+.secondaryAction span i{ 
+	color:rgb(63,81,181);
+}
+
+.secondaryAction span:nth-child(2){
+	color:#FF4081;  
+}
+
+.socialActions{
+	width:100%;
+	height:auto;   
+}
+
+.socialActions span{
+	font-size:13px;
+}
+
+
+.loadInidcatorContainer{
+	height:100px;
+	width:auto;  
+}
+
+.loadInidcatorContainer span{
+	margin-right:30px; 
+	color:rgba(150,150,150,1);
+}
+
+/*entry page slider styles - start*/
+
+.slide {
+    position: absolute;
+    z-index:1;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+}
+
+.bg {
+    position: absolute;
+    top: 0px;
+}
+
+.bg-cover{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    position:absolute;
+    z-index:1; 
+    background:rgba(0,0,0,0.4) url("bgDots2.png");
+    background-repeat: repeat;    
+}
+
+.xlarge {
+    position: absolute;
+    z-index:2;
+    bottom: 50px;
+    font-size: 200px;
+    color: #FFF; /* Fallback for older browsers */
+    color: rgba(255, 255, 255, 0.2);
+    width: 100%; 
+    font-weight:300 !important;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.subtitle {
+    position: absolute;
+    bottom: 100px;
+    font-size: 100px;
+    font-weight:300 !important;
+    color: #FFF;
+    width: 100%;
+    z-index:3;
+}
+/*entry page slider styles - end*/
+
+#commonEntryHeader{
+	width:100%;
+	height:48px;
+	background:#335E8B;  
+}
+
+#commonEntryHeader img{
+	padding:7px 16px 7px 12px; 
+}
+
+/*Transition Animations*/
+
+#viewContainer.ng-enter{
+	z-index:8888;
+}		
+
+#viewContainer.ng-leave{
+	z-index:9999;
+}
+
+#viewContainer.ng-enter{
+	-webkit-animation: scaleUp .7s cubic-bezier(.55,0,.1,1);
+	animation: scaleUp .7s cubic-bezier(.55,0,.1,1);
+}
+
+#viewContainer.ng-leave{
+	-webkit-animation: scaleDown .7s cubic-bezier(.55,0,.1,1);
+	animation: scaleDown .7s cubic-bezier(.55,0,.1,1);
+}
+
+.animate-enter, 
+.animate-leave
+{ 
+    -webkit-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+} 
+ 
+.animate-enter {
+    top: -100%;
+}
+.animate-enter.animate-enter-active {
+    top: 0;
+}
+ 
+.animate-leave {
+    top: 0;
+}
+.animate-leave.animate-leave-active{
+    top: 100%;
+}
+
+
+/*Animation Hooks*/
+
+@-webkit-keyframes scaleDown {
+	from { }
+	to { opacity: 0; -webkit-transform: scale(.8); }
+}
+@keyframes scaleDown {
+	from { }
+	to { opacity: 0; -webkit-transform: scale(.8); transform: scale(.8); }
+}
+
+@-webkit-keyframes scaleUp {
+	from { opacity: 0; -webkit-transform: scale(.8); }
+}
+@keyframes scaleUp {
+	from { opacity: 0; -webkit-transform: scale(.8); transform: scale(.8); }
+}

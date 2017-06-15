@@ -1,0 +1,285 @@
+<style>
+	#divA {
+		cursor:pointer;
+	}
+	#divB {
+		display: none;
+		cursor:pointer;
+	}
+
+	#divA:hover {
+		opacity:0.7;
+	}
+
+	#divA:hover + #divB {
+		display:  block;
+	}
+
+	md-tab-item
+	{
+		color:white !important;
+	}
+	#emailBox
+	{
+		width: calc(100% - 18px);
+	}
+</style>
+
+<div class="card-container" style="padding:20px;">
+	<!--WHITEFRAME START-->
+	<md-whiteframe class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout="row" layout-align="center center" style="margin:0 auto;max-width:960px;">
+		<md-tabs md-dynamic-height md-border-bottom style="width:100%;background: #c1c1c1;">
+			<md-tab label="User Profile" style="color:white" >
+				<md-whiteframe class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center" style="margin:0 auto;max-width:960px;height:250px;background:url('img/cover.png')">
+					<div layout="column">
+						<input id="myInput" type="file" custom-on-change="fileChanged" accept="image/x-png, image/gif, image/jpeg" style="display:none" />
+						<img onclick="$('#myInput').click();" id="divA" ng-src="{{profilePicture}}" style="width:100px;height:100px;margin: 0 auto;border-radius: 100px;"/>
+						<ng-md-icon id="divB"  icon="edit" style="fill: #747474;position: absolute;margin-top: -45px; left: 50%;" size="24px"></ng-md-icon>
+
+						<h2 style="color:white">{{content.Name}}</h2>
+
+					</div>
+
+
+				</md-whiteframe>
+				<div layout="row" layout-align="end end">
+					<md-button class="md-fab" type="button" aria-label="add" style="margin-right:12.5% !important;margin-top:-28px !important;background:#db4437" ng-show="showEdit" ng-click="editProfile()">
+						<md-icon md-svg-src="/img/ic_mode_edit_24px.svg" style="width:30px;"></md-icon>
+						<md-tooltip md-direction="bottom">Edit</md-tooltip>
+					</md-button>
+					<md-button class="md-fab" type="button" aria-label="add" style="margin-right:12.5% !important;margin-top:-28px !important;background:#db4437" ng-hide="showEdit" ng-click="saveProfile()">
+						<md-icon md-svg-src="/img/ic_save_24px.svg" style="width:30px;"></md-icon>
+						<md-tooltip md-direction="bottom">Save</md-tooltip>
+					</md-button>
+				</div>
+				<md-content class="md-padding" md-theme="docs-dark">
+					<form name="editForm" ng-submit="submit()">
+						<div layout-gt-sm="row">
+							<md-input-container class="md-icon-float md-block" flex-gt-sm>
+								<label>Email</label>
+								<md-icon md-svg-icon="/img/ic_email_24px.svg" class="iconColor"></md-icon>
+								<input ng-required="true" type="email" name="email" ng-pattern="/^.+@.+\..+$/" ng-model="content.Email" ng-disabled="true" id="emailBox">
+								<div ng-messages="editForm.email.$error">
+									<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+										Invalid Email
+									</div>
+								</div>
+							</md-input-container>
+
+							<md-input-container class="md-icon-float md-block" flex-gt-sm>
+								<md-icon md-svg-icon="/img/ic_lock_24px.svg" class="iconColor"></md-icon>
+								<md-button style="margin-left: 30% !important;" ng-click="changePassword($event)">Change Password</md-button>
+							</md-input-container>
+						</div>
+						<div layout-gt-sm="row">
+							<md-input-container class="md-icon-float md-block" flex-gt-sm>
+								<label>Name</label>
+								<md-icon md-svg-icon="/img/ic_person_24px.svg" class="iconColor"></md-icon>
+								<input ng-required="true" name="name" ng-pattern="" ng-model="content.Name" ng-disabled="showEdit">
+								<div ng-messages="editForm.name.$error">
+									<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+
+									</div>
+								</div>
+							</md-input-container>
+							<md-input-container class="md-icon-float md-block" flex-gt-sm>
+								<label>Phone Numberr</label>
+								<md-icon md-svg-icon="/img/ic_call_24px.svg" class="iconColor"></md-icon>
+								<input ng-required="true" name="phoneNumber" ng-pattern="/^[0-9 ]*$/" ng-model="content.PhoneNumber" ng-disabled="showEdit">
+								<div class="hint" style="margin-left: 35px;">7xxxxxxxx</div>
+								<div ng-messages="editForm.phoneNumber.$error">
+									<div ng-message-exp="[ 'pattern']">
+										Enter a valid phone number with 9 digits
+									</div>
+								</div>
+							</md-input-container>
+						</div>
+
+						<div layout="row">
+							<md-icon md-svg-icon="/img/ic_my_location_24px.svg" class="iconColor" style="margin-top: 24px;padding-right: 10px;" hide-xs></md-icon>
+							<md-input-container class=" md-block" flex-gt-sm style="width:100%">
+								<label>Billing Address</label>
+								<textarea ng-required="true" minlength="null" md-maxlength="150" rows="5" ng-model="content.BillingAddress" ng-disabled="showEdit"></textarea>
+							</md-input-container>
+						</div>
+
+						<div ng-show="showMore">
+							<div layout-gt-sm="row">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Country</label>
+									<md-icon md-svg-icon="/img/ic_home_24px.svg" class="iconColor"></md-icon>
+									<input ng-required="false" name="country" ng-pattern="" ng-model="content.Country" ng-disabled="showEdit">
+								</md-input-container>
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Zip Code</label>
+									<md-icon md-svg-icon="/img/ic_place_24px.svg" class="iconColor"></md-icon>
+									<input ng-required="false" name="zipCode" ng-pattern="" ng-model="content.ZipCode" ng-disabled="showEdit">
+								</md-input-container>
+							</div>
+							<div layout-gt-sm="row">
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Company</label>
+									<md-icon md-svg-icon="/img/ic_work_24px.svg" class="iconColor"></md-icon>
+									<input ng-required="false" name="country" ng-pattern="" ng-model="content.Company" ng-disabled="showEdit">
+								</md-input-container>
+								<md-input-container class="md-block" flex-gt-sm hide-xs>
+								</md-input-container>
+							</div>
+						</div>
+						<div layout-gt-sm="row" layout-align="center center" ng-hide="showMore">
+							<md-button class="md-fab md-mini" aria-label="Show More" style="background:#db4437" ng-click="toggleShowMore()">
+								<md-icon md-svg-icon="/img/ic_expand_more_24px.svg" style="fill:white"></md-icon>
+								<md-tooltip md-direction="right">Additional Information</md-tooltip>
+							</md-button>
+						</div>
+					</form>
+				</md-content>
+			</md-tab>
+			<md-tab label="Billing Information">
+				<md-whiteframe class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center" style="margin:0 auto;max-width:960px;height:250px;background:url('img/cover.png')">
+					<div layout="column">
+
+					</div>
+
+				</md-whiteframe>
+				<div layout="row" layout-align="end end">
+					<md-button class="md-fab" type="button" aria-label="add" style="margin-right:12.5% !important;margin-top:-28px !important;background:#db4437" ng-click="newCard($event)">
+						<md-icon md-svg-src="/img/ic_add_24px.svg" style="width:30px;"></md-icon>
+						<md-tooltip md-direction="bottom">Add Card</md-tooltip>
+					</md-button>
+				</div>
+				<md-content class="md-padding"  md-theme="docs-dark">
+					<div layout="row" layout-align="space-around center" style="padding-top:0px;padding-bottom:5px;font-weight:700;font-size:16px">
+						<div flex="30" layout="row" layout-align="start center" style="padding-left: 10px;"><div style="height:40px;"></div><span>Credit Card</span></div>
+						<span flex="30" style="width:250px">Name on Card</span>
+						<span flex style="width:250px">Expires On</span>
+						<span flex style="width:200px"></span>
+					</div>
+					<md-divider></md-divider>
+					<md-list>
+						<md-list-item layout="row" layout-align="space-around center" class="cards" id="card{{$index}}" style="padding-top:5px;" ng-repeat="card in account.AccountCards" ng-click="editCard($index, card)">
+							<div flex="30" layout="row" layout-align="start center" style="width:200px"><img style="height:40px;" ng-src="{{card.cardImage}}"/><span style="margin-left:10px">{{card.CardNo | hideNumbers}}</span></div>
+							<span flex="30" style="width:250px">{{card.Name}}</span>
+							<span flex style="width:250px">{{card.ExpiryMonth}}/{{card.ExpiryYear}}</span>
+							<span flex style="width:200px"><a href="" style="color: white;" ng-click="editCard($event, card);$event.stopPropagation()">Edit</a><a href="" style="color: white;margin-left:20px;" ng-click="cardOperations('Default');$event.stopPropagation()">Make Default</a></span>
+						</md-list-item>
+					</md-list>
+					<md-divider></md-divider>
+				</md-content>
+			</md-tab>
+			<md-tab label="My Wallet">
+				<md-whiteframe class="md-whiteframe-2dp" layout="column" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center" style="margin:0 auto;max-width:960px;height:250px;background:url('img/cover.png')">
+
+					<div layout="column">
+
+						<h2 style="color:white;margin: 0 auto;">Available</h2>
+						<span style="color:white;font-size:60px">{{0 | currency}}</span>
+
+					</div>
+					<div layout="row" layout-align="space-around center" style="width:100%">
+
+						<div layout="column" hide-xs hide-sm style="background: rgba(0,200,0,0.1);border-radius: 3px;">
+							<div layout-gt-sm="row">
+								<div layout="column" style="padding:20px">
+
+									<span style="color:white;">This month</span>
+									<span style="color:white;margin: 0 auto;font-size: 20px;">{{0 | currency}}</span>
+
+								</div>
+								<div layout="column" style="padding:20px">
+
+									<span style="color:white;">Last month</span>
+									<span style="color:white;margin: 0 auto;font-size: 20px;">{{0 | currency}}</span>
+
+								</div>
+								<div layout="column" style="padding:20px">
+
+									<span style="color:white;">Last 3 months</span>
+									<span style="color:white;margin: 0 auto;font-size: 20px;">{{0 | currency}}</span>
+
+								</div>
+							</div>
+							<center><h2 style="margin:0;color:white;">Inflows</h2></center>
+						</div>
+
+						<div layout="column" hide-xs  hide-sm style="background: rgba(100,0,0,0.1);border-radius: 3px;">
+							<div layout-gt-sm="row">
+								<div layout="column" style="padding:20px">
+
+									<span style="color:white;">This month</span>
+									<span style="color:white;margin: 0 auto;font-size: 20px;">{{0 | currency}}</span>
+
+								</div>
+								<div layout="column" style="padding:20px">
+
+									<span style="color:white;">Last month</span>
+									<span style="color:white;margin: 0 auto;font-size: 20px;">{{0 | currency}}</span>
+
+								</div>
+								<div layout="column" style="padding:20px">
+
+									<span style="color:white;">Last 3 months</span>
+									<span style="color:white;margin: 0 auto;font-size: 20px;">{{0 | currency}}</span>
+
+								</div>
+							</div>
+							<center><h2 style="margin:0;color:white;">Outflows</h2></center>
+						</div>
+					</div>
+
+				</md-whiteframe>
+
+				<md-content class="md-padding"  md-theme="docs-dark">
+					<div layout="row" layout-align="space-around center" style="padding-top:0px;padding-bottom:5px;font-weight:700;font-size:16px">
+						<div flex="30" layout="row" layout-align="start center" style="padding-left:10px"><div style="height:40px;"></div><span>Date</span></div>
+						<span flex="30" style="width:250px">Type</span>
+						<span flex style="width:250px">Reference No.</span>
+						<span flex style="width:200px">Amount</span>
+					</div>
+					<md-divider></md-divider>
+					<md-list>
+						<md-list-item layout="row" layout-align="space-around center" class="cards" id="card{{$index}}" style="padding-top:5px;" ng-repeat="transaction in ledger" ng-click="editCard($index, card)">
+							<div flex="30" layout="row" layout-align="start center" style="width:200px"><span style="margin-left:10px">{{transaction.TranDate}}</span></div>
+							<span flex="30" style="width:250px">{{transaction.TranType}}</span>
+							<span flex style="width:250px">{{transaction.TranNo}}</span>
+							<span flex style="width:250px">{{transaction.Amount}}</span>
+						</md-list-item>
+					</md-list>
+					<md-divider></md-divider>
+				</md-content>
+			</md-tab>
+
+			<md-tab label="Order History">
+				<md-whiteframe class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center" style="margin:0 auto;max-width:960px;height:250px;background:url('img/cover.png')">
+					<div layout="column">
+
+					</div>
+
+				</md-whiteframe>
+
+				<md-content class="md-padding"  md-theme="docs-dark">
+					<div layout="row" layout-align="space-around center" style="padding-top:0px;padding-bottom:5px;font-weight:700;font-size:16px">
+						<div flex layout="row" layout-align="start center" style="padding-left:10px"><div style="height:40px;"></div><span>Date/ Time</span></div>
+						<span flex>Order Number</span>
+						<span flex="40" >Product/ Service</span>
+						<span flex>Total</span>
+						<span flex>Status</span>
+					</div>
+					<md-divider></md-divider>
+					<md-list>
+				<!--md-list-item layout="row" layout-align="space-around center" class="cards" id="card{{$index}}" style="padding-top:5px;" ng-repeat="card in account.AccountCards" ng-click="editCard($index, card)">
+					<div flex="30" layout="row" layout-align="start center" style="width:200px"><img style="height:40px;" ng-src="{{card.cardImage}}"/><span style="margin-left:10px">{{card.CardNo | hideNumbers}}</span></div>
+					<span flex="30" style="width:250px">{{card.Name}}</span>
+					<span flex style="width:250px">{{card.ExpiryMonth}}/{{card.ExpiryYear}}</span>
+					<span flex style="width:200px"><a href="" style="color: white;" ng-click="editCard($event, card);$event.stopPropagation()">Edit</a><a href="" style="color: white;margin-left:20px;" ng-click="cardOperations('Default');$event.stopPropagation()">Make Default</a></span>
+				</md-list-item-->
+			</md-list>
+			<md-divider></md-divider>
+		</md-content>
+	</md-tab>
+</md-tabs>
+
+</md-whiteframe>
+<!--WHITEFRAME END-->
+</div>
+<!--CARD CONTAINER END-->

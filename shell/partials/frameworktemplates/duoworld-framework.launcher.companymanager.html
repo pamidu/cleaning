@@ -1,0 +1,188 @@
+<style>
+	/* Styles go here */
+
+	.collapse-card {
+		background-color: #fff;
+		border-bottom: 1px solid #DDD;
+		border-left: 1px solid #DDD;
+		border-right: 1px solid #DDD;
+		color: #777;
+		-webkit-transition: 0.4s cubic-bezier(.55, 0, .1, 1);
+		-moz-transition: 0.4s cubic-bezier(.55, 0, .1, 1);
+		-o-transition: 0.4s cubic-bezier(.55, 0, .1, 1);
+		transition: 0.4s cubic-bezier(.55, 0, .1, 1);
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-o-user-select: none;
+		user-select: none;
+	}
+
+
+	.collapse-card__title {
+		font-size: 1rem;
+		line-height: 2rem;
+		margin: 0 2rem 0 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+
+	.collapse-card__heading {
+
+		padding: .5rem;
+		position: relative;
+	}
+	.collapse-card_header_content_info
+	{
+		cursor: pointer;
+	}
+
+	.collapse-card__body {
+		overflow: hidden;
+		transition: .4s;
+		max-height: 0px;
+		opacity: 0;
+		padding:0px 10px 0px 10px;
+	}
+
+	.collapse-card.active {
+		-moz-box-shadow: 0 11px 15px -7px rgba(0,0,0,.2),0 24px 38px 3px rgba(0,0,0,.14),0 9px 46px 8px rgba(0,0,0,.12);
+		-webkit-box-shadow: 0 11px 15px -7px rgba(0,0,0,.2),0 24px 38px 3px rgba(0,0,0,.14),0 9px 46px 8px rgba(0,0,0,.12);
+		box-shadow: 0 11px 15px -7px rgba(0,0,0,.2),0 24px 38px 3px rgba(0,0,0,.14),0 9px 46px 8px rgba(0,0,0,.12);
+		z-index: 200;
+		margin: 1rem -1rem;
+	}
+
+	.collapse-card.active .collapse-card__body {
+		border-top:1px solid rgba(200,200,200,1);
+		max-height: 1800px;
+		opacity: 1;
+	}
+	.collapse-card_header_content_info:focus {
+			outline: none;
+	}
+
+	.header_container {
+		max-width: 928px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.card_container {
+		max-width: 928px;
+		margin-right: auto;
+		margin-left: auto;
+		padding-bottom:20px;
+	}
+
+	.company-info-bock-name{
+		width:100%;
+		padding-bottom:10px;
+		font-weight:300;
+	}
+
+	.company-info-bock-name span:nth-child(1){
+		font-size:36px;
+		color:rgba(75,75,75,1);
+		margin-bottom:10px;
+	}
+
+	.company-info-bock-name span:nth-child(2){
+		font-size:20px;
+		color:rgba(125,125,125,1);
+	}
+
+	.company-info-block-created{
+		width:100%;
+		font-weight:300;
+	}
+
+	.company-info-block-created span{
+		font-size:16px;
+		color:rgba(125,125,125,1);
+		margin-right:40px;
+	}
+
+	.addCompanyModalViewHolder{
+		width:500;
+		height:auto;
+	}
+
+</style>
+<div id="dw-child-test-app-1" class="md-child-application-container" layout="column" layout-align="start center">
+	<!-- custom app default mark up - start -->
+	<div id="dw-child-application-header-control-bar" layout="row" layout-align="space-between center">
+		<div class="dw-child-application-header-control-bar-left-section" layout="row" layout-align="center center">
+			<img class="dw-child-application-header-icon" ng-src="images/appIcons/unwantedappicons/Estimates.png" err-src="images/appIcons/untitledapplication.png" width="24" height="24">
+			<span class="dw-child-application-header-title">Company Manager</span>
+		</div>
+		<div class="dw-child-application-header-control-bar-right-section">
+			<!-- <md-button class="md-icon-button animatedHeaderControl" aria-label="More Application Controls">
+		        <md-icon md-svg-icon="icons/ic_more_vert_24px.svg" alt="more controls" class="cad24"></md-icon>
+		        <md-tooltip>More</md-tooltip>
+		    </md-button> -->
+			<md-button class="md-icon-button animatedHeaderControl" aria-label="Minimise Application" ng-click="childApplicationMinimise()">
+		        <md-icon md-svg-icon="icons/ic_fullscreen_exit_24px.svg" alt="minimise" class="cad24"></md-icon>
+		        <md-tooltip>Minimise</md-tooltip>
+		    </md-button>
+		    <md-button class="md-icon-button animatedHeaderControl" aria-label="Close Application" ng-click="childApplicationClose()">
+		    	<md-icon md-svg-icon="icons/ic_close_24px.svg" alt="close" class="cad24"></md-icon>
+		    	<md-tooltip>Close</md-tooltip>
+		    </md-button>
+		</div>
+	</div>
+	<div class="dw-childapp-backgroundcover defaultView" layout="column" layout-align="center center">
+		<div class="dw-childapp-splash-container" layout="column" layout-align="end center">
+			<div class="dw-childapp-splash-logo-container" layout="column" layout-align="center center">
+				<img ng-src="images/appIcons/unwantedappicons/Estimates.png" err-src="images/appIcons/untitledapplication.png" class="dw-childapp-splash-logo top-splash-elements-entry" width="100" height="100"/>
+			</div>
+			<div class="dw-childapp-splash-text-container" layout="column" layout-align="space-around center">
+				<span class="dw-childapp-splash-title bottom-splash-elements-entry">Company Manager</span>
+				<md-progress-circular  class="dw-childapp-splash-loadingspinner bottom-splash-elements-entry" md-mode="indeterminate"></md-progress-circular>
+				<span class="dw-childapp-splash-loadingtextindicator bottom-splash-elements-entry">loading</span>
+			</div>
+		</div>
+	</div>
+	<!-- custom app default mark up - end -->
+	<!-- custom app container - start -->
+	<div class="customeAppContainer" layout="column" layout-align="start center">
+		<md-button class="md-fab md-accent" aria-label="Eat cake" style="position:absolute !important; right:calc(50% - 560px); top:225px;" ng-click="addCompany($event)">
+        <md-icon md-svg-icon="icons/ic_add_24px.svg" style="color:#235B91"></md-icon>
+				<md-tooltip>Add a new company</md-tooltip>
+    </md-button>
+		<div ng-repeat="company in companies" class="collapse-card ng-scope" ng-class="{ active: $active }" style="width:960px;">
+			<!--START OF COLLAPSE CARD HEADING -->
+			<div class="collapse-card__heading" layout="row" layout-align="start start" >
+				<!--START OF CARD OPEN SECTION-->
+				<div class="collapse-card_header_content_info" layout="row" layout-align="start start" flex="100" ng-click="$active = !$active; closeAll();">
+					<div class="cardHeader-section-left" style="width:150px; height:150px;" layout="column" layout-align="center center">
+						<img ng-src="{{company.companyLogo}}" width="150" height="75">
+					</div>
+					<div class="cardHeader-section-right" style="margin-left:10px; width:calc(100% - 160px); height:150px;" layout="column" layout-align="center start">
+						<div class="company-info-bock-name" layout="column" layout-align="start start">
+							<span>{{company.companyName}}</span>
+							<span>{{company.companyDomain}}</span>
+						</div>
+						<div class="company-info-block-created" layout="row" layout-align="start start">
+							<span>Owned by <b>{{company.companyOwner}}</b></span>
+							<span>Created in <b>{{company.companyCreated}}</b></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--START OF CARD BODY-->
+			<div class="collapse-card__body" layout="row" layout-align="end center">
+				<md-switch class="md-primary" ng-model="company.companyPrimary" aria-label="Make Primary Company" ng-model="data.cb4">
+    			Make this company your primary choice.
+  			</md-switch>
+				<md-button class="md-primary" aria-label="Delete company" ng-click="deleteCompany(company, $event)">
+						<md-icon md-svg-icon="icons/ic_delete_24px.svg" alt="Delete company"></md-icon>
+						<md-tooltip>Delete company</md-tooltip>
+				</md-button>
+			</div>
+			<!--END OF CARD BODY-->
+		</div>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+{
+	"profileID" : 0001,
+	"profileName" : "Admin",
+	"profileEmail" : "admin@duoworld.com",
+	"profileDPURL" : "images/userassets/contactimg/Sirus Miller.jpg",
+	"profileAccessLevel" : "Admin",
+	"profileAdditionalDetails" : {
+		"tennantName" : "Duo World",
+		"tennantRelation" : "UI/UX Engineer"
+	}
+}

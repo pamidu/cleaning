@@ -1,0 +1,68 @@
+<!-- signup-partial.html -->
+<div class="entryPartialContainer" layout="row">
+	<div id="commonContainer" flex layout="column" layout-align="center center">
+	    <img class="mascot" src="12thDoorMascot.png" width="273" height="265"/>
+	    <div class="title">
+	        Simple Invoicing
+	    </div>
+	    <div class="description">
+	        The way it should be
+	    </div>
+	    <img class="logo" src="login12thDoor.png" width="275" height="117"/>
+	</div>
+	<div id="signup_form_section" flex class="md-whiteframe-8dp" layout="row" layout-align="center start">
+		<div class="commonContentShell" layout="column" layout-align="start center">
+			<section id="containerMainText" layout="column" layout-align="center center">
+				<!-- <img src="login12thDoor.png"/> -->
+				<span>Get started with our FREE Plan</span>
+				<span>No credit card required. Upgrade or cancel any time</span>
+			</section>
+			<section id="formContainer" layout="column" layout-align="start start">
+				<form name="signupForm" ng-submit="submitSignupDetails(signupdetails)" autocomplete="off">
+					<md-input-container md-no-float class="md-block">
+						<input required id="name" type="text" name="userName" placeholder="Name" ng-model="signupdetails.Name">
+						<div ng-messages="signupForm.userName.$error">
+							<div ng-message="required">your name is required.</div>
+						</div>
+					</md-input-container> 	
+					<md-input-container md-no-float class="md-block">
+						<input required="" id="email" type="email" name="userEmail" placeholder="Email" ng-model="signupdetails.EmailAddress" ng-pattern="/^.+@.+\..+$/"/ ng-disabled="isinvited">
+						<div ng-messages="signupForm.userEmail.$error" role="alert">
+							<div ng-message-exp="['required','pattern']">a valid email address is required.</div>
+						</div>
+					</md-input-container>	
+					<md-input-container md-no-float class="md-block">
+						<input password-strength-indicator required id="password" type="password" name="userPassword" placeholder="Password" ng-model="signupdetails.Password">
+						<div ng-messages="signupForm.userPassword.$error">
+							<div ng-message="required">a valid password is required.</div>
+						</div>
+					</md-input-container>			
+					<div class="md-actions" layout="column" layout-align="center center">
+						<md-button class="md-primary" style="border:2px solid; width:250px;" type="submit" ng-disabled="signupForm.$invalid"><span class="loginBtnLabel">Create Account</span></md-button>
+					</div>
+				</form>
+				<div class="socialActions">
+					<span>Or Login with<span>
+				</div>
+				<div class="socialBtnContainer" layout="row" layout-align="center center">
+					<md-button md-no-ink class="md-primary facebook_btn">
+						<md-icon md-svg-src="facebook-box.svg" style="fill:#fff;"></md-icon>
+						Facebook
+					</md-button>
+					<md-button  md-no-ink class="md-primary twitter_btn">
+						<md-icon md-svg-src="twitter-box.svg" style="fill:#fff;"></md-icon>
+						Twitter
+					</md-button>
+					<md-button md-no-ink class="md-primary google_btn">
+						<md-icon md-svg-src="google-plus-box.svg" style="fill:#fff;"></md-icon>
+						Google +
+					</md-button>
+				</div>
+				<div class="secondaryAction" layout="column" layout-align="center center">
+					<span>By creating an account you accept the <i>Terms of Service</i> and <i>Privacy Policy</i></span>
+					<span>Already have an account ? <i ng-click="switchEntryView('signin')">Login</i></span>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

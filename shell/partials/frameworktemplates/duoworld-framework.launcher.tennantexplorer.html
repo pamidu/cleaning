@@ -1,0 +1,70 @@
+<style>
+	/*Dont change these styles under any circumstance !*/
+	.dw-default-application-container{
+		position:relative;
+		top:0;
+		left:0; 
+		width:100%;
+		height:100%;
+		background:#ececec;     
+	}
+
+	.dw-default-application-header-control-bar{
+		position:relative;
+		z-index:1; 
+		top:0px;
+		left:0;  
+		width:100%;
+		height:48px;
+		padding:0px 8px 0px 8px; 	 
+		box-sizing:border-box; 
+	}
+
+	.cad24{
+		color:#999999;
+	}
+
+	.dw-default-application-inner-container{
+		width:100%;
+		height:calc(100% - 48px);
+		overflow:hidden;
+		padding:10px 15px 10px 15px; 
+		box-sizing:border-box;     
+	}
+
+	.dw-default-application-header-control-bar-left-section img{
+		width:24px;
+		height:24px;
+		margin-right:10px;  
+	}
+
+	.dw-default-application-header-control-bar-left-section span{
+		font-size:18px;
+		color:#999999;  
+	}
+</style>
+<div id="dw-tennantexplorer-app" class="dw-default-application-container" layout="column" layout-align="start center">
+	<div class="dw-default-application-header-control-bar" layout="row" layout-align="space-between center">
+		<div class="dw-default-application-header-control-bar-left-section" layout="row" layout-align="start center">
+			<!-- this where you will place your application logo, just change the ng-src-->
+			<img src="images/appIcons/payments.png" err-src="images/appIcons/untitledapplication.png" width="24" height="24">
+			<!-- this is where you will mention you application name on this template -->
+			<span>Tennant Explorer</span>
+		</div>
+		<div class="dw-default-application-header-control-bar-right-section">
+			<md-button class="md-icon-button" aria-label="More Application Controls">
+		        <md-icon md-svg-icon="icons/ic_more_vert_24px.svg" class="cad24" alt="more controls"></md-icon>
+		    </md-button>
+			<md-button class="md-icon-button" aria-label="Minimise Application" ng-click="childApplicationMinimise()">
+		        <md-icon md-svg-icon="icons/ic_fullscreen_exit_24px.svg" class="cad24" alt="minimise"></md-icon>
+		    </md-button>
+		    <md-button class="md-icon-button" aria-label="Close Application" ng-click="childApplicationClose()">
+		    	<md-icon md-svg-icon="icons/ic_close_24px.svg" class="cad24" alt="close"></md-icon>
+		    </md-button>
+		</div>		
+	</div>
+	<!-- this is where you will place the inner HTML structure of your application -->
+	<div class="dw-default-application-inner-container" ng-scrollbars ng-scrollbars-config="frameworkScrollconfig.sidePanel">
+		<!-- this is where you will place the inner HTML structure of your application -->
+	</div>
+</div>

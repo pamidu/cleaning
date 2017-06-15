@@ -1,0 +1,180 @@
+<!-- exploredocument-partial.html -->
+<div id="invoice" class="page-layout blank" layout="row">
+    <div class="invoice-container">
+       <!--  <md-button class="md-fab md-primary portal_cta" aria-label="pay invoice" ng-click="showPaymentPortalDialog($event,paymentMethod)"> -->
+        <!-- ng-click="switchportalViews('interactdocument')" -->
+           <!--  <md-icon md-svg-src="img/ic_attach_money_white_24px.svg"></md-icon>
+        </md-button> -->
+        <!-- INVOICE -->
+        <div class="card md-whiteframe-8dp">
+            <div class="header" layout="row" layout-align="space-between start">
+                <div class="ids" layout="column">
+                    <div layout="row" class="seller" layout-align="start center">
+                        <div class="logo md-accent-bg" layout="row" layout-align="center center">
+                            <div>{{companyData.companyName | limitTo:1}}</div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                           <span>{{companyData.companyName}}</span></br>
+                            <span>{{companyData.country}},{{companyData.city}}</span></br>
+                            
+                            <span>{{companyData.state}}</span></br>
+                            <span>Email:{{companyData.companyEmail}}</span></br>
+                            <span>Web:{{companyData.website}}</span></br>
+                            <span>{{invoiceData.invoiceStakeHolders.tennantDetails.zip}}</span>
+                        </div>
+                    </div>
+
+                    <div layout="row" class="sellerCus" layout-align="start center">
+                        <div class="logo md-accent-bg" layout="row" layout-align="center center">
+                            <div>{{profileData.firstName | limitTo:1}}</div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="detail">
+                        <span>{{profileData.firstName}} &nbsp; {{profileData.lastName}}</span>
+                                <span>{{profileData.billingAddress.name}}</span></br>
+                                <span>{{profileData.billingAddress.country}}&nbsp;{{profileData.billingAddress.state}}</span></br>
+                                <span>{{profileData.billingAddress.city}}&nbsp; {{profileData.billingAddress.street}}</span></br>
+                                <span>{{profileData.billingAddress.zip}}</span>
+                                <span>Email:{{profileData.email}}</span></br>
+                        </div>
+                        </div>
+
+                </div>
+
+                <table class="summary">
+                    <tr class="code">
+                        <td class="label" translate="INVOICE.INVOICE">CREDIT NOTE</td>
+                        <td class="value">{{creditNoteData.creditNoteNo}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label" translate="INVOICE.INVOICE_DATE">INVOICE DATE</td>
+                        <td class="value">{{creditNoteData.createDate | datetime}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label" translate="INVOICE.DUE_DATE">DUE DATE</td>
+                        <td class="value">{{creditNoteData.date | datetime}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label" translate="INVOICE.TOTAL_DUE">TOTAL DUE</td>
+                        <td class="value">{{creditNoteData.changedCurrency}}&nbsp{{creditNoteData.balance|number:2}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content">
+                <table class="simple invoice-table">
+                    <thead>
+                        <th translate="INVOICE.SERVICE">DESCRIPTION</th>
+                        <th translate="INVOICE.UNIT">UNIT</th>
+                        <th class="text-right" translate="INVOICE.UNIT_PRICE">UNIT PRICE</th>
+                        <th class="text-right" translate="INVOICE.DISCOUNT">DISCOUNT</th>
+                        <th class="text-right" translate="INVOICE.QUANTITY">QUANTITY</th>
+                        <th class="text-right" translate="INVOICE.TOTAL">TOTAL</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in creditNoteData.creditNoteProducts">
+                            <td>
+                                <div class="title"> {{product.productName}}</div>
+                                <div class="detail"> {{product.Detail}}</div>
+                            </td>
+                            <td>
+                                {{product.productUnit}}
+                            </td>
+                            <td class="text-right">
+                                {{product.price|number:2}} 
+                            </td>
+                            <td class="text-right">
+                                {{product.discount}} %
+                            </td>
+                            <td class="text-right">
+                                {{product.quantity}}
+                            </td>
+                            <td class="text-right">
+                                <!--  {{product.price * product.quantity|number:2}} -->
+                                {{product.amount|number:2}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="height: 50px;">
+                    
+                </div>
+
+                <table class="simple invoice-table-footer">
+                    <tbody>
+                        <tr class="subtotal">
+                            <td translate="INVOICE.SUBTOTAL">SUBTOTAL</td>
+                            <td>{{creditNoteData.changedCurrency}}&nbsp {{creditNoteData.subTotal|number:2}}</td>
+                        </tr>
+                        
+                        <tr class="tax" ng-repeat="taxData in creditNoteData.taxAmounts">
+                            <td translate="INVOICE.TAX">{{taxData.taxName}}{{taxData.rate}}%</td>
+                            <td>{{creditNoteData.changedCurrency}}&nbsp {{taxData.salesTax|number:2}}</td>
+                        </tr>
+                        <tr class="tax">
+                            <td>SHIPPING</td>
+                            <td>-{{creditNoteData.shipping|number:2}}</td>
+                        </tr>
+                    <!--     <tr class="tax">
+                            <td>TAX</td>
+                            <td>{{taxData.salesTax|number:2}} </td>
+                        </tr> -->
+                        <tr class="tax">
+                            <td>TOTAL&nbsp{{creditNoteData.changedCurrency}}</td>
+                            <td>{{creditNoteData.changedCurrency}}&nbsp {{creditNoteData.netAmount|number:2}}</td>
+                        </tr>
+                       <!--  <tr class="tax">
+                            <td>PAID</td>
+                            <td>-{{creditNoteData.paidAmount|number:2}}</td>
+                        </tr> -->
+
+                       
+<!--                         <tr class="discount">
+                            <td translate="INVOICE.DISCOUNT">DISCOUNT</td>
+                            <td>-{{invoiceDataMy.invoiceBreakdown.totalDiscount | currency}}</td>
+                        </tr> -->
+
+
+                    
+                </div>
+               
+                
+                        <tr class="total">
+                            <td translate="INVOICE.TOTAL">BALANCE DUE &nbsp{{creditNoteData.changedCurrency}}</td>
+                            <td>{{creditNoteData.balance|number:2}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- <div class="footer"> -->
+             <!--    <div class="note" translate="INVOICE.NOTE">Please pay within {{invoiceData.termtype}}. Thank you for your business.</div>
+                
+                <div layout="row" layout-align="start start">
+                    <div class="logo md-accent-bg" layout="row" layout-align="center center">
+                        <div>{{invoiceData.Name | limitTo:1}}</div>
+                    </div>
+                    <div class="small-note" translate="INVOICE.SMALL_NOTE">
+                        In condimentum malesuada efficitur. Mauris volutpat placerat auctor. Ut ac congue dolor. Quisque
+                        scelerisque lacus sed feugiat fermentum. Cras aliquet facilisis pellentesque. Nunc hendrerit
+                        quam at leo commodo, a suscipit tellus dapibus. Etiam at felis volutpat est mollis lacinia.
+                        Mauris placerat sem sit amet velit mollis, in porttitor ex finibus. Proin eu nibh id libero
+                        tincidunt lacinia et eget eros.
+                    </div>
+                </div> -->
+            <!-- </div> -->
+        </div>
+        <!-- / INVOICE -->
+
+        <!-- Use the following element to add breaks to your pages -->
+        <!-- This will make sure that the section after this element will be printed on a new page -->
+        <!-- <div class="page-break"></div> -->
+
+    </div>
+</div>

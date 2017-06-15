@@ -1,0 +1,59 @@
+<!-- signin-partial.html -->
+<div class="entryPartialContainer" layout="column">
+    <div id="commonEntryHeader">
+        <img src="12thdoorLogo-Beta.png" width="114" height="34">
+    </div>
+    <div id="signin_form_section">
+        <div class="commonContentShell" layout="column" layout-align="start center">
+            <div id="activatedAccount" layout="column" layout-align="center center" ng-if="activated == 'true'">
+                <img src="12thDoorSuccess.png" width="144" height="144">
+                <span>You're now ready to proceed with 12thDoor</span>
+            </div>
+            <section id="containerMainText" layout="column" layout-align="center center">
+                <!-- <img src="login12thDoor.png" /> -->
+                <span>Login to 12th Door</span>
+            </section>
+            <section id="formContainer" layout="column" layout-align="start start">
+                <form name="signinForm" ng-submit="submitSigninDetails()" autocomplete="off">
+                    <md-input-container md-no-float class="md-block">
+                        <input required id="username" type="email" name="username" placeholder="Email" ng-model="signindetails.Username">
+                        <div ng-messages="signinForm.username.$error">
+                            <div ng-message="required">your registered email is required !</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container md-no-float class="md-block">
+                        <input required id="password" type="password" name="password" placeholder="Password" ng-model="signindetails.Password">
+                        <div ng-messages="signinForm.password.$error">
+                            <div ng-message="required">please enter a valid password.</div>
+                        </div>
+                    </md-input-container>
+                    <div class="md-actions" layout="column" layout-align="center center">
+                        <md-button class="md-primary" style="border:2px solid; width:250px;" type="submit" ng-disabled="signinForm.$invalid"><span>Login</span></md-button>
+                    </div>
+                </form>
+                <div class="socialActions" layout="column" layout-align="center center">
+                    <span>Or login with<span>
+                </div>
+                <div class="socialBtnContainer" layout="row" layout-align="center center">
+                    <md-button md-no-ink class="md-primary facebook_btn" ng-click="socialSignin('facebook')">
+                        <md-icon md-svg-src="facebook-box.svg" style="fill:#fff;"></md-icon>
+                        Facebook
+                    </md-button>
+                    <md-button  md-no-ink class="md-primary twitter_btn" ng-click="socialSignin('twitter')">
+                        <md-icon md-svg-src="twitter-box.svg" style="fill:#fff;"></md-icon>
+                        Twitter
+                    </md-button>
+                    <md-button md-no-ink class="md-primary google_btn" ng-click="socialSignin('google')">
+                        <md-icon md-svg-src="google-plus-box.svg" style="fill:#fff;"></md-icon>
+                        Google +
+                    </md-button>
+                </div>
+                <div class="secondaryAction" layout="column" layout-align="center center">
+                    <span ng-click="switchEntryView('signup')">Dont have an account? <i>Sign up</i></span>
+                    <span ng-click="switchEntryView('forgotpassword')"><i>Forgot password?</i></span>
+                    <span ng-click="resendActivation()"><i>Resend activation email</i></span>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

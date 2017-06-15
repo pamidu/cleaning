@@ -1,0 +1,144 @@
+/* Base styles ***************************************/
+v-accordion {
+  display: block; 
+}
+
+v-pane {
+  display: block; 
+}
+
+v-pane.is-expanded > v-pane-content > div {
+    visibility: visible; 
+}
+
+v-pane[disabled] > v-pane-header {
+    opacity: 0.6;
+    cursor: not-allowed; 
+}
+
+v-pane-header {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none; 
+}
+
+v-pane-header:focus {
+    outline: none; }
+v-pane-header[disabled] {
+    pointer-events: none; }
+
+v-pane-header > div {
+    display: block; 
+}
+
+v-pane-content {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  max-height: 0px; 
+}
+
+v-pane-content > div {
+  visibility: none; 
+}
+
+/* Theme: default
+   ***************************************/
+.vAccordion--default v-accordion {
+  margin-top: 20px;
+  padding-left: 20px; 
+}
+
+.vAccordion--default v-pane {
+  border-bottom:1px solid rgba(200,200,200,1);  
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s; 
+}
+
+.vAccordion--default v-pane.is-expanded > v-pane-header {
+  border-bottom-color: #2196F3; 
+}
+
+.vAccordion--default v-pane.is-expanded > v-pane-header::after {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  opacity: 0; 
+}
+
+.vAccordion--default v-pane.is-expanded > v-pane-header::before {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg); 
+}
+
+.vAccordion--default v-pane.is-expanded > v-pane-content > div {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); 
+}
+
+.vAccordion--default v-pane.is-expanded-add > v-pane-content, .vAccordion--default v-pane.is-expanded-remove > v-pane-content {
+  -webkit-transition: max-height 0.5s;
+  transition: max-height 0.5s; 
+}
+
+.vAccordion--default v-pane-header {
+  padding: 15px 10px 15px 10px;
+  background:rgba(255,255,255,1); 
+  margin-bottom: 0px;
+  -webkit-transition: color 0.25s, border-color 0.5s;
+  transition: color 0.25s, border-color 0.5s; 
+}
+
+.vAccordion--default v-pane-header::after, .vAccordion--default v-pane-header::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 10px;
+  height: 1px;
+  background-color: rgba(100,100,100,1);
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s; 
+}
+
+.vAccordion--default v-pane-header::before {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg); 
+}
+
+.vAccordion--default v-pane-header:hover, .vAccordion--default v-pane-header:focus {
+ 
+}
+
+.vAccordion--default v-pane-content > div {
+  padding-bottom: 20px;
+  will-change: transform, opacity;
+  opacity: 0;
+  -webkit-transform: translate3d(0, 30px, 0);
+  transform: translate3d(0, 30px, 0);
+  -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+/*v-accordian custom material styling */
+
+.accoridanIcon{
+  margin-right:10px;
+  width: 24px;
+  height: 24px;
+  color:rgba(100,100,100,1);
+}
+
+

@@ -1,0 +1,30 @@
+[
+ {
+  "code": "12_alacart_user_perM",
+  "type": "alacart",
+  "tag": "user",
+  "validplans": ["12_pkg_business_perM"],
+  "name": "PER USER MONTHLY",
+  "price": "4.00",
+  "subscriptionunit":"month",
+  "subscriptionqty": 1,
+  "customizable":true,
+  "rules": [
+   {"tag": "user", "sign": "==", "amount": "1"}
+  ]
+ },
+ {
+  "code": "12_alacart_user_perY",
+  "type": "alacart",
+  "tag":"user",
+  "validplans": ["12_pkg_business_perY"],
+  "name": "PER USER YEARLY",
+  "price": "40.00",
+  "subscriptionunit":"year",
+  "subscriptionqty": 1,
+  "customizable":true,
+  "rules": [
+   {"tag": "user", "sign": "==", "amount": "1"}
+  ]
+ }]
+

@@ -1,0 +1,109 @@
+<md-dialog aria-label="Mango (Fruit)" style="width:60%;">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Pay Online</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content layout-padding>
+    <div class="md-dialog-content" style="font-size: 135%;"> 
+
+    <div layout="column">
+    <div layout="row">
+      <div flex layout="row" layout-align="start center">
+         <md-input-container style="width: 250px;" ng-required="true">
+            <label>Select Payment Method</label>
+            <md-select ng-model="activePayment" ng-change="paymentMethod(activePayment)">
+            <div >
+           <!--  ng-if="defaultPaymentMethod == paypal || defaultPaymentMethod==googlewallet || defaultPaymentMethod== stripe ||defaultPaymentMethod==2checkout ||defaultPaymentMethod== authroizenet|| defaultPaymentMethod == worldpay" -->
+
+              <!-- <md-option><em>Current Payment Method : {{defaultPaymentMethod}}</em></md-option> -->
+              </div>
+
+               <div layout="column" flex>
+              <md-option ng-repeat="activePayment in activePayments" value="{{activePayment.name}}">
+             <div layout="row">
+                <div><span>{{activePayment.name}}</span></div>
+                <!-- <div >
+                  <img ng-src="{{activePayment.url}}" style="height: 40px; width:100px;padding-left: 30px;" />
+                </div> -->
+                
+                </div>
+                
+              </md-option>
+              
+              </div> 
+            </md-select>
+          </md-input-container>
+      </div>
+      <div flex layout="row" layout-align="center center">
+                  <div >
+           <div ng-show="activePayment=='paypal'"> 
+            <img ng-src="/img/payment/paypal.png" style="height: 100px; width:130px;" />
+            </div>
+             <div ng-show="activePayment=='googlewallet'"> 
+            <img ng-src="/img/payment/googlewallet.png" style="height: 100px; width:130px;;" />
+            </div>
+             <div ng-show="activePayment=='stripe'"> 
+            <img ng-src="/img/payment/stripe.png" style="height: 100px; width:130px;" />
+            </div>
+            <div ng-show="activePayment=='2checkout'"> 
+            <img ng-src="/img/payment/2checkout.png" style="height: 100px; width:130px;" />
+            </div>
+         <div ng-show="activePayment=='authroizenet'"> 
+            <img ng-src="/img/payment/authroizenet.png" style="height: 100px; width:130px;" />
+            </div>
+         <div ng-show="activePayment=='worldpay'"> 
+            <img ng-src="/img/payment/worldpay.png" style="height: 100px; width:100px;" />
+            </div>
+      </div>
+    </div>   
+    </div>
+      <!-- <div class="md-dialog-content">        
+          <div layout-gt-sm="row">
+          <md-datepicker ng-model="dFrom" md-placeholder="Date From"></md-datepicker>
+          </div>
+           <div layout-gt-sm="row">            
+            <md-datepicker ng-model="dTo" md-placeholder="Date To"></md-datepicker>
+          </div> 
+      </div> -->
+		      
+
+         <!--  <md-divider></md-divider> -->
+           <div layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-xs>
+              <label>Balance Due</label>
+              <input ng-model="balanceDuePayOnline" disabled>
+            </md-input-container>
+          </div>
+          <div layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-xs>
+              <label>Payment Amount</label>
+              <input ng-model="partialAmount">
+            </md-input-container>
+          </div>
+	    
+      </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+       <span flex></span>
+      
+      <!-- <md-button ng-click="answer('not useful')">
+       Not Useful
+      </md-button> -->
+      <!-- <md-button ng-if="activePayment!='stripe'" ng-click="submitLegerDates(0,50, dateFrom, dateTo)">
+        Confirm
+      </md-button> -->
+      <md-button ng-if="activePayment=='stripe'" stripe-payment="config" ng-click="submit()" ng-disabled="isDisabled">
+        Confirm
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,0 +1,68 @@
+<!-- partials.modal-templates.selectplans.html -->
+<style>
+    md-dialog {
+        background: rgba(0, 0, 0, 0) !important;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        box-shadow: none !important;
+    }
+
+    .disabledPlan{
+        -webkit-filter: grayscale(0.5);
+        filter: grayscale(0.5);
+    }
+
+</style>
+<md-dialog aria-label="12thDoor Plans" layout="column" layout-align="center center">
+    <div class="pricingPlanContainer" layout="row" layout-align="center center">
+        <div class="pricing_plan disabledPlan" layout="column" layout-align="start start">
+            <div class="plan_header" layout="column" layout-align="center center">
+                <p class="plan_header_price">$0<span>/mo</span></p>
+                <p>PERSONAL</p>
+            </div>
+            <div class="plan_details" layout="column" layout-align="space-between center">
+                <div class="plan_info">
+                    <ul class="highlight_group">
+                        <li>No Credit card required</li>
+                    </ul>
+                    <md-divider style="width:100%;"></md-divider>
+                    <ul class="default_group">
+                        <li>60 Invoices per year</li>
+                        <li>1 User</li>
+                    </ul>
+                </div>
+                <div class="plan_footer" layout="row" layout-align="center center">
+                    <md-button disabled class="md-raised md-primary" style="width:100%;">Enjoy it's Free</md-button>
+                </div>
+
+            </div>
+        </div>
+        <div class="pricing_plan" layout="column" layout-align="start start">
+            <div class="plan_header" layout="column" layout-align="center center">
+                <p class="plan_header_price">$12<span>/mo</span></p>
+                <p>BUSINESS</p>
+            </div>
+            <div class="plan_details" layout="column" layout-align="space-between  center">
+                <div class="plan_info">
+                    <ul class="highlight_group">
+                        <li>Charging $120 per year ($10/mo)</li>
+                    </ul>
+                    <md-divider style="width:100%;"></md-divider>
+                    <ul class="default_group">
+                        <li>Unlimited Invoices</li>
+                        <li>3 Users</li>
+                        <li>Unlimited Attachments</li>
+                    </ul>
+                    <md-divider style="width:100%;"></md-divider>
+                    <ul class="highlight_group">
+                        <li>Additional Users</li>
+                        <li>$4/mo or charging $40 per year</li>
+                    </ul>
+                </div>
+                <div class="plan_footer" layout="row" layout-align="center center">
+                    <md-button stripe-payment="config" class="md-raised md-primary" style="width:100%;">Purchase Plan</md-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</md-dialog>

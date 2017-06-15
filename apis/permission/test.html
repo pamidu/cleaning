@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script type="text/javascript" src="/uimicrokernel/angular.min.js"></script>
+        <script type="text/javascript" src="/uimicrokernel/uimicrokernel.js"></script>
+        <script type="text/javascript" src="permission.js"></script>
+        <script type="text/javascript">
+            angular.module("mainApp",["12thdoorPermission"]).controller("mainController", function($scope,$auth, $permission){
+                $auth.checkSession();
+                $permission.get($scope);
+            });
+
+        </script>
+    </head>
+    <body ng-app="mainApp" ng-controller="mainController">
+         <button type="" ng-disabled="$permission('invoice','edit')">Hello</button>
+    </body>
+</html>

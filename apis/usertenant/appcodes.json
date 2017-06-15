@@ -1,0 +1,17 @@
+{
+    "default" : [
+                "APP_360_VIEW",
+                "APP_CREDIT_NOTE",
+                "APP_EXPENSE",
+                "APP_INVENTORY",
+                "APP_PAYMENT",
+                "APP_PROJECT",
+                "APP_SETTINGS",
+                "APP_CONTACT",
+                "APP_ESTIMATE",
+                "APP_FILE_MANAGER",
+                "APP_INVOICE",
+                "APP_PRODUCT",
+                "APP_REPORT"
+      ]
+}

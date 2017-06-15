@@ -1,0 +1,47 @@
+<md-dialog aria-label="Upload Picture" style="width:600px" ng-cloak>
+    <form name="editForm" ng-submit="submit()">
+        <md-toolbar class="modal-header" style="background:#424242">
+            <div class="md-toolbar-tools profile-toolbar">
+                <h2>Upload Picture</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel();" type="button" aria-label="Close">
+                    <md-icon md-svg-icon="icons/ic_close_24px.svg" style="fill:white"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div style="padding:5px;min-height:200px">
+
+                <div class='row' ng-if='theImage1 != undefined'>
+
+
+                    <ng-croppie ng-model='output' update='onUpdate' boundry="{w: 300, h: 300}" viewport="{w: 200, h:200}" mousezoom="true" zoom="true" type="circle" src="theImage1">
+                    </ng-croppie>
+                    <img id="youtubeimg" src='{{output}}' style="display:none" />
+
+                </div>
+                <div layout='row' layout-sm="column" layout-align="center center" style="padding-top:5px;height:200px;">
+
+                    <md-button class="md-raised" type="button" onclick="$('#fileInput').click();">
+                        <md-icon md-svg-src="icons/ic_collections_24px.svg" style="width:24px;fill:#BBBBBB"></md-icon>
+                        Chose Image
+                    </md-button>
+                    <input id='fileInput' accept="image/x-png, image/gif, image/jpeg" custom-on-change="fileChanged" type='file' style="display:none" />
+
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <div style="font-size: 12px;margin-top:20px"></div>
+            <span flex></span>
+            <md-button ng-click="cancel()">
+                cancel
+            </md-button>
+
+            <md-button type="submit" class="md-raised md-primary" style="margin-right:20px;background: #424242;" ng-disabled="disableUploadBtn">
+                Upload Picture
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

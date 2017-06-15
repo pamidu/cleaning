@@ -1,0 +1,48 @@
+<div>
+	<div layout="row" layout-wrap>
+		<div layout layout-sm="row" layout-margin layout-wrap style="min-width:100%;">
+			<!-- START MD-CARD -->
+			<md-card  class="cardlist" ng-repeat="owern in tenantOwern | filter:Status | filter:ctrl.searchText||undefined" data-status="{{loc.Status}}"><!-- track by $index -->
+			<!-- START BLUR CANVAS -->
+			<blur id="canvas_{{owern.TenantID}}" blur-src="{{blur.url || blur.defUrl}}" blur-intensity={{blur.intensity}}></blur>
+			<!-- END BLUR CANVAS -->
+			<!-- START md-card-content-->
+			<md-card-content>
+			<div style="width:100%;" layout layout-align="center center">
+				<div>
+					<img class="circle" ng-src="{{img.defaultImg || img.ProfImg}}">
+				</div>
+			</div>
+			
+			<!-- START MD-BUTTON-->
+			<div style="width:100%;" layout layout-align="end end">
+				<div>
+					<md-button class="md-fab md-mini" ng-show="{{loc.Private}}" style="margin-top:-29% !important;margin-left:115px !important;background:#fff;font-weight:700;" ng-click="showAlert($event)">
+					<md-tooltip>
+					Invite
+				</md-tooltip>
+				<md-icon md-svg-src="icons/editor/svg/production/ic_insert_invitation_48px.svg" style="width:20px;color:#2828F7;"></md-icon>
+			</md-button>
+			<md-button class="md-fab md-mini" ng-hide="{{loc.Private}}" style="margin-top:-29% !important;margin-left:115px !important;background:#fff;font-weight:700;" ng-click="showAlert($event)">
+			<md-tooltip>
+			Subscribed
+		</md-tooltip>
+		<md-icon md-svg-src="icons/editor/svg/production/ic_insert_invitation_48px.svg" style="width:20px;color:#2828F7;"></md-icon>
+	</md-button>
+</div>
+</div>
+<!-- END MD-BUTTON-->
+<div style="width:100%; margin-top:-16px;" layout="column" layout-align="center start" layout-align-md="center center" layout-align-sm="center center">
+	<div>
+		<h2 class="md-title">{{owern.TenantID}}</h2>
+		<p class="p1">{{owern.OtherData.CompanyName}}</p>
+		<p class="p1">{{owern.OtherData.catagory}}</p>
+	</div>
+</div>
+</md-card-content>
+<!-- START md-card-content-->
+</md-card>
+<!-- END MD-CARD -->
+</div>
+</div>
+</div>

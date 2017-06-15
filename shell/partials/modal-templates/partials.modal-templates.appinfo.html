@@ -1,0 +1,13 @@
+<!-- partials.modal-templates.appinfo.html -->
+<md-dialog aria-label="Application Info">
+	<div class="appInfoModalContainer" layout="row" layout-align="start center">
+		<div class="appInfoIconContainerSection" layout="column" layout-align="center center">
+			<img ng-src="images/appIcons/{{selectedAppInfo.Name}}_appicon.png" err-src="images/appIcons/untitledapplication.png" width="128" height="128"/>
+		</div>
+		<div class="appInfoDetailsContainerSection" layout="column" layout-align="start start">
+			<span>{{selectedAppInfo.Name}}</span>
+			<span>1.0.0</span>
+			<span>{{selectedAppInfo.Description}}</span>
+		</div>
+	</div>
+</md-dialog>

@@ -1,0 +1,388 @@
+/*platformentry-styles*/
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+md-input-container{
+	margin:7px !important;
+}
+
+body{
+	position:absolute;
+	top:0;
+	left:0;
+	position: relative;
+	height: 100%;
+	overflow:hidden;
+	background:#e8f3f9;
+}
+
+#pagesContainer{
+	width:100%; 
+	height:100%;
+	background:#fff;     
+}
+
+.entryPartialContainer{
+	width:100%;
+	height:100%;  
+}
+
+#commonEntryHeader{
+	width:100%;
+	height:48px !important;
+	background:#335E8B;  
+}
+
+#commonEntryHeader img{
+	padding:7px 16px 7px 12px;   
+}
+
+#commonContainer{
+	height:100%;
+	background:#e8f3f9;
+}
+
+#commonContainer .mascot{
+	padding-bottom:15px;
+}
+
+#commonContainer .title {
+    font-size: 42px;
+    font-weight: 300;
+    color:#3e5d93;
+}
+
+#commonContainer .description {
+	padding-top: 4px;
+    font-size: 22px;
+    max-width: 600px;
+    color:#4b4f52;
+}
+
+#commonContainer .logo{
+    padding-top:30px;
+}
+
+#signup_form_section{
+	height:100%;
+	padding-top:50px;
+	padding-bottom:50px;   
+	overflow-y:auto;
+}
+
+#signin_form_section{
+	height:100%;
+	padding-top:50px;
+	padding-bottom:50px;   
+	overflow-y:auto;
+}
+
+#forgotpassword_form_section{
+	height:100%;
+	padding-top:50px;
+	padding-bottom:50px;   
+	overflow-y:auto;
+}
+
+#resetpassword_form_section{
+	height:100%;
+	padding-top:50px;
+	padding-bottom:50px;   
+	overflow-y:auto;
+}
+
+#signup_verify_section{
+	height:100%;
+	padding-top:50px;
+	padding-bottom:50px;   
+	overflow-y:auto;
+}
+
+.commonContentShell{
+	width:500px;
+}
+
+#signin_form_section .commonContentShell{
+	margin-left:calc(50% - 250px); 
+/*	margin-top:calc(25% - 282px); */
+}
+
+#signup_form_section .commonContentShell{
+	/*margin-left:calc(50% - 250px);*/
+	/*margin-top:calc(50% - 290px);*/
+}
+
+#forgotpassword_form_section .commonContentShell{
+	margin-left:calc(50% - 250px);
+	/*margin-top:calc(25% - 183px); */
+}
+
+#resetpassword_form_section .commonContentShell{
+	margin-left:calc(50% - 250px);
+	/*margin-top:calc(25% - 164px); */
+}
+
+#signup_verify_section .commonContentShell{
+	margin-left:calc(50% - 250px); 
+}
+
+#forgotPassword_form{
+	width:100%;
+}
+
+#resetPassword_form{
+	width:100%;
+}
+
+#containerMainImage{
+	padding-bottom:32px;
+}
+
+#containerMainText{
+	width:100%;
+	height:auto; 
+	padding-bottom:32px;
+}
+
+#containerMainText span:nth-child(1){
+	font-size:24px;
+	font-weight:500;  
+}
+
+#containerMainText span:nth-child(2){
+	font-size:15px;  
+}
+
+#containerMainText span i{
+	color:#335E8B;
+	text-decoration:underline;
+	font-style:normal;
+}
+
+#containerMainText img{
+	max-width:100%;
+	padding-bottom:10px;
+}
+
+#successContainer{
+	width:100%;
+	padding:20px 0px 30px 0px;    
+}
+
+#formContainer{ 
+	width:100%;
+	height:auto; 
+}
+
+#formContainer form{
+	width:100%; 
+}
+
+.md-actions{
+	margin-top:18px !important; 
+}
+
+.secondaryAction{
+	width:100%;
+	height:auto;
+	font-size:14px; 
+	font-weight:700;
+	text-align:center; 
+}
+
+.secondaryAction span{
+	display:block; 
+	cursor:pointer;
+	padding:5px 0px 5px 0px;   
+}
+
+.secondaryAction span{
+	font-size:16px; 
+	font-weight:normal; 
+	color:rgba(150,150,150,1); 
+}
+
+.secondaryAction span i{ 
+	color:#585858;
+	text-decoration:underline;
+	font-style:normal;   
+}
+
+.socialActions{
+	height:48px;
+	line-height:48px;
+	text-align:center;   
+	width:100%;  
+}
+
+.socialActions span{
+	padding:5px 0px 5px 0px;
+	color:rgba(150,150,150,1);
+}
+
+.socialBtnContainer{ 
+	width:100%;
+	height:64px;
+}
+
+.facebook_btn{
+	background:#2e79db;
+	color:#fff !important; 
+}
+
+.twitter_btn{
+	background:#60b8fd;
+	color:#fff !important;
+}
+
+.google_btn{
+	background:#f13c37;
+	color:#fff !important;
+}
+
+.loadInidcatorContainer{
+	height:100px;
+	width:auto;  
+}
+
+.loadInidcatorContainer span{
+	margin-right:30px; 
+	color:rgba(150,150,150,1);
+}
+
+/*Password strength meter styling*/
+
+#password-strength-indicator {
+    position: absolute;
+    right: 0;
+    top: 0px;
+    width: 5px;
+    padding: 0 10px;
+    cursor:pointer;
+}
+
+#password-strength-indicator span {
+    display: block;
+    height: 5px;
+    margin-bottom: 2px;
+    width: 5px;
+    border-radius: 5px;
+    background: #EDF0F3
+}
+.has-feedback .form-control-feedback {
+    top: 0;
+    left: 0;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    color: #555
+}
+
+.has-feedback .form-control {
+    padding-left: 42.5px
+}
+
+#msgContainerImagePlaceholder{
+	width:100%;
+	margin-bottom:48px; 
+}
+
+#msgContainerMainText span{
+	font-size:24px;
+	font-weight:500;  
+}
+
+#msgContainerDetails{
+	margin-top:24px; 
+	text-align:center;
+} 
+
+#msgContainerDetails p{
+	margin:0px;
+	font-size:16px; 
+	font-weight:normal; 
+	color:rgba(150,150,150,1); 
+}
+
+#msgContainerDetails p i{
+	color:#335E8B;
+	text-decoration:underline;
+	font-style:normal; 
+}
+
+#activatedAccount img{
+	margin-bottom:48px; 
+}
+
+#activatedAccount span{
+	margin-bottom:24px;
+	font-size:16px; 
+	font-weight:normal; 
+	color:rgba(150,150,150,1);
+}
+
+.animate-enter, 
+.animate-leave
+{ 
+    -webkit-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+} 
+ 
+.animate-enter {
+    top: -100%;
+}
+.animate-enter.animate-enter-active {
+    top: 0;
+}
+ 
+.animate-leave {
+    top: 0;
+}
+.animate-leave.animate-leave-active{
+    top: 100%;
+}
+
+
+/*Animation Hooks*/
+
+@-webkit-keyframes animatedBg {
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
+}
+@-moz-keyframes animatedBg {
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
+}
+@-o-keyframes animatedBg {
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
+}
+@keyframes animatedBg { 
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
+}
+
+@-webkit-keyframes scaleDown {
+	from { }
+	to { opacity: 0; -webkit-transform: scale(.8); }
+}
+@keyframes scaleDown {
+	from { }
+	to { opacity: 0; -webkit-transform: scale(.8); transform: scale(.8); }
+}
+
+@-webkit-keyframes scaleUp {
+	from { opacity: 0; -webkit-transform: scale(.8); }
+}
+@keyframes scaleUp {
+	from { opacity: 0; -webkit-transform: scale(.8); transform: scale(.8); }
+}

@@ -1,0 +1,27 @@
+<md-whiteframe id="loginFrame" class="md-whiteframe-z2 " layout="column" layout-align="start center">
+	<div id="fw-entry-bannerArea" layout="row" layout-align="center center">
+		<img ng-src="{{tennantDetails.tennantCygilDetails.tennantCygilUrl}}" width="{{tennantDetails.tennantCygilDetails.tennantCygilDimention.width}}" height="{{tennantDetails.tennantCygilDetails.tennantCygilDimention.height}}">
+	</div>
+	<md-content class="fullWidth md-padding">
+		<form name="loginForm">
+			<md-input-container>
+			    <label>User Name</label>
+			    <input required name="userName" ng-model="loginDetails.userName">
+		        <div ng-messages="loginForm.userName.$error">
+		          <div ng-message="required">Please enter your user name.</div>
+		        </div>
+		    </md-input-container>
+		    <md-input-container>
+			    <label>Password</label>
+			    <input type="password" required name="password" ng-model="loginDetails.password">
+		        <div ng-messages="loginForm.password.$error">
+		          <div ng-message="required">Please enter your password.</div>
+		        </div>
+		    </md-input-container>
+		    </br>
+		    <md-button class="md-raised md-primary" ng-click="submitLoginDetails()"><span class="fw-entry-summitInfoBtn-lbl">Login</span></md-button>
+		    </br>
+		    <span class="registerLoginViewLinks">If you are not a memeber, <a ui-sref="duoworld-frameworkentry.register">register here.</a></span>
+		</form>
+	</md-content>
+</md-whiteframe>

@@ -1,0 +1,62 @@
+{
+    "docklayoutconfiguration": {
+        "pannelcollection": [
+            {
+                "shellRelationship": "12th Door Shell v 1.0",
+                "panelDescription": "12th Door applications panel",
+                "panelTitle": "Applications",
+                "pannnelDirectiveContentTemplate": "partials/panel-templates/applications-pannel.html",
+                "panelArrangement": 0,
+                "pannelContentCollectionType": "application-component"
+            },
+            {
+                "shellRelationship": "12th Door Shell v 1.0",
+                "panelDescription": "12th Door Dashboard panel",
+                "panelTitle": "Dashboard",
+                "pannnelDirectiveContentTemplate": "",
+                "panelArrangement": 1,
+                "pannelContentCollectionType": "dashboard-component"
+            }
+		],
+        "dockoptions": {
+            "transitioneffect": "coverflow",
+            "layoutdirection": "vertical",
+            "pagination": true,
+            "looppannels": false
+        }
+    },
+    "themeconfiguration": {
+        "palettename": "default",
+        "primarypalette": "#ffffff",
+        "accentpalette": "#235B91"
+    },
+    "backgroundconfiguration": [
+        {
+            "backgroundtype": "solid",
+            "backgroundtypeactive": false,
+            "backgroundcolor": "#FF4081"
+		},
+        {
+            "backgroundtype": "gradient",
+            "backgroundtypeactive": false,
+            "backgroundgradientconfig": {
+                "color1": "#FF4081",
+                "color2": "#3F51B5",
+                "orientation": "diagonalup"
+            }
+		},
+        {
+            "backgroundtype": "image",
+            "backgroundtypeactive": true,
+            "backgroundimageconfig": {
+                "imageurl": "images/shellassets/background/12thDoorBG-1.jpg",
+                "imageblur": {
+                    "status": false,
+                    "amount": 0
+                },
+                "textureoverlay": false,
+                "vignetteoverlay": false
+            }
+		}
+	]
+}

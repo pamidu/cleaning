@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <title>12thDoor | Estimate</title>
+    <link rel="shortcut icon" href="dw-favicon.png" type="image/png">
+   <!--  <link rel="stylesheet" href="styles/app-8a51f6dc1a.css">
+    <link rel="stylesheet" href="styles/vendor-99a113ed43.css"> -->
+
+   
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css">
+
+    <link rel="stylesheet" href="styles/paymentPortal-styles.css">
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700italic,700,900,900italic' rel='stylesheet' type='text/css'> 
+</head>
+
+<body  ng-app="platformEstimatePortal" ng-cloak ng-controller="main-ctrl" style="overflow: scroll!important;">
+    <md-toolbar class="md-primary">
+        <div class="md-toolbar-tools">
+            <img src="assets/img/12thDoor_logo_white.png" width="121" height="32" ng-click="accessindex()"/> 
+        </div>
+    </md-toolbar>
+	<div layout="column" layout-align="center center" ui-view md-theme="default" md-theme-watch="true" style="padding: 24px;"></div>
+   
+
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+  <!--   <script src="scripts/vendor-0fd66ac4e7.js"></script>  -->
+
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.4.9/angular-material.min.js"></script>
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.2/angular-route.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-animate.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-aria.js"></script>
+ -->
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+
+
+	<script src="scripts/uimicrokernel/uimicrokernel.js"></script> 
+    <script src="scripts/controllers/estimatePortalNew.js"></script>
+    <script type="text/javascript" src="scripts/controllers/interactDoc.js"></script>
+    <script type="text/javascript" src="scripts/stripe.payment.tool.js"></script>
+    <script type="text/javascript" src="scripts/ms-currency/currencyFilter.js"></script>
+
+    <script type="text/javascript">
+        console.log("Estimate portal version 6.1.0.1");
+    </script>
+
+</body>
+</html>
+

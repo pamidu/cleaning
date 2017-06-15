@@ -1,0 +1,16 @@
+<md-dialog style="min-width:40vw;">
+    <md-content layout-padding>
+        <p style="font-family:sans-serif;">Change Date Format</p>
+        <md-divider></md-divider>
+        <md-input-container>
+            <label>Date Format</label>
+            <md-select ng-model="format">
+                <md-option ng-repeat="format in formats" value="{{format.format}}">{{format.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <div class="md-actions" layout="row">
+            <md-button class="md-primary" ng-click="clockComponentformatChange(format);">Change</md-button>
+            <md-button ng-click="closeWidgetOptions();">Cancel</md-button>
+        </div>
+    </md-content>
+</md-dialog>

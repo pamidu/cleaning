@@ -1,0 +1,112 @@
+ {
+"CuSFields": {
+"id": "2"
+"name": "label"
+}-
+"DeleteStatus": false
+"DiplayShipiingAddress": false
+"DraftActive": false
+"Email": "sachila@duosoftware.com"
+"MultiDueDAtesArr": [1]
+0:  {
+"DueDate": "2016-04-05T08:31:33.570Z"
+"Percentage": "0"
+"balance": 1530
+"dueDateprice": 1530
+"paymentStatus": "Unpaid"
+}-
+-
+"Name": "duosoftware (pvt) ltd"
+"OfflinePaymentDetails": "bank details"
+"RecurringProfileNo": null
+"Startdate": "2016-04-05T08:31:29.245Z"
+"UploadImages": {
+"val": [0]
+}-
+"addView": ""
+"allowPartialPayments": true
+"anotherTax": 0
+"billingAddress": "No 403 Pentrive Garden Rd, COlombo 3, 34324, , Maldives"
+"cardOpen": false
+"comments": "comment"
+"commentsAndHistory": [2]
+0:  {
+"RefID": "45"
+"date": "2016-04-05T08:31:52.082Z"
+"done": false
+"text": "Invoice created by 1163514127272"
+"type": "Auto"
+}-
+1:  {
+"RefID": "45"
+"date": "2016-04-05T10:26:36.377Z"
+"done": false
+"text": "Invoice Edited by11635155557422"
+"type": "Auto"
+}-
+-
+"customerid": "5"
+"discountAmount": 0
+"duedate": "2016-04-05T08:31:33.570Z"
+"emailBody": "Dear Customer, Attached invoice No.{{invoiceNo}} . To pay online or download click on the below link {{accounturl}} Thank You for your business! {{Name}}"
+"favourite": false
+"favouriteStarNo": 1
+"fdiscount": 0
+"finalamount": 1530
+"invoiceNo": "45"
+"invoiceProducts": [1]
+0:  {
+"ProductUnit": "each"
+"Productname": "sadsada"
+"amount": 1500
+"discount": 0
+"price": "250"
+"quantity": 6
+"status": "available"
+"tax": {
+"activate": true
+"compound": false
+"rate": "2"
+"taxname": "GST2"
+"type": "individualtaxes"
+}-
+}-
+-
+"invoiceRefNo": "45"
+"notes": "note"
+"paymentMethod": "Bank Draft"
+"paymentOptions": [2]
+0:  {
+"activate": true
+"label": "Inactivate"
+"name": "googlewallet"
+"paymentType": "online"
+"url": "img/payment/googlewallet.png"
+}-
+1:  {
+"activate": true
+"label": "Inactivate"
+"name": "paypal"
+"paymentType": "online"
+"url": "img/payment/paypal.png"
+}-
+-
+"poNum": "444"
+"roFruitNames": [1]
+0:  "ttttt"
+-
+"salesTax": null
+"salesTaxAmount": 30
+"shipping": 0
+"shippingAddress": "No 403 Pentrive Garden Rd, COlombo 3, 34324, , Maldives"
+"taxAmounts": [1]
+0:  {
+"compoundCheck": false
+"rate": "2"
+"salesTax": 30
+"taxName": "GST2"
+}-
+-
+"termtype": "DueonReceipt"
+"total": 1500
+}

@@ -1,0 +1,135 @@
+{
+"CuSFields": {
+"id": "u"
+"name": "label for invoice"
+}-
+"Email": "lasitha@virtusa.com"
+"MultiDueDAtesArr": [3]
+0:  {
+"DueDate": "2016-02-02T18:30:00.000Z"
+"Percentage": 25
+"balance": 621
+"dueDateprice": 621
+"paymentStatus": "Unpaid"
+}-
+1:  {
+"DueDate": "2016-01-29T18:30:00.000Z"
+"Percentage": 50
+"balance": 1242
+"dueDateprice": 1242
+"paymentStatus": "Unpaid"
+}-
+2:  {
+"DueDate": "2016-01-28T18:30:00.000Z"
+"Percentage": 25
+"balance": 621
+"dueDateprice": 621
+"paymentStatus": "Unpaid"
+}-
+-
+"Name": "virtusa"
+"OfflinePaymentDetails": "details"
+"ProgressBarDetails": {
+"PaymentScheme": "multipleDueDates"
+"PaymentSchemeActive": "false"
+"PaymentSchemeData": [1]
+0:  [3]
+0:  {
+"DueDate": "2016-02-02T18:30:00.000Z"
+"Percentage": 25
+"balance": 621
+"dueDateprice": 621
+"paymentStatus": "Unpaid"
+}-
+1:  {
+"DueDate": "2016-01-29T18:30:00.000Z"
+"Percentage": 50
+"balance": 1242
+"dueDateprice": 1242
+"paymentStatus": "Unpaid"
+}-
+2:  {
+"DueDate": "2016-01-28T18:30:00.000Z"
+"Percentage": 25
+"balance": 621
+"dueDateprice": 621
+"paymentStatus": "Unpaid"
+}-
+-
+-
+}-
+"Startdate": "2016-01-22T09:01:42.260Z"
+"UploadImages": {
+"val": [0]
+}-
+"adminEmail": "test@12thdoor.com"
+"anotherTax": 0
+"billingAddress": "bagathale roade, col 06, 9999, pppp, Sri lanka"
+"comments": "ccccc"
+"commentsAndHistory": [1]
+0:  {
+"date": "2016-01-22T09:03:40.139Z"
+"done": false
+"text": "Invoice was created by Mr.dddd"
+}-
+-
+"discountAmount": 0
+"duedate": null
+"favourite": false
+"favouriteStarNo": 1
+"fdiscount": 0
+"finalamount": 2484
+"invoiceNo": "249"
+"invoiceProducts": [2]
+0:  {
+"ProductUnit": "each"
+"Productname": "samsung s5"
+"amount": 480
+"discount": 0
+"price": "120"
+"quantity": 4
+"status": "available"
+"tax": {
+"activate": true
+"compound": false
+"id": 0.30127772642299533
+"rate": "12"
+"taxname": "vat"
+"type": "individualtaxes"
+}-
+}-
+1:  {
+"ProductUnit": "each"
+"Productname": "samsung s4"
+"amount": 1560
+"discount": 0
+"price": "120"
+"quantity": 13
+"status": "available"
+"tax": {
+"activate": true
+"compound": false
+"id": 0.30127772642299533
+"rate": "12"
+"taxname": "vat"
+"type": "individualtaxes"
+}-
+}-
+-
+"invoiceRefNo": "249"
+"notes": "ssssssssssssssssssssssssssssssssssssssssssssssssss"
+"paymentMethod": "TT"
+"poNum": "123"
+"roFruitNames": [3]
+0:  "tag1"
+1:  "tag2"
+2:  "tag3"
+-
+"salesTax": 0
+"salesTaxAmount": 244
+"shipping": "200"
+"shippingAddress": "st.maris road, col 4, 7898, state, India"
+"status": "Unpaid"
+"termtype": "multipleDueDates"
+"total": 2040
+}

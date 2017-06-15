@@ -1,0 +1,83 @@
+<style>
+    .dialogHeader{
+        width:100%;
+        height:48px;
+        background:rgb(35,91,145);
+        color:#fff;
+        font-size:18px;
+        font-weight:300;    
+    }
+
+    .dialogHeader .title{
+        padding-left:16px;
+    }
+
+    .dialogHeader .control{
+        width:48px;
+        height:48px;  
+    }
+</style>
+<!-- add company process HTML -->
+<div id="addCompanyView" class="companyProcessContainer" layout="column" layout-align="start start">
+	<div class="dialogHeader" layout="row" layout-align="start center">
+        <div class="title" flex>Create Company</div>
+        <div class="control" layout="column" layout-align="center center">
+            <md-button class="md-accent" ng-click="ceaseDialog()">
+                <md-icon md-svg-icon="icons/ic_close_24px.svg"></md-icon>
+            </md-button>
+        </div>
+    </div>
+	<section id="formContainer" style="width:100%; padding:10px;">
+        <form name="createCompanyForm" ng-submit="submitCreateCompanyDetails(createCompanyDetails)" autocomplete="off">
+            <md-input-container md-no-float class="md-block" flex>
+                <input required id="companyName" type="text" name="companyName" placeholder="company name" ng-model="createCompanyDetails.Name" ng-keypress="assignDomainName()">
+                <div ng-messages="createCompanyForm.companyName.$error">
+                    <div ng-message="required">a valid company name is required.</div>
+                </div>
+            </md-input-container>
+            <div layout="row">
+                <md-input-container md-no-float class="md-block" flex="70">
+                    <input required id="companyDomain" type="text" name="companyDomain" placeholder="company domain" ng-model="createCompanyDetails.TenantID">
+                    <div ng-messages="createCompanyForm.companyDomain.$error">
+                        <div ng-message="required">a valid company domain name is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float class="md-block" flex="30">
+                    <input disabled id="domainPostfix" type="text" name="companyDomainPostFix" placeholder=".12thDoor.com" ng-model="hostedDomain">
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container md-no-float class="md-block" flex>
+                    <md-select required name="businessType" placeholder="business type" ng-model="createCompanyDetails.OtherData.CompanyType" md-on-open="loadBusinessType()">
+                        <md-option ng-value="bizType.businessName" ng-repeat="bizType in businessType">{{bizType.businessName}}</md-option>
+                    </md-select>
+                    <div class="errors" ng-messages="businessType.$error" ng-if="createCompanyForm.$dirty">
+                        <div ng-message="required">Please select a business type.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row" layout-align="start start">
+                <md-input-container md-no-float class="md-block" flex>
+                    <md-select required name="companyLocation" placeholder="company location" ng-model="createCompanyDetails.OtherData.CompanyLocation">
+                        <md-option ng-repeat="location in companyLocation" ng-value="location.country_name" ng-click="getCurrencyFor(location.country_code)">{{location.country_name}}</md-option>
+                    </md-select>
+                    <div class="errors" ng-messages="companyLocation.$error" ng-if="createCompanyForm.$dirty">
+                        <div ng-message="required">Please select a company location.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float class="md-block" flex="30">
+                    <md-select required name="currency" placeholder="currency" ng-model="createCompanyDetails.OtherData.Currency">
+                        <md-option ng-repeat="cur in currencies track by $index" ng-value="cur">{{cur}}</md-option>
+                    </md-select>
+                    <div class="errors" ng-messages="currency.$error" ng-if="createCompanyForm.$dirty">
+                        <div ng-message="required">Please select a currency.</div>
+                    </div>
+                </md-input-container>
+
+            </div>
+            <div class="md-actions" layout="column" layout-align="center center">
+                <md-button class="md-raised md-primary" style="width:100%" type="submit" ng-disabled="createCompanyForm.$invalid"><span class="loginBtnLabel">Create Company</span></md-button>
+            </div>
+        </form>
+    </section>
+</div>

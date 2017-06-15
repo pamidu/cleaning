@@ -1,0 +1,430 @@
+<!--<style>
+
+.totalspan{
+	color:white;
+	font-size:22px;
+}
+
+.totalValue{
+	margin-top:12px;
+	color:white;
+	font-size:50px;
+}
+
+.totalValue1{
+	margin-top:21px;
+	color:white;
+	font-size:50px;
+}
+
+.p{
+	font-size:15px;
+}
+
+.b{
+	font-size:24px;
+}
+
+@media screen and (max-width: 979px){
+
+	.totalspan{
+		font-size:17px;
+	}
+
+	.totalValue{
+		font-size:45px;
+	}
+
+	.totalValue1{
+		font-size:45px;
+	}
+
+	.p{
+		font-size:12px;
+	}
+
+	.b{
+		font-size:22px;
+	}
+
+}
+
+@media screen and (max-width: 799px){
+
+	.totalspan{
+		font-size:15px;
+	}
+
+	.totalValue{
+		font-size:40px;
+	}
+
+	.totalValue1{
+		font-size:40px;
+		margin-top:39px;
+	}
+
+	.p{
+		font-size:10px;
+	}
+
+	.b{
+		font-size:15px;
+	}
+
+}
+
+@media screen and (max-width: 598px){
+
+ .totalspan{
+	color:white;
+	font-size:22px;
+}
+
+.totalValue{
+	margin-top:12px;
+	color:white;
+	font-size:50px;
+}
+
+.totalValue1{
+	font-size:50px;
+	margin-top:21px;
+}
+
+.p{
+	font-size:15px;
+}
+
+.b{
+	font-size:24px;
+}
+
+}
+
+.card-container{
+	/*animation:fromBottom 1.6s 1;
+	-webkit-animation:fromBottom 1.6s 1;*/
+}
+
+#SearchCard{
+	position: relative;
+}
+
+.movedPosition{
+	-webkit-animation: mymove 1s;  /* Chrome, Safari, Opera */
+	-webkit-animation-iteration-count:1;  /* Chrome, Safari, Opera */
+	-webkit-animation-fill-mode: forwards;  /* Chrome, Safari, Opera */
+	animation: moveup 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes moveup {
+	from {
+		top: 0px;
+		left:0px;
+	}
+	to {
+	 top: -175px;
+	 left: -315px;
+
+ }
+}
+
+#mCSB_1_container{
+width: 100% !important;
+}
+</style>-->
+<div class="md-framework-parent-panel-layout">
+	<div class="md-framework-panel-content-container" style="width:100%; height:100%; overflow:auto; z-index:10;">
+		<!-- start of dashboard layout components -->
+		<div class="360viewwidgetcontainer" style="padding:10px; ">
+			<!-- 360 app view main container - start -->
+
+			<!-- app view row 1 - start -->
+			<div layout="row" layout-sm="column" layout-fill layout-padding>
+				<div layout="column" layout-sm="column" flex>
+					<div flex>
+						<md-card class="md-whiteframe-24dp" style="height:100px;" >
+							<md-content flex layout="row" layout-align="center center">
+								<div layout style="width:90%; height:auto;">
+									<md-input-container flex md-no-float style="padding-bottom:2px !important;">
+										<md-icon md-svg-icon="icons/ic_search_24px.svg"></md-icon>
+										<input ng-model="searchText" placeholder="Search Customer Name or Company" ng-keypress="enter($event, searchText)">
+									</md-input-container>
+								</div>
+							</md-content>
+						</md-card>
+					</div>
+
+					<div flex>
+						<md-card class="md-whiteframe-24dp" style="height:406px;">
+							<md-toolbar class="md-primary md-toolbar-medium">
+
+					      <div class="md-toolbar-tools">
+									<h2>
+					          <span>Company Information</span>
+					        </h2>
+								</div>
+					    </md-toolbar>
+							<md-content flex>
+								<div layout="column" layout-sm="column" layout-padding style="margin-top:15px;">
+									<md-input-container flex>
+										<label>Company Name</label>
+										<input ng-model="contact[0].CustomerFname" name="" readonly="readonly">
+									</md-input-container>
+									<md-input-container flex>
+										<label>Billing Address</label>
+										<input ng-model="contact[0].Phone" name="" readonly="readonly">
+									</md-input-container>
+								</div>
+								<div layout="row" layout-sm="column" layout-padding>
+									<md-input-container flex>
+										<label>Contact Person</label>
+										<input ng-model="contact[0].CustomerFname" name="" readonly="readonly">
+									</md-input-container>
+									<md-input-container flex>
+										<label>Email</label>
+										<input ng-model="contact[0].Email" name="" readonly="readonly">
+									</md-input-container>
+								</div>
+								<div layout="row" layout-sm="column" layout-padding>
+									<md-input-container flex>
+										<label>Telephone</label>
+										<input ng-model="contact[0].Phone" name="" readonly="readonly">
+									</md-input-container>
+									<md-input-container flex>
+										<label>Mobile</label>
+										<input ng-model="contact[0].Mobile" name="" readonly="readonly">
+									</md-input-container>
+								</div>
+							</md-content>
+						</md-card>
+					</div>
+
+				</div>
+
+				<div layout="column" layout-sm="column" flex>
+					<div flex>
+						<md-card>
+							<md-card-content style="background:#fff;height:23px;border-bottom:1px solid #D5D5D5;">
+								<div layout="row" layout-align="start center">
+									<div flex="5"><img src="img/sales.png" style="width:27px; height:27px;">
+									</div>
+									<div flex><span style="color:#465661;font-size: 19px;">Sales</span>
+									</div>
+								</div>
+							</md-card-content>
+							<md-content flex style="overflow:hidden;padding-top: 27px;">
+								<div id="container" style="height: 315px; margin: 0 auto;"></div>
+							</md-content>
+						</md-card>
+					</div>
+
+					<div flex>
+						<div layout="row" layout-wrap layout-md="row" layout-sm="column">
+							<div flex>
+								<md-card style="height:210px;">
+									<md-card-content style="background:#465661;height:95px;padding:7px;">
+										<div layout="row" layout-align="start start">
+											<span class="totalspan">TOTAL SALES</span>
+										</div>
+										<div layout="row" layout-align="center center">
+											<span class="totalValue">2,306</span>
+										</div>
+									</md-card-content>
+									<md-content flex style="overflow:hidden;">
+										<div layout="row" layout-align="space-around start" style="margin-top:8px;">
+											<div style="color:#b6b6b6">
+												<p class="p">THIS MONTH</p>
+											</div>
+											<div style="color:#b6b6b6">
+												<p class="p">LAST MONTH</p>
+											</div>
+											<div style="color:#b6b6b6">
+												<p class="p">LAST 3 MO</p>
+											</div>
+										</div>
+										<div layout="row" layout-align="space-around start" style="margin-top:-5px;">
+											<div><b class="b">2,801</b>
+											</div>
+											<div><b class="b">3,402</b>
+											</div>
+											<div><b class="b">7,496</b>
+											</div>
+										</div>
+									</md-content>
+								</md-card>
+							</div>
+
+							<div flex>
+								<md-card style="height:210px;">
+									<md-card-content style="background:#465661;height:95px;padding:7px;">
+										<div layout="row" layout-align="start start">
+											<span class="totalspan">TOTAL PAYMENTS</span>
+										</div>
+										<div layout="row" layout-align="center center">
+											<span class="totalValue">13,605</span>
+										</div>
+									</md-card-content>
+									<md-content flex style="overflow:hidden;">
+										<div layout="row" layout-align="space-around start" style="margin-top:8px;">
+											<div style="color:#b6b6b6;">
+												<p class="p">THIS MONTH</p>
+											</div>
+											<div style="color:#b6b6b6;">
+												<p class="p">LAST MONTH</p>
+											</div>
+											<div style="color:#b6b6b6;">
+												<p class="p">LAST 3 MO</p>
+											</div>
+										</div>
+										<div layout="row" layout-align="space-around start" style="margin-top:-5px;">
+											<div><b class="b">2,801</b>
+											</div>
+											<div><b class="b">3,402</b>
+											</div>
+											<div><b class="b">7,496</b>
+											</div>
+										</div>
+									</md-content>
+								</md-card>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- app view row 1 - end -->
+
+			<!-- app view row 2 - start -->
+			<div layout="row" layout-sm="column" layout-fill layout-padding>
+				<div layout="column" layout-sm="column" flex>
+					<div flex>
+						<md-card style="height:335px;">
+							<md-card-content style="background:#fff;height:23px;border-bottom:1px solid #D5D5D5;">
+								<div layout="row" layout-align="start center">
+									<div flex="5"><img src="img/top.png" style="width:27px; height:27px;">
+									</div>
+									<div flex><span style="color:#465661;font-size: 19px;">Top Selling Products</span>
+									</div>
+								</div>
+							</md-card-content>
+							<md-content style="overflow: hidden;">
+								<!-- ng-scrollbars ng-scrollbars-config="scrollbarConfig" -->
+								<md-list ng-scrollbars ng-scrollbars-config="scrollbarconfig" style="overflow: hidden;height:277px;">
+									<md-list-item class="md-1-line">
+										<img ng-src="img/60.jpeg" class="md-avatar" alt="{{todos[0].who}}" />
+										<span flex="5"></span>
+										<div class="md-list-item-text">
+											<p>Min Li Chan Min Li Chan</p>
+										</div>
+										<span flex></span>
+										<div class="md-list-item-text">
+											<p>247</p>
+										</div>
+
+									</md-list-item>
+									<md-divider></md-divider>
+									<md-list-item class="md-1-line">
+										<img ng-src="img/60.jpeg" class="md-avatar" alt="{{todos[0].who}}" />
+										<span flex="5"></span>
+										<div class="md-list-item-text">
+											<p>Min Li Chan Min Li Chan</p>
+										</div>
+										<span flex></span>
+										<div class="md-list-item-text">
+											<p>247</p>
+										</div>
+									</md-list-item>
+									<md-divider></md-divider>
+									<md-list-item class="md-1-line">
+										<img ng-src="img/60.jpeg" class="md-avatar" alt="{{todos[0].who}}" />
+										<span flex="5"></span>
+										<div class="md-list-item-text">
+											<p>Min Li Chan Min Li Chan</p>
+										</div>
+										<span flex></span>
+										<div class="md-list-item-text">
+											<p>247</p>
+										</div>
+									</md-list-item>
+									<md-divider></md-divider>
+									<md-list-item class="md-1-line">
+										<img ng-src="img/60.jpeg" class="md-avatar" alt="{{todos[0].who}}" />
+										<span flex="5"></span>
+										<div class="md-list-item-text">
+											<p>Min Li Chan Min Li Chan</p>
+										</div>
+										<span flex></span>
+										<div class="md-list-item-text">
+											<p>247</p>
+										</div>
+									</md-list-item>
+									<md-divider></md-divider>
+									<md-list-item class="md-1-line">
+										<img ng-src="img/60.jpeg" class="md-avatar" alt="{{todos[0].who}}" />
+										<span flex="5"></span>
+										<div class="md-list-item-text">
+											<p>Min Li Chan Min Li Chan</p>
+										</div>
+										<span flex></span>
+										<div class="md-list-item-text">
+											<p>247</p>
+										</div>
+									</md-list-item>
+									<md-divider></md-divider>
+									<md-list-item class="md-1-line">
+										<img ng-src="img/60.jpeg" class="md-avatar" alt="{{todos[0].who}}" />
+										<span flex="5"></span>
+										<div class="md-list-item-text">
+											<p>Min Li Chan Min Li Chan</p>
+										</div>
+										<span flex></span>
+										<div class="md-list-item-text">
+											<p>247</p>
+										</div>
+									</md-list-item>
+								</md-list>
+							</md-content>
+						</md-card>
+					</div>
+				</div>
+
+				<div layout="column" layout-sm="column" flex>
+					<div flex>
+						<md-card style="height:160px;border:1px solid #009688; background:#009688;">
+							<md-card-content style="height:135px;padding:7px;">
+								<div layout="row" layout-align="start start">
+									<span class="totalspan">AVERAGE SALES</span>
+								</div>
+								<div layout="row" layout-align="center center">
+									<span class="totalValue1">1,652</span>
+								</div>
+							</md-card-content>
+						</md-card>
+					</div>
+
+					<div flex>
+						<md-card style="height:160px;border:1px solid #FF9800; background:#FF9800;">
+							<md-card-content style="height:135px;padding:7px;">
+								<div layout="row" layout-align="start start">
+									<span class="totalspan">TOTALS OUTSTANDING</span>
+								</div>
+								<div layout="row" layout-align="center center">
+									<span class="totalValue1">9,450</span>
+								</div>
+							</md-card-content>
+						</md-card>
+					</div>
+				</div>
+			</div>
+
+			<!-- app view row 2 - end -->
+
+			<!-- 360 app view main container - end -->
+		</div>
+		<!-- end of dashboard layout components -->
+	</div>
+</div>

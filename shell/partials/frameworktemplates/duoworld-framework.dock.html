@@ -1,0 +1,19 @@
+<style>
+    .swiper-container{
+        height:100% !important;
+    }
+
+    .dockPanels{
+        display:block;
+        height:100%;
+        width:100%;   
+    }
+</style>
+<ks-swiper-container override-parameters="{'effect':shellConfig.docklayoutconfiguration.dockoptions.transitioneffect, 'keyboardControl':'true', 'fade':{'crossFade':'true'}}" initial-slide="0" direction="{{shellConfig.docklayoutconfiguration.dockoptions.layoutdirection}}" loop="shellConfig.docklayoutconfiguration.dockoptions.looppannels" pagination-is-active="shellConfig.docklayoutconfiguration.dockoptions.pagination" slides-per-view="" space-between="300" pagination-clickable="true">
+    <ks-swiper-slide class="swiper-slide" ng-repeat="panel in shellConfig.docklayoutconfiguration.pannelcollection | orderBy:'panelArrangement'">
+        <div class="dockPanels">
+            <div class="sliderPanelContainer" ng-include="panel.pannnelDirectiveContentTemplate"></div>
+            <panneltitle-component title="panel.panelTitle"></panneltitle-component>
+        </div>
+    </ks-swiper-slide>
+</ks-swiper-container>

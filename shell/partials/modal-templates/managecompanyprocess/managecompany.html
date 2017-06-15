@@ -1,0 +1,113 @@
+<style type="text/css">
+    .dialogHeader{
+        width:100%;
+        height:48px;
+        background:rgb(35,91,145);
+        color:#fff;
+        font-size:18px;
+        font-weight:300;    
+    }
+
+    .dialogHeader .title{
+        padding-left:16px;
+    }
+
+    .dialogHeader .control{
+        width:48px;
+        height:48px;  
+    }
+
+    .dialogContent{
+        width:400px; 
+    }
+
+    .dialogFooter{
+        width:100%;
+        height:48px;
+        padding:0px 10px 0px 10px;  
+    }
+
+    .liveTip{
+        width:100%;
+        padding:5px;
+        background:rgba(220,220,220,0.4);
+        /*color:rgba(0,0,0,0.6);   */
+        color:rgb(35,91,145)
+    }
+
+    .liveTip p{
+        text-align:center; 
+    }
+
+    .companyListItem{
+        width:360px;
+        height:48px;
+        border-bottom:1px solid rgba(0,0,0,0.1);  
+    }
+
+    .companyListItem:last-child{
+        border-bottom:none;
+    }
+
+
+    .listItemDetail{
+        height:100%; 
+    }
+
+    .listItemDetail span:nth-child(1){
+        font-size:16px;
+        padding-bottom:5px;   
+    }
+
+    .listItemDetail span:nth-child(2){
+        color:rgba(0,0,0,0.4);
+        font-size:14px;   
+    }
+
+    /*load indicator view*/
+
+    .loadingView .indicator{
+        height:auto;
+        width:auto;
+        border-radius:3px; 
+        background:#fff;  
+    }
+
+    .loadingView .indicator span{
+        margin-right:30px; 
+        color:rgba(150,150,150,1);
+        width:150px; 
+    }
+
+</style>
+<md-dialog>
+    <div class="defaultView" ng-show="compManagerViewStatus">
+        <div class="dialogHeader" layout="row" layout-align="start center">
+            <div class="title" flex>Company Manager</div>
+            <div class="control" layout="column" layout-align="center center">
+                <md-button class="md-accent" ng-click="ceaseDialog()">
+                    <md-icon md-svg-icon="icons/ic_close_24px.svg"></md-icon>
+                </md-button>
+            </div>
+        </div>
+        <div class="dialogContent" layout="column" layout-align="start start">
+            <div class="liveTip">
+                <p>Setting a default company will effect which one you are routed to after signing in.</p>
+            </div>
+            <md-radio-group ng-model="defaultCompany" class="md-primary" ng-change="changeDefaultCompany()">
+                <md-radio-button class="companyListItem" ng-repeat="company in companyList" ng-value="company.TenantID">
+                    <div class="listItemDetail" layout="column" layout-align="start start">
+                        <span>{{company.Name}}</span>
+                        <span>{{company.TenantID}}</span>
+                    </div>
+                </md-radio-button>
+            </md-radio-group>
+        </div>
+    </div>
+    <div class="loadingView" ng-hide="compManagerViewStatus">
+        <div class="indicator" layout="row" layout-align="start center">
+            <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="40"></md-progress-circular>
+            <span>Setting default company, please wait...</span>
+        </div>
+    </div>
+</md-dialog>

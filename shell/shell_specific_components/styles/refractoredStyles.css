@@ -1,0 +1,95 @@
+/*New Refractered Styles from the shell*/
+/*styles for partial - duoworld-framework.html*/
+
+.tool-bar-control-set{
+    height:100%;
+    padding:0px 8px 0px 8px;
+    box-sizing:border-box;
+}
+
+.tool-bar-control-set.middle{
+    width:calc(100% - 500px);
+}
+
+.dw-global-serach-container{
+    height:36px;
+    width:100%;
+    border-radius:3px;
+    background:rgba(255,255,255,0.15);
+    cursor:pointer;
+}
+
+.dw-golbal-search-context-tag-section{
+
+}
+
+.dw-golbal-search-context-search-section{
+
+}
+
+.dw-current-tennant{
+    font-weight:300;
+    font-size:16px;
+    color:rgba(255,255,255,0.8);
+    margin-left:5px;
+}
+
+.dw-global-search-section1{
+    width:calc(100% - 100px);
+    height:100%;
+}
+
+.dw-global-search-section2{
+    width:150px;
+    height:100%;
+    padding:0px 10px 0px 0px;
+    box-sizing:border-box;
+}
+
+.dw-sidenav-right-header{
+    width:100%;
+    height:48px;
+    background:#3f51b5;
+}
+
+.dw-sidenav-right-header span{
+    font-size:16px;
+    color:#fff;
+}
+
+.dw-global-serach-container .dw-global-search-tag{
+    color:rgb(30,30,30);
+    background:#fff;
+    font-size:14px;
+    font-weight:500;
+    text-transform:lowercase;
+    padding:5px 6px 5px 6px;
+    border-radius:3px;
+    box-shadow: rgba(0, 0, 0, 0.258824) 0px 2px 5px 0px;
+    box-sizing:border-box;
+}
+
+.dw-global-serach-container .dw-global-search-icon{
+    padding:4px;
+}
+
+.dw-global-search-input-box{
+    width:calc(100% - 36px);
+}
+
+.dw-global-search-input-box input[type="text"]{
+    padding: 10px;
+    border: none;
+    background:rgba(0,0,0,0);
+    display:block;
+    width:100%;
+    font-size:16px;
+    color:#fff;
+    -webkit-appearance:none;
+    box-shadow:none;
+}
+
+.dw-global-search-input-box input[type="text"]:focus{
+    outline:none;
+}
+

@@ -1,0 +1,12 @@
+<div class="md-framework-parent-panel-layout">
+    <div class="md-framework-panel-content-container" style="width:100%; height:100%;" layout="column" layout-align="center center">
+        <!-- <panelcontrol-component componentdata=""></panelcontrol-component> -->
+        <div gridster="appGridsterOpts" class="md-framework-pannel-apptray">
+            <ul>
+                <li gridster-item ng-repeat="componentdata in allApps">
+                    <div appshortcut-component componentdata="componentdata"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

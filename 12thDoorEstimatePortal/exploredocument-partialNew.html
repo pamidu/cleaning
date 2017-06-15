@@ -1,0 +1,214 @@
+
+
+<div>
+ <md-button class="md-fab md-primary portal_cta" aria-label="accepted" ng-click="accepted(estimateDataMy)" style="position: fixed;bottom: 30px;right: 30px;">       
+           <md-tooltip md-direction="left">Accepted</md-tooltip>
+	     <md-icon md-svg-src="img/ic_check_24px.svg"></md-icon>
+ </md-button>
+
+<div id="invoices" layout="row">    
+    <div class="center" layout="column" layout-align="center center" flex>
+        <div class="content-card" layout="column">
+        <div class="content-wrapper">      
+        <div class="thread-detail">
+<div class="invTemplate-1">
+<div class="invoice-container">
+<md-whiteframe class="md-whiteframe-3dp" layout>
+        <div class="detail-wrapper" style="width: 960px;">
+            <div class="detail-header" layout="row" layout-align="space-between start" style="padding: 24px;">
+                <div class="ids" layout="column">
+                    <div layout="row" class="seller" layout-align="start center">
+                        <div class="brandlogo" layout="row" layout-align="center center">
+                            <img src="{{companyLogo}}" width="156" height="156">
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                            <div class="title" style="font-size: 13px;">{{companyData.companyName}}</div>
+                             <div class="address" style="font-size: 13px;">{{companyData.street}} </div>
+                            <div class="address" style="font-size: 13px;"> {{companyData.city}} {{companyData.state}}</div>
+                            <div class="address" style="font-size: 13px;">{{companyData.zip}} {{companyData.country}}</div>
+                            <!-- <div class="phone" ng-if="companyData.phone">t.{{companyData.phone}}</div> -->
+                            <div  class="phone" style="width: 300px;font-size: 13px;"><span ng-if="companyData.phoneNo" style="font-size: 13px;">t.
+                            {{companyData.phoneNo}} </span><span ng-if="companyData.fax">f.
+                            {{companyData.fax}}</span>
+                        </div>
+
+                            <div class="email" style="font-size: 13px;">{{companyData.companyEmail}}</div>
+                            <div class="website" style="font-size: 13px;">{{companyData.website}}</div>
+                        </div>
+                    </div>
+
+                    <div layout="row" class="client" layout-align="start center">
+                        <div class="logo" layout="row" layout-align="center center">
+                            <div>{{estimateDataMy.profileName[0] | uppercase}}</div>
+                        </div>
+
+                        <div class="divider"></div>
+                    <div class="detail">
+                        <div class="title" style="font-size: 13px;">{{estimateDataMy.profileName}}</div>
+                        <div ng-if="estimateDataMy.billingAddress" class="address" style="font-size: 13px;">{{estimateDataMy.billingAddress.street}}</div>
+
+                        <div ng-if="estimateDataMy.billingAddress" class="address" style="font-size: 13px;">{{estimateDataMy.billingAddress.city}} {{estimateDataMy.billingAddress.state}}</div>
+
+                        <div ng-if="estimateDataMy.billingAddress" class="address" style="font-size: 13px;">{{estimateDataMy.billingAddress.zip}} {{estimateDataMy.billingAddress.country}}</div>
+
+                        <div  class="phone" style="width: 200px;font-size: 13px;"><span ng-if="estimateDataMy.contactNo">t.
+                            {{estimateDataMy.contactNo}} </span><span ng-if="estimateDataMy.fax">f.
+                            {{estimateDataMy.fax}}</span>
+                        </div>
+                        <div ng-if="estimateDataMy.email" class="email" style="font-size: 13px;">
+                            {{estimateDataMy.email}}
+                        </div>
+                        <div ng-if="estimateDataMy.website" class="website" style="font-size: 13px;"><span>Web</span>:{{estimateDataMy.website}}
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <table class="summary">
+                    <tr class="code">
+                        <td class="label">ESTIMATE</td>
+                        <td class="value">{{estimateDataMy.estimateNo}}</td>
+                    </tr>
+                    <tr class="tableSpacer"></tr>
+                    <tr>
+                        <td class="label cellSpacer">DATE</td>
+                        <td class="value cellSpacer">{{estimateDataMy.createDate | toDateObject | date:'mediumDate'}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label cellSpacer">VALIDITY</td>
+                        <td class="value cellSpacer">{{estimateDataMy.validity| toDateObject | date:'mediumDate'}}</td>
+                    </tr>
+
+		    <tr>
+                        <td class="label cellSpacer">TERMS</td>
+                        <td class="value cellSpacer">{{estimateDataMy.paymentTerm}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label cellSpacer">CUSTOMER REF</td>
+                        <td class="value cellSpacer">{{estimateDataMy.customerRef}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label cellSpacer">CURRENCY</td>
+                        <td class="value cellSpacer">{{estimateDataMy.changedCurrency}}</td>
+                    </tr>
+
+                </table>
+            </div>
+            <span class="invoiceComment" style="margin-left: 0;">{{estimateDataMy.comments}}</span>
+
+            <div class="detail-content">
+                <table class="invoice-table">
+                    <thead class="tableHeader">
+                        <th>#</th>
+                        <th class="text-left">DESCRIPTION</th>
+                        <th class="text-center">QUANTITY</th>
+                        <th class="text-center">UOM</th>
+                        <th class="text-center">UNIT PRICE</th>
+                        <th class="text-center">DISCOUNT</th>
+                        <th class="text-right">AMOUNT</th>
+                    </thead>
+                    <tbody class="tableBody">
+                        <tr ng-repeat="product in estimateDataMy.estimateProducts">
+                            <td style="width:3%;">{{$index + 1}}</td>
+                            <td>                       
+                                <div class="text-left" style="width:35%"> {{product.productName}}</div>
+                               <!--  <div class="detail"> {{product.Detail}}</div> -->
+                            </td>
+                            <td class="text-center" style="width:5%">
+                                {{product.quantity}}
+                            </td>
+                            <td class="text-center" style="width:5%">
+                                {{product.productUnit}}
+                            </td>
+                            <td class="text-center" style="width:15%">
+                                {{product.price / exchangeRate|number:2}}
+                            </td>
+                            <td class="text-center" style="width:8%">
+                                {{product.discount}} %
+                            </td>
+                            <td class="text-right" style="width:15%">
+                                {{product.amount / exchangeRate|number:2}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="invoice-table-footer">
+                    <tbody>
+                        <tr class="subtotal">
+                            <td>SUBTOTAL</td>
+                            <td>{{estimateDataMy.subTotal / exchangeRate | currency:estimateDataMy.changedCurrency+' '}}</td>
+                        </tr>
+
+			<tr class="shipping">
+                            <td>SHIPPING</td>
+                            <td>{{estimateDataMy.shipping / exchangeRate | currency:estimateDataMy.changedCurrency+' '}}</td>
+                        </tr>
+ 
+                         <tr class="tax">
+                            <td>TAX</td>
+                            <td>{{estimateDataMy.salesTaxAmount / exchangeRate | currency:estimateDataMy.changedCurrency+' '}}</td>
+                        </tr>
+
+                         <tr class="balancedue">
+                            <td>TOTAL</td>
+                            <td>{{estimateDataMy.netAmount / exchangeRate | currency:estimateDataMy.changedCurrency+' '}}</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="detail-footer">
+                <div class="footerSegments" ng-if="estimateDataMy.notes">
+                    <span class="segmentHeader">Notes</span>
+                    <div class="segmentContent">
+                        <span>{{estimateDataMy.notes}}</span>
+                    </div>
+                </div>
+                <div ng-show="cusFielData.length != 0" class="footerSegments">
+                    <span class="segmentHeader">Additional Information</span>
+                    <!-- <div class="segmentContent" layout="row">
+                        <span class="contactSegment">CONTACT NUMBER : {{profileData.mobile}}</span>
+                        <span class="contactSegment">EMAIL ADDRESS :  {{profileData.email}}</span>
+                    </div> -->
+                    
+                    <div class="segmentContent" layout="row" ng-repeat="detail in estimateDataMy.customFields">
+                    <span class="contactSegment" flex="20">{{detail.labelShown}}</span>
+                    <span flex="20"> {{detail.value}}</span>
+                    <!--<span class="contactSegment" flex>{{detail.labelShown}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{detail.value}}</span>-->
+                </div>
+                </div>
+              <!--   <div class="footerSegments">
+                    <span class="segmentHeader">Shipping Information</span>
+                    <div class="segmentContent">{{profileData.billingAddress.street}},{{profileData.billingAddress.city}},{{profileData.billingAddress.city}},{{profileData.billingAddress.country}}</div>
+                </div> -->
+
+            <div class="footerSegments">
+                <span class="segmentHeader" ng-if="estimateDataMy.shippingAddress">Shipping Information</span>
+                <div class="segmentContent" style="padding-bottom: 18px;">
+                <span ng-show="estimateDataMy.shippingAddress.s_street">{{estimateDataMy.shippingAddress.s_street}},</span>
+                <span ng-show="estimateDataMy.shippingAddress.s_city">{{estimateDataMy.shippingAddress.s_city}},</span>
+                <span ng-show="estimateDataMy.shippingAddress.s_city">{{estimateDataMy.shippingAddress.s_state}},</span>
+                <span ng-show="estimateDataMy.shippingAddress.s_city">{{estimateDataMy.shippingAddress.s_zip}},</span>
+                <span ng-show="estimateDataMy.shippingAddress.s_country">{{estimateDataMy.shippingAddress.s_country}}</span>
+             	</div>
+            </div>
+              </div>
+            </div>        
+            </md-whiteframe>
+        <div class="page-break"></div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

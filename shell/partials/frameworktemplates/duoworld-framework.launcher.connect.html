@@ -1,0 +1,589 @@
+<style>
+	/*Dont change these styles under any circumstance !*/
+	.dw-default-application-container{
+		position:relative;
+		top:0;
+		left:0; 
+		width:100%;
+		height:100%;
+		background:#ececec;     
+	}
+
+	.dw-default-application-header-control-bar{
+		position:relative;
+		z-index:1; 
+		top:0px;
+		left:0;  
+		width:100%;
+		height:48px;
+		padding:0px 8px 0px 8px; 	 
+		box-sizing:border-box; 
+	}
+
+	.cad24{
+		color:#999999;
+	}
+
+	.dw-default-application-inner-container{
+		width:100%;
+		height:calc(100% - 48px);
+		overflow:hidden;
+		padding:10px 15px 10px 15px; 
+		box-sizing:border-box;     
+	}
+
+	.dw-default-application-inner-container .mCSB_container{
+		height:auto !important;
+	}
+
+	.dw-default-application-header-control-bar-left-section img{
+		width:24px;
+		height:24px;
+		margin-right:10px;  
+	}
+
+	.dw-default-application-header-control-bar-left-section span{
+		font-size:18px;
+		color:#999999;  
+	}
+
+	.dialButtons
+	{
+		height:45px;
+		width:70px;
+		margin: 0px !important;
+		min-width: 0 !important;
+	}
+	.content div center button
+	{
+		visibility:hidden;
+		opacity:0;
+		transition:opacity 0.5s linear;
+
+	}
+	.content:hover button
+	{
+		visibility:visible;
+		opacity:1;
+		transition-delay:0s;
+	}
+
+
+
+	/*---------------------------Dilshan Custom Styling-------------------------------*/
+
+		.md-button
+		{
+			margin: 0px !important;
+			min-width: 0 !important;
+			
+		}
+
+		md-select
+		{
+			padding-bottom: 26px;
+		}
+
+		md-header
+		{
+			z-index:3;
+			position:fixed;left:0;right:0;
+		}
+
+		.md-sticky-no-effect.md-subheader.md-default-theme
+		{
+			background: #dcedc8;
+			margin-top: -24px;
+			width: 125% !important;
+			margin-left: -24px;
+		}
+
+		.md-sticky-clone[sticky-state="active"]
+		{
+			margin-top:0px !important;
+		}
+
+		ul
+		{
+		    list-style:none;
+		}
+
+
+		hr{
+			border: 1px solid #B6B6B6;
+		}
+
+
+		md-input-container.md-default-theme .md-input{
+			border-bottom:1px solid #B6B6B6;
+		}
+
+		md-select.md-default-theme .md-select-label.md-placeholder{
+			border-bottom:1px solid #B6B6B6;
+		}
+
+		md-input-container.md-default-theme label{
+			color:rgba(0,0,0,0.54);
+		}
+
+		.labelCus{
+		  color:rgba(0,0,0,0.54);
+		}
+
+		.md-whiteframe-z1{
+			background: #fff;
+			animation: fromBottom 1.3s 1; -webkit-animation: fromBottom 1.3s 1;
+
+		}
+
+		.dialButtons
+		{
+			height:45px;
+			width:70px;
+			margin: 0px !important;
+			min-width: 0 !important;
+		}
+
+		@media screen and (max-width: 960px) {
+			.md-toolbar-tools{
+				width: 100%;
+			}
+		    .md-whiteframe-z1{
+		    	width: 100%;
+		    }
+
+		}
+
+		@media screen and (max-width: 599px) {
+
+			.blankspace
+			{
+		          display: none;
+		    }
+
+		}
+
+		@media screen and(min-width:768px){
+			.fabBtn{
+				margin:35px 83%;
+			}
+		}
+
+		/*table*/
+		a {
+		  text-decoration: none;
+		}
+
+		i {
+		  vertical-align: middle;
+		  font-size: 24px;
+		}
+
+
+		.md-breadcrumb {
+		  padding-left:88px;  
+		}
+
+		.JCLRgrip:first-child {
+		  left:105px!important;
+		  display: none!important;
+		}
+
+		.JColResizer th:first-child {
+		  width: 105px!important;
+		}
+
+		.md-table {
+		  min-width: 100%;
+		  border-collapse: collapse;
+		}
+
+		.md-table tbody tr:hover, .md-table tbody tr:focus {
+		  cursor:pointer;
+		  background-color:rgba(63,81,181,0.2);
+		}
+
+		.md-table-header {
+		  border-bottom: 1px solid rgb(230,230,230);
+		  color: rgb(130,130,130);
+		  text-align: left;
+		  font-size: 0.75em;
+		  font-weight: 700;
+		  padding: 16px 16px 16px 0;
+		}
+
+		.md-table-header a{
+		  text-decoration: none;
+		  color: inherit;
+		}
+
+		.md-table-content {
+		  white-space: nowrap;
+		  font-size: 0.8em;
+		  padding: 16px 16px 16px 0;
+		  height: 72px;
+		}
+
+		.md-table-td-more {
+		  max-width:72px;
+		  width:72px;
+		  padding:16px;
+		}
+
+		.md-table-thumbs {
+		  max-width: 104px;
+		  width: 104px;
+		  padding: 16px 32px;
+		}
+
+		.md-table-thumbs div {
+		  overflow:hidden;
+		  width: 40px;
+		  height:40px;
+		  border-radius:20px;
+		  border: 1px solid rgba(0,0,0,0.2);
+		  background-size:cover;
+		  box-shadow: 0 8px 10px rgba(0,0,0,.3);
+		  -webkit-box-shadow: 0 8px 10px rgba(0,0,0,.1);
+		}
+
+		.md-table-footer {
+		  height:40px;
+		  padding-left: 32px;
+		  padding-right: 32px;
+		}
+
+		.md-table-count-info {
+		  line-height:40px;
+		  font-size:.75em;
+		}
+
+		.md-table-footer-item {
+		  width: 40px;
+		  height: 40px;
+		  vertical-align:middle;
+		}
+
+		.md-table-active-page {
+		  font-weight: 700;
+		}
+
+		.bold {
+		  font-weight: 700;
+		}
+
+		.grey {
+		  color: grey;
+		}
+
+		.ps-container >.ps-scrollbar-y-rail >.ps-scrollbar-y
+		{
+			width: 3px !important;
+		}
+
+		.ps-container >.ps-scrollbar-y-rail
+		{
+			width: 3px !important;
+		}
+
+		.md-card-right {
+		   position: relative;
+		   margin-right:12px;
+
+		}
+		.md-card-right:before {
+		   content:"";
+		   position: absolute;
+		   right: 100%;
+		   top: 20px;
+		   border-top: 5px solid transparent;
+		   border-left: 10px solid white;
+		   border-bottom: 5px solid transparent;
+		   left: 100%;
+		}
+
+		.md-card-left {
+		   position: relative;
+		   margin-left:12px;
+
+		}
+		.md-card-left:before {
+		   content:"";
+		   position: absolute;
+		   right: 100%;
+		   top: 20px;
+		   border-top: 5px solid transparent;
+		   border-left: 10px solid white;
+		   border-bottom: 5px solid transparent;
+		   right: 100%;
+		   transform: rotate(180deg);
+		}
+
+		md-card md-card-content
+		{
+			padding: 10px;
+		}
+
+		@keyframes fromBottom {
+		  0% {
+		    transform: translateY(250px);
+		  }
+		  100% {
+		    transform: translateY(0);
+		  }
+		}
+		@keyframes fromTop {
+		  0% {
+		    transform: translateY(-250px);
+		  }
+		  100% {
+		    transform: translateY(0);
+		  }
+		}
+		@-webkit-keyframes fromBottom {
+		  0% {
+		    transform: translateY(250px);
+		  }
+		  100% {
+		    transform: translateY(0);
+		  }
+		}
+		@-webkit-keyframes fromTop {
+		  0% {
+		    transform: translateY(-250px);
+		  }
+		  100% {
+		    transform: translateY(0);
+		  }
+		}
+
+		#userProfilePic {
+			-webkit-animation: scaleAnimation 1.5s 1 ease;
+			-moz-animation: scaleAnimation 1.5s 1 ease;
+			-o-animation: scaleAnimation 1.5s 1 ease;
+		}
+
+		@-webkit-keyframes scaleAnimation {
+		from { -webkit-transform:  scale(0.1) }
+		to { -webkit-transform: scale(1)}
+		}
+		@-moz-keyframes scaleAnimation {
+		from { -moz-transform: scale(0.1) }
+		to { -moz-transform: scale(1) }
+		}
+		@-o-keyframes scaleAnimation {
+		from { -o-transform:  scale(0.1) translate(0px); }
+		to { -o-transform: scale(1)  }
+		}
+
+
+		@media only screen and (max-device-width: 480px) {
+
+			md-toolbar
+			{
+				margin-right:10% !important;
+				margin-left:10% !important;
+
+				
+			}
+
+		}
+
+		/*PAGE STRUCTURE FORMAT*/
+
+		@font-face {
+					font-family: materialFont;
+					src: url(../fonts/Roboto-Light.ttf);
+				}
+
+		@-moz-document url-prefix() {
+					
+					md-select{
+						margin-top: 14px !important;
+					}
+		}
+		.md-childApp-containerSection{
+			position:relative;
+			top:0;
+			left:0;
+			height:100%;
+			width:100%;
+			overflow:hidden;
+			background:#ececec;
+		}
+		
+		.md-childApp-headerSection{
+			position:relative;
+			top:0;
+			left:0;
+			width:100%;
+			height:48px;
+			padding:0px 8px 0px 8px;
+			margin:0;
+			max-width:960px;
+			margin: 0 auto;
+			
+		}
+		
+		.md-childApp-contentContainerSection{
+			position:relative;
+			top:0px;
+			left:0;
+			width:100%;
+			height:calc(100% - 48px);
+			margin:0;
+			box-sizing:border-box;
+			overflow:auto;
+		}
+
+		.dw-default-application-inner-container .mCSB_container{
+			height:100% !important; 
+		}
+
+</style>
+<div id="dw-connect-app" class="dw-default-application-container" layout="column" layout-align="start center">
+	<div class="dw-default-application-header-control-bar" layout="row" layout-align="space-between center">
+		<div class="dw-default-application-header-control-bar-left-section" layout="row" layout-align="start center">
+			<!-- this where you will place your application logo, just change the ng-src-->
+			<img src="images/appIcons/bubbles.png" err-src="images/appIcons/untitledapplication.png" width="24" height="24">
+			<!-- this is where you will mention you application name on this template -->
+			<span>Connect</span>
+		</div>
+		<div class="dw-default-application-header-control-bar-right-section">
+			<md-button class="md-icon-button" aria-label="More Application Controls">
+		        <md-icon md-svg-icon="icons/ic_more_vert_24px.svg" class="cad24" alt="more controls"></md-icon>
+		    </md-button>
+			<md-button class="md-icon-button" aria-label="Minimise Application" ng-click="childApplicationMinimise()">
+		        <md-icon md-svg-icon="icons/ic_fullscreen_exit_24px.svg" class="cad24" alt="minimise"></md-icon>
+		    </md-button>
+		    <md-button class="md-icon-button" aria-label="Close Application" ng-click="childApplicationClose()">
+		    	<md-icon md-svg-icon="icons/ic_close_24px.svg" class="cad24" alt="close"></md-icon>
+		    </md-button>
+		</div>		
+	</div>
+	<!-- this is where you will place the inner HTML structure of your application -->
+	<div class="dw-default-application-inner-container" ng-scrollbars ng-scrollbars-config="frameworkScrollconfig.sidePanel">
+		<!-- this is where you will place the inner HTML structure of your application -->
+		<section layout="row" flex style="height:100%;" style="font-family: materialFont;">
+
+			<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+				  <!--START OF SIDE NAVIGATION HEADER-->
+				<md-toolbar class="md-tall" style="background:-webkit-gradient(linear, left top, left bottom, color-stop(20%,rgba(68, 28, 181, 0.6)), color-stop(90%,rgba(70, 62, 208, 0.5))), url(images/template_images/garden.png) no-repeat;background-image: url(images/template_images/garden.png) ,    -moz-linear-gradient(top, #6cab26, #6ceb86); /* FF3.6+ */">
+				  <h2 class="md-toolbar-tools"></h2>
+				</md-toolbar>
+
+				<center style="z-index:2"><img id="userProfilePic" src="images/template_images/profilepic.png" style="margin-top: -55px; border-radius: 100px;"></img></center>
+				<div style="margin-top:0px;height:50px;width:100%">
+					<center> <text style="margin-top:20px;font-size:23px;color:rgba(0,0,0,0.54)">{{currentUser}}</text></center>
+				</div>
+				<!--END OF SIDE NAVIGATION HEADER-->
+				  <md-content class="md-padding">
+				  
+					<md-tabs md-dynamic-height md-border-bottom>
+					   <!--START OF ONLINE USERS-->
+					  <md-tab label="Online" >
+						<md-content class="md-padding">
+							<div class="row" style="margin-bottom:20px;height:50px;z-index:4">
+									<md-input-container style="padding-bottom:0px;" >
+										  <label><md-icon md-svg-src="icons/ic_search_24px.svg" style="fill: #b0b0b0;"></md-icon>&nbsp;&nbsp;Search</label>
+										  <input id="searchinput" ng-model="filter.userName" >
+									</md-input-container>
+								</div>
+							 <md-list>
+								  <!--md-subheader class="md-no-sticky">3 line item</md-subheader-->
+								  <md-list-item class="md-3-line"  ng-repeat="person in allUsers | filter:filter.userName| orderBy: 'userName'"  ng-click="selectUser(person)">
+									 <img ng-src="images/template_images/1.png" class="md-avatar" alt="">
+									<div class="md-list-item-text">
+									  <p>{{person.userName}}</p>
+									</div>
+								  </md-list-item>
+							  </md-list>
+							
+					
+						</md-content>
+					  </md-tab>
+					  <!--END OF ONLINE USERS-->
+					  
+					   <!--START OF DIALPAD-->
+					  <md-tab label="Softphone">
+						<md-content class="md-padding">
+							<center>
+								<div class="row" style="margin-top:12px;border-bottom:1px solid #b6b6b6;">
+									<input style="border:none;width:80%;text-align:right;font-size:24px" ng-model="dialingNumber"></input>
+									<md-button ng-click="backspace()">
+										<md-icon md-svg-src="icons/ic_backspace_48px.svg" style="fill: #b0b0b0;">
+										</md-icon>
+									</md-button>
+								</div>
+
+								<div style="font-size:24px">
+									<div class="row">
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/1.png)" ng-click="changeNumber('1')">&nbsp;</md-button>
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/2.png)" ng-click="changeNumber('2')">&nbsp;</md-button>
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/3.png)" ng-click="changeNumber('3')">&nbsp;</md-button>
+									</div>
+									<div class="row">
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/4.png)" ng-click="changeNumber('4')">&nbsp;</md-button>
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/5.png)" ng-click="changeNumber('5')">&nbsp;</md-button>
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/6.png)" ng-click="changeNumber('6')">&nbsp;</md-button>
+									</div>
+									<div class="row">
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/7.png)" ng-click="changeNumber('7')">&nbsp;</md-button>
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/8.png)" ng-click="changeNumber('8')">&nbsp;</md-button>
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/9.png)" ng-click="changeNumber('9')">&nbsp;</md-button>
+									</div> 
+									<div class="row">
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/star.png)" ng-click="changeNumber('*')">&nbsp;</md-button>
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/0.png)" ng-click="changeNumber('0')">&nbsp;</md-button>
+										<md-button class="dialButtons" style="background:url(images/template_images/Dialpad/hash.png)" ng-click="changeNumber('#')">&nbsp;</md-button>
+									</div>
+								</div>
+							  
+								<md-button id="decline" class="md-fab" aria-label="" style="margin-top:10px;background:#01c853">
+									<md-icon md-svg-src="icons/ic_call_48px.svg"></md-icon>
+								</md-button>
+							</center>
+						</md-content>
+					  </md-tab>
+					  <!--END OF DIALPAD-->
+					  
+				
+					  </md-tabs>
+				  </md-content>
+			</md-sidenav>
+
+
+
+			
+			<md-content flex ng-init="loginButton=true;" style="background:url(images/template_images/blur-background12.jpg)">
+			
+				<!--div ui-view></div-->
+				
+						
+				<!--TEMPORARY FORCE-LOGINS -->
+				<md-button class="md-raised" ng-click="login1()" ng-show="loginButton">Dilshan Login</md-button>
+				<md-button class="md-raised" ng-click="login2()" ng-show="loginButton">Hiflan Login</md-button>
+				<md-button class="md-raised" ng-click="login3()" ng-show="loginButton">Supun Login</md-button>
+				<md-button class="md-raised" ng-click="login4()" ng-show="loginButton">Eshwaran Login</md-button>
+				<!--TEMPORARY FORCE-LOGINS -->
+						
+				<div class="container" style="width: 100%;margin-top:40px;" >
+					<div ng-scrollbars ng-scrollbars-config="frameworkScrollconfig.ChatAreaPannelInner">
+					
+						<div id='chatContentLarge'>
+						<!--THIS IS THE CHAT CONTENT HOLDER-->
+						</div>
+					</div>
+
+					
+					<!--CHAT INPUT-->
+					<md-input-container flex style="width:90%;bottom:0;position:absolute;padding-bottom:10px">
+						<label>Type here...</label>
+						<input type="text" ng-model="currentMessage" ng-keypress="sendMessage($event)" ng-disabled="diableChatInput()"/> 
+					</md-input-container>
+					<!--CHAT INPUT-->	
+				</div>
+			</md-content>
+		</section>
+	</div>
+</div>

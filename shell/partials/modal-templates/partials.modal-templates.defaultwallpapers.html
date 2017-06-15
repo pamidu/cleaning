@@ -1,0 +1,11 @@
+<md-dialog>
+    <md-content style="width:50vw;padding:15px;">
+        <md-subheader class="md-no-sticky">Default wallpapers</md-subheader>
+        <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="20px" md-gutter-gt-sm="10px">
+            <md-grid-tile ng-repeat="wallpaper in defaultWallPapers" layout="column" layout-align="center center">
+                <div class="md-whiteframe-z2 dw-wallPaperRepNodes" style="background-image:url({{wallpaper.imgUrl}}); background-size:contain; background-repeat:no-repeat;" ng-click="changeWallPaper(wallpaper)">
+                </div>
+            </md-grid-tile>
+        </md-grid-list>
+    </md-content>
+</md-dialog>

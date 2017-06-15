@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<script src="/uimicrokernel/angular.min.js" type="text/javascript"/> </script>
+		<script src="/uimicrokernel/uimicrokernel.js" type="text/javascript"/> </script>
+		<script src="usercommon.js" type="text/javascript"/> </script>
+		<script type="text/javascript">
+			angular.module("mainApp", ["duoworldUserCommon"]).controller("mainController", function($scope, $user){
+				$scope.getContactList = function(){
+					
+					$user.tenant().all().success(function(contactList){
+						
+					}).error(function(){
+						
+					});
+				};
+			});
+		</script>
+	</head>
+	<body ng-app="mainApp" ng-controller="mainController">
+		<button ng-click="getContactList()">Get Contact List</button>
+	</body>
+</html>

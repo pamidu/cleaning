@@ -1,0 +1,105 @@
+<div id="duoworld-framework-container" dw-shell-background="shellBackgroundConfiguration">
+	<md-sidenav class="md-sidenav-left md-primary" layout="column" layout-align="start start" md-component-id="left">
+        <div class="md-profile-widget">
+            <div class="md-profile-widget-banner" style="background-image:linear-gradient(rgba(20,20,20,0.3), rgba(20,20,20,0.8)), url({{userProfileDetails.userProfileResources.coverImgUrl}});" layout="column" layout-align="center center">
+                <span></span>
+                <img ng-src="{{userProfileDetails.userProfileResources.Imghl}}" err-src="images/userassets/contactimg/admin.jpg" width="100" height="100">
+                <div class="userProfileControls" style="width:100%; height:48px;" layout="row" layout-align="space-around center">
+                    <md-button class="md-icon-button" aria-label="Market Place" ng-click="dwFrameworkBuiltinAppNavigation('market place')">
+                        <md-icon md-svg-icon="icons/ic_shopping_cart_24px.svg" class="s24" alt="Market Place"></md-icon>
+                        <md-tooltip style="margin-left:20px !important;">Market Place</md-tooltip>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="User Profile" ng-click="dwFrameworkBuiltinAppNavigation('user profile');">
+                        <md-icon md-svg-icon="icons/ic_account_box_24px.svg" class="s24" alt="Profile"></md-icon>
+                        <md-tooltip>User Profile</md-tooltip>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Tennant Explorer" ng-click="dwFrameworkBuiltinAppNavigation('tennant explorer');">
+                        <md-icon md-svg-icon="icons/ic_stars_24px.svg" class="s24" alt="Tennant Explorer"></md-icon>
+                        <md-tooltip>Tennant Explorer</md-tooltip>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="dwFrameworkBuiltinAppNavigation('settings');">
+                        <md-icon md-svg-icon="icons/ic_settings_24px.svg" class="s24" alt="Settings"></md-icon>
+                        <md-tooltip>Settings</md-tooltip>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Quit" ng-click="quitApplication()">
+                        <md-icon md-svg-icon="icons/ic_exit_to_app_24px.svg" class="s24" alt="Quit"></md-icon>
+                        <md-tooltip>Quit</md-tooltip>
+                    </md-button>
+                </div>
+            </div>
+        </div>
+        <div class="dw-quickaccess-appdrawer" layout="column" layout-align="start start" ng-scrollbars ng-scrollbars-config="frameworkScrollconfig.sidePanel">
+            <!-- <md-button class="md-primary" ng-click="childTestAppLauncher()">
+            <img src="images/appicons/joypad.png" err-src="images/appIcons/untitledapplication.png" width="24" height="24">Child Test App
+            </md-button> -->
+            <md-button class="md-primary" ng-repeat="quickApps in frameworkApplications | unique: 'applicationTitle'" ng-click="quickLaunchAppAccess(quickApps.applicationUri)"><img ng-src="{{quickApps.applicationIcoUri}}" err-src="images/appIcons/untitledapplication.png" width="24" height="24">{{quickApps.applicationTitle}}</md-button>
+        </div>
+    </md-sidenav>
+    <md-sidenav class="md-sidenav-right md-primary" layout="column" layout-align="start start" md-component-id="right">
+        <div class="dw-sidenav-right-header" layout="row" layout-align="center center">
+
+            <span>Switch Tennant</span>
+        </div>
+        <div class="dw-quickaccess-tennantswitcher" layout="column" layout-align="start start" ng-scrollbars ng-scrollbars-config="frameworkScrollconfig.sidePanel">
+            <md-button class="md-primary" ng-repeat="tennants in recivedTennantCollection" ng-click="dwSwitchTennant($event, tennants.TenantID)"><span style="font-size:14px;">{{tennants.TenantID}}</span></md-button>
+        </div>
+    </md-sidenav>
+
+    <md-toolbar class="md-toolbar-medium">
+        <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+            <div class="tool-bar-control-set left" layout="row" layout-align="start center">
+                <shell-branding id="shellBranding" ng-src="images/tennantassets/customizedlogo_white.png" ng-click="toggleLeftMenu()"></shell-branding>
+            </div>
+            <div class="tool-bar-control-set middle" layout="row" layout-align="start center">
+                <div class="dw-global-serach-container" layout="row" layout-align="end center">
+                    <div class="dw-global-search-section1" layout="row" layout-align="start center">
+                        <div class="dw-global-search-icon">
+                            <md-icon md-svg-icon="icons/ic_search_24px.svg" class="s24" alt="Search"></md-icon>
+                        </div>
+                        <div class="dw-global-search-input-box">
+                            <input type="text" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="dw-global-search-section2" layout="column" layout-align="center end">
+                        <div class="dw-global-search-tag">{{globalSearch.context}}<md-tooltip>Local Context</md-tooltip></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tool-bar-control-set right" layout="row" layout-align="end center">
+                <div class="dw-current-tennant-container" layout="row" layout-align="center center" ng-click="switchTennant()">
+                    <md-icon md-svg-icon="icons/ic_swap_vert_circle_24px.svg" class="s24" alt="switch tennants"></md-icon>
+                    <span class="dw-current-tennant">{{selectedTennantID}}</span>
+                    <md-tooltip>Switch Tennant</md-tooltip>
+                </div>
+                <md-button show-active-apps class="md-icon-button" aria-label="Active Apps">
+                    <md-icon md-svg-icon="icons/ic_vibration_24px.svg" class="s24" alt="active apps"></md-icon>
+                    <md-tooltip>Active Apps</md-tooltip>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Notification">
+                    <md-icon md-svg-icon="icons/ic_notifications_none_24px.svg" class="s24" alt="Notification"></md-icon>
+                    <md-tooltip>Notifications</md-tooltip>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Connect" ng-click="dwFrameworkConnectAppNavigation()">
+                    <md-icon md-svg-icon="icons/ic_perm_phone_msg_24px.svg" class="s24" alt="Connect"></md-icon>
+                </md-button>
+            </div>
+        </div>
+    </md-toolbar>
+	<div id="duoworld-framework-view-container" ui-view></div>
+</div>
+<div class="dw-active-app-explorer swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide dw-active-app-preview-blocks md-whiteframe-z1 block0">
+            <h1 style="font-weight:300;">Sample App 1</h1>
+        </div>
+        <div class="swiper-slide dw-active-app-preview-blocks md-whiteframe-z2 block1">
+            <h1 style="font-weight:300;">Sample App 2</h1>
+        </div>
+        <div class="swiper-slide dw-active-app-preview-blocks md-whiteframe-z3 block2">
+            <h1 style="font-weight:300;">Sample App 3</h1>
+        </div>
+        <div class="swiper-slide dw-active-app-preview-blocks md-whiteframe-z4 block3">
+            <h1 style="font-weight:300;">Sample App 4</h1>
+        </div>
+    </div>
+</div>

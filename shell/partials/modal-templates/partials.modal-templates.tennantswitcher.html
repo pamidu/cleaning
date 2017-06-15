@@ -1,0 +1,23 @@
+<!-- partials.modal-templates.tennantswitcher.html -->
+<!-- ng-scrollbars ng-scrollbars-config="frameworkScrollconfig.scrollDefault -->
+<md-dialog aria-label="Tennant Collection">
+	<div class="tennantCollectionModalContainer" layout="column" layout-align="start start">
+		<div class="tennantCollectionModalContainerHeader" layout="row" layout-align="start start">
+			<div class="tennantCollectionModalHeaderIconHolder" layout="column" layout-align="center center">
+				<md-icon md-svg-icon="icons/ic_swap_vert_circle_24px.svg" class="switchTennantHeaderIcon" alt="switch tennants"></md-icon>
+			</div>
+			<div class="tennantCollectionModalHeaderTextHolder" layout="column" layout-align="center start">
+				<span>Switch Company</span>
+			</div>
+		</div>
+		<div class="tennantCollectionModalContainerSearch">
+			<md-input-container md-no-float class="searchInputContainer">
+		      <md-icon md-svg-src="icons/ic_search_24px.svg"></md-icon>
+		      <input ng-model="tennantSwitchSearch" type="text" placeholder="Search Company">
+		    </md-input-container>
+		</div>
+		<div class="tennantCollectionModalContainerContent" layout="column" layout-align="start center">
+			<tennantswitchlist-component ng-repeat="tennant in newTennantCollection | filter:tennantSwitchSearch" ng-click="makeSwitchTennant(tennant.TenantID)" tennantid="tennant.TenantID"></tennantswitchlist-component>
+		</div>
+	</div>
+</md-dialog>

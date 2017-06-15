@@ -1,0 +1,9 @@
+<div id="duoworld-framework-launcher-container">
+	<div ng-show="$state.includes('launcher.userprofile')"class="duoworld-framework-launcher-application-container" ui-view="userprofile"></div>
+	<div ng-show="$state.includes('launcher.settings')"class="duoworld-framework-launcher-application-container" ui-view="settings"></div>
+	<div ng-show="$state.includes('launcher.companymanager')"class="duoworld-framework-launcher-application-container" ui-view="companymanager"></div>
+	<div ng-show="$state.includes('launcher.multipleduedatesproto')"class="duoworld-framework-launcher-application-container" ui-view="multipleduedatesproto"></div>
+	<div ng-show="$state.includes('launcher.login')"class="duoworld-framework-launcher-application-container" ui-view="login"></div>
+	<div ng-show="$state.includes('launcher.register')"class="duoworld-framework-launcher-application-container" ui-view="register"></div>
+	<div ng-show="$state.includes('launcher.customapp')"class="duoworld-framework-launcher-application-container" ui-view="customapp"></div>
+</div>

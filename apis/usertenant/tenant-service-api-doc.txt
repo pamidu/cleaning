@@ -1,0 +1,204 @@
+#################################
+##      - Tenant Service -     ##
+##         Version 1.0.6       ##
+##     Last updated 6/23/2016  ##
+#################################
+
+------------ Get tenant infomation -------------
+
+Service Url - /apis/usertenant/tenant/<tenant-id>
+Request Method - GET
+Headers - securityToken, Content-Type: application/json
+
+Sample url format - http://duoworld.com/payapi/tenant/testuser.duoworld.com
+
+Success Response - 
+
+-- if tenant data found --
+
+{
+"TenantID": "testuser.duoworld.com",
+"Name": "My Dock",
+"Shell": "shell/",
+"Statistic": null,
+"Private": true,
+"OtherData": {
+	"CompanyName": "Test User",
+	"SampleAttributs": "Values",
+	"catagory": ""
+}
+}
+
+-- no tenant data found --
+
+{"TenantID":"","Name":"","Shell":"","Statistic":null,"Private":false,"OtherData":null}
+
+Error Response - 
+
+-- if security token invalid --
+
+{
+"Success": false,
+"Message": "SecurityToken not Autherized",
+"Data": {}
+}
+
+--------------- Create a new tenant -------------------
+
+Service Url - /apis/usertenant/tenant/
+Request Method - POST
+Headers - securityToken, Content-Type: application/json
+
+Sample url format - http://duoworld.com/payapi/tenant/
+ 
+Sample post data format - 
+
+{
+"TenantID": "testtenant",
+"Name": "My Dock",
+"Shell": "shell/",
+"Statistic": null,
+"Private": true,
+"OtherData": {
+	"CompanyName": "Test Company",
+	"SampleAttributs": "Values",
+	"catagory": ""
+}
+}
+
+Success Response -
+
+{
+	"Success": true,
+	"Message": "testtenant.duoworld.com is successfully created.",
+	"Data": {
+		"TenantID": "testtenant.duoworld.com",
+		"Name": "My Dock",
+		"Shell": "shell/",
+		"Statistic": {
+			"DataDown": "1GB",
+			"DataUp": "1GB",
+			"NumberOfUsers": "10"
+		},
+		"Private": true,
+		"OtherData": {
+			"CompanyName": "Test Company",
+			"SampleAttributs": "Values",
+			"catagory": ""
+		}
+	}
+}
+
+Error Response - 
+
+-- if security token invalid --
+
+{
+"Success": false,
+"Message": "SecurityToken not Autherized",
+"Data": {}
+}
+
+-- if tenant already registed --
+
+{"Success":false, "Message": "testtenant.duoworld.com is already registered.", "Data": {}}
+
+------------ Transfer tenant admin -------------
+
+Service Url - /apis/usertenant/tenant/tranferadmin/<tenantid>/<email>
+Request Method - GET
+Headers - securityToken, Content-Type: application/json
+
+Sample url format - http://testuser.duoworld.com/apis/usertenant/tenant/tranferadmin/temp.duoworld.com/newuser@user.lk
+
+Success Response - 
+
+-- if transferring success --
+
+{"Success":true, "Message": "Successfully tranfered.", "Data": {}}
+
+Error Response - 
+
+{"Success":false, "Message": "Failed tenant Transfer.", "Data": {}}
+
+-- if security token invalid --
+
+{"Success": false, "Message": "SecurityToken not Autherized", "Data": {}}
+
+------------ Accept tenant invitation -------------
+
+Service Url - /apis/usertenant/tenant/request/accept/<email>/<token>
+Request Method - GET
+Headers - Content-Type: application/json
+
+*email - invitee's email address
+*token - invitation token that sent by system
+
+Sample url format - http://testuser.duoworld.com/apis/usertenant/tenant/request/accept/newuser@user.lk/dfgse54gsfdg
+
+Success Response - 
+
+-- if transferring success --
+
+{"Success":true, "Message": "Tenant request accepted.", "Data": {}}
+
+Error Responses - 
+
+-- if invited user not registed --
+
+{"Success":false, "Message": "Email not registered.", "Data": {}}
+
+-- if invitation code invalid --
+
+{"Success":false, "Message": "token not autherized", "Data": {}}
+
+--------------- Store shell configurations for tenant -------------------
+
+Service Url -  /apis/usertenant/tenant/shell/configurations/@tenantid
+Request Method - POST
+Headers - securityToken, Content-Type: application/json
+
+Sample url format - http://testuser.duoworld.lk/apis/usertenant/tenant/shell/configurations/testuser.duoworld.lk
+ 
+Sample post data format - 
+
+{
+"TenantID": "6278.bk.ebanks.lk",
+"Name": "eBank-Sampath",
+"Shell": "shell/index.html#/duoworld-framework/dock",
+"Statistic": null,
+"Private": true,
+"OtherData": {
+	"CompanyName": "eBank-Sampath",
+	"SampleAttributs": "Values",
+	"catagory": ""
+}
+}
+
+Success Response -
+
+{"Success":true, "Message": "succssfully stored shell configurations.", "Data": {}}
+
+Error Responses - 
+
+-- if tenantid invalid --
+
+{"Success":false, "Message": "Invalid tenant id", "Data": {}}
+
+------------ Get tenant shell configurations -------------
+
+Service Url - /apis/usertenant/tenant/shell/configurations
+Request Method - GET
+Headers - Content-Type: application/json
+
+Sample url format - http://testuser.duoworld.com/apis/usertenant/tenant/shell/configurations
+
+Success Response - 
+
+-- if transferring success --
+
+{"Success":true, "Message": "Tenant request accepted.", "Data": {}}
+
+Error Responses - 
+
+{"Success":false, "Message": "Error getting while retrieving shell configurations.", "Data": {}}

@@ -1,0 +1,110 @@
+/*commonstyle.css*/
+
+/*Reused component styles*/
+
+/*------------------------------------- framework entry styles begin ----------------------------*/
+#frameworkEntry-Module{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: linear-gradient(215deg, #1e568f, #eb99bd, #0089ca, #bd4a8c);
+  background-size: 800% 800%;
+  overflow:hidden; 
+
+  -webkit-animation: AnimationName 31s ease infinite;
+  -moz-animation: AnimationName 31s ease infinite;
+  animation: AnimationName 31s ease infinite;
+}
+
+#frameworkEntry-ViewWrapper{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+}
+@keyframes AnimationName { 
+    0%{background-position:94% 0%}
+    50%{background-position:7% 100%}
+    100%{background-position:94% 0%}
+}
+
+#frameworkEntryFormContainer{
+  position:relative;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;    
+}
+
+.registerLoginViewLinks{
+  display:block; 
+  margin-top:15px;
+  text-align:center;   
+}
+
+.registerLoginViewLinks a{
+  text-decoration: none;
+}
+
+#companyCygilScroll{
+    position:fixed !important;
+    bottom:10px;
+    right:10px;
+    display:block;
+    opacity:0.2;
+    z-index:0;   
+}
+
+#loginFrame{
+    background:rgba(255,255,255,1);
+    height:auto;
+    width:400px;
+    z-index:1;  
+}
+
+#registerFrame{
+  background:rgba(255,255,255,1);
+  height:auto;
+  width:400px;
+  z-index:1;   
+}
+
+#fw-entry-bannerArea{
+    width:100%;
+    height:135px;
+}
+
+.fw-entry-summitInfoBtn{
+    padding:0px 15px;
+}
+
+.fullWidth{
+    width:100% !important;
+}
+
+#frameworkEntryFormContainer.ng-enter {
+  -webkit-animation: bounceIn 0.75s ease both;
+  animation: bounceIn 0.75s ease both;
+}
+
+#frameworkEntryFormContainer.ng-leave {
+  -webkit-animation: fadeOut 0.3s ease both;
+  animation: fadeOut 0.3s ease both;
+}
+
+/*------------------------------------- framework entry styles end ----------------------------*/
+

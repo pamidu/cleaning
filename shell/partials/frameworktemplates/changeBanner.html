@@ -1,0 +1,13 @@
+<md-dialog style="width:30%;">
+    <md-content layout-padding layout="row" layout-align="center center" layout-wrap>
+        <img ng-repeat="i in coverBanners" src="images/userassets/contactcoverimg/cover{{i}}.jpg" width="100px" height="50px" ng-click="selectedBanner('images/userassets/contactcoverimg/cover{{i}}.jpg');" style="padding:5px 5px;">
+    </md-content>
+    <md-divider></md-divider>
+    <md-content layout="column" layout-align="center center" style="min-height:100px; overflow:hidden;" layout-padding>
+        <md-button class="md-fab md-mini" style="background-color:rgba(12, 11, 11, 0.49);" ng-click="changeBanner();">
+            <ng-md-icon icon="file_upload" style="line-height:50px;"></ng-md-icon>
+        </md-button>
+        <p>Upload from local</p>
+        <input id="selectCover" type="file" file-model="myFile" style="visibility:hidden;" onchange="angular.element(this).scope().cover_changed(this)">
+    </md-content>
+</md-dialog>

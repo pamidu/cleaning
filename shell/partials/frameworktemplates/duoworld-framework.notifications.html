@@ -1,0 +1,99 @@
+<!--
+blue - installing apps
+lime- sucess messages
+purple -alerts
+grey - uninstall
+-->
+<div style="overflow: hidden;
+    height: 100%;width:100%;">
+    <!--
+    <md-toolbar class="md-toolbar-medium" layout="row" layout-align="start center">
+        <p class="notification-widget-title">Notifications</p>
+    </md-toolbar>
+-->
+    <div class="md-profile-widget-banner" style="height:173px;background-color:{{$root.shellConfig.themeconfiguration.primarypalette}};background-image: linear-gradient(rgba(20,20,20,0.3), rgba(0, 0, 0, 0.8)), url();" layout="column" layout-align="end start">
+
+        <p class="notification-widget-title" style="font-size:26px;color:white;margin:10px;">Notifications</p>
+    </div>
+    <md-content class="notification-pane-tab-content">
+        <perfect-scrollbar class="notification-widget-scroller" wheel-propagation="false" wheel-speed="2">
+            <div class="notificationBox {{n.color}}" layout="row" layout-align="start center" ng-repeat="n in shellNotifications | orderBy:'-timestamp'">
+                <img ng-src="data:image/png;base64,{{n.user.profile_pic}}" err-src="images/appIcons/contacts.png" class="notification-box-image" />
+                <div layout="column" layout-align="start start" class="notification-box-content" flex>
+                    <p>{{n.message}}</p>
+                    <span>{{n.timestamp | date:'medium'}}</span>
+                </div>
+                <md-icon md-svg-icon="icons/ic_flash_on_24px.svg" alt="previous actions" class="notifiaction-box-icon"></md-icon>
+            </div>
+
+            <!--
+        <div class="notificationBox blue" layout="row" layout-align="start center">
+            <img ng-src="images/intouch-images/contacts.png" class="notification-box-image" />
+            <div layout="column" layout-align="start start" class="notification-box-content" flex>
+                <p>Installing Smooth flow</p>
+                <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
+            </div>
+            <md-icon md-svg-icon="icons/ic_flash_on_24px.svg" alt="previous actions" class="notifiaction-box-icon"></md-icon>
+        </div>
+        <div class="notificationBox lime" layout="row" layout-align="start center">
+            <img ng-src="images/intouch-images/contacts.png" class="notification-box-image" />
+            <div layout="column" layout-align="start start" class="notification-box-content" flex>
+                <p>Eranga changed his email</p>
+                <span>30th Nov 2015</span>
+            </div>
+            <md-icon md-svg-icon="icons/ic_flash_on_24px.svg" alt="previous actions" class="notifiaction-box-icon"></md-icon>
+        </div>
+        <div class="notificationBox purple" layout="row" layout-align="start center">
+            <img ng-src="images/intouch-images/contacts.png" class="notification-box-image" />
+            <div layout="column" layout-align="start start" class="notification-box-content" flex>
+                <p>Shehan changed layout panel order</p>
+                <span>30th Nov 2015</span>
+            </div>
+            <md-icon md-svg-icon="icons/ic_flash_on_24px.svg" alt="previous actions" class="notifiaction-box-icon"></md-icon>
+        </div>
+        <div class="notificationBox grey" layout="row" layout-align="start center">
+            <img ng-src="images/intouch-images/contacts.png" class="notification-box-image" />
+            <div layout="column" layout-align="start center" class="notification-box-content" flex>
+                <p>Uninstalling Smooth flow</p>
+                <md-progress-linear md-mode="indeterminate" class="md-accent"></md-progress-linear>
+            </div>
+            <md-icon md-svg-icon="icons/ic_flash_on_24px.svg" alt="previous actions" class="notifiaction-box-icon"></md-icon>
+        </div>
+        <div class="notificationBox red" layout="row" layout-align="start center">
+            <img ng-src="images/intouch-images/contacts.png" class="notification-box-image" />
+            <div layout="column" layout-align="start start" class="notification-box-content" flex>
+                <p>Changes couldn't Save!</p>
+                <span>Something went wrong</span>
+            </div>
+            <md-icon md-svg-icon="icons/ic_flash_on_24px.svg" alt="previous actions" class="notifiaction-box-icon"></md-icon>
+        </div>
+        <div class="notificationBox teal" layout="row" layout-align="start center">
+            <img ng-src="images/intouch-images/contacts.png" class="notification-box-image" />
+            <div layout="column" layout-align="start start" class="notification-box-content" flex>
+                <p>Shehan Tis Added you</p>
+                <span>30th Nov 2015</span>
+            </div>
+            <md-icon md-svg-icon="icons/ic_flash_on_24px.svg" alt="previous actions" class="notifiaction-box-icon"></md-icon>
+        </div>
+        <div class="notificationBox cyan" layout="row" layout-align="start center">
+            <img ng-src="images/intouch-images/contacts.png" class="notification-box-image" />
+            <div layout="column" layout-align="start start" class="notification-box-content" flex>
+                <p>you missed a call from Shehan</p>
+                <span>30th Nov 2015</span>
+            </div>
+            <md-icon md-svg-icon="icons/ic_call_24px.svg" alt="previous actions" class="notifiaction-box-icon"></md-icon>
+        </div>
+        <div class="notificationBox amber" layout="row" layout-align="start center">
+            <img ng-src="images/intouch-images/contacts.png" class="notification-box-image" />
+            <div layout="column" layout-align="start start" class="notification-box-content" flex>
+                <p>New message from Shehan</p>
+                <span>30th Nov 2015</span>
+            </div>
+            <md-icon md-svg-icon="icons/ic_message_24px.svg" alt="previous actions" class="notifiaction-box-icon"></md-icon>
+        </div>
+-->
+
+        </perfect-scrollbar>
+    </md-content>
+
+</div>

@@ -1,0 +1,12 @@
+/*Mambati Theme Styles*/
+
+/*[md-custom-theme-brilliantwhite]*/
+
+.md-custom-theme-brilliantwhite{
+	background:white !important;
+	color:#727272 !important;
+}
+
+.md-custom-theme-brilliantwhite button{
+	color:#727272 !important;
+}

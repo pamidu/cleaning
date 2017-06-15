@@ -1,0 +1,63 @@
+[{
+  "code": "12_pkg_personal",
+  "type": "base",
+  "name": "PERSONAL",
+  "price": 0.00,
+  "subscriptionunit":null,
+  "subscriptionqty": 1,
+  "customizable":false,
+  "rules": [
+   {"tag": "user", "sign": "<=", "amount": "1", "expiry": null },
+   {"tag": "invoice", "sign": "<=", "amount": "2", "expiry": {"uom": "year", "value": "1"}}
+  ]
+ },
+ {
+  "code": "12_pkg_just_try",
+  "type": "base",
+  "name": "PERSONAL",
+  "price": 0.00,
+  "subscriptionunit":"year",
+  "subscriptionqty": 1,
+  "customizable":false,
+  "rules": [
+   {"tag": "user", "sign": "<=", "amount": "1", "expiry": null },
+   {"tag": "invoice", "sign": "<=", "amount": "60", "expiry": {"uom": "year", "value": "1"}}
+  ]
+ },
+ {
+  "code": "12_pkg_mini_team",
+  "type": "base",
+  "name": "We Are A Mini Team",
+  "price": 8.00,
+  "subscriptionunit":"month",
+  "subscriptionqty": 1,
+  "customizable":false,
+  "rules": [
+   {"tag": "user", "sign": "<=", "amount": "5", "expiry": null },
+   {"tag": "storage", "sign": "<=", "amount": "10", "expiry": {"uom": "month", "value": "1"} },
+   {"tag": "bandwidth", "sign": "<=", "amount": "100", "expiry": {"uom": "month", "value": "1"}}
+  ]
+ },
+ {
+  "code": "12_pkg_business_perY",
+  "type": "base",
+  "name": "BUSINESS",
+  "price": "120.00",
+  "subscriptionunit":"year",
+  "subscriptionqty": 1,
+  "customizable":true,
+  "rules": [
+   {"tag": "user", "sign": "==", "amount": "3", "expiry": null }
+  ]
+ },{
+  "code": "12_pkg_business_perM",
+  "type": "base",
+  "name": "BUSINESS",
+  "price": "12.00",
+  "subscriptionunit":"month",
+  "subscriptionqty": 1,
+  "customizable":true,
+  "rules": [
+   {"tag": "user", "sign": "==", "amount": "30", "expiry": null }
+  ]
+ }]

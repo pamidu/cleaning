@@ -1,0 +1,84 @@
+[
+  { 
+    "name": "dock",
+    "url": "/dock",
+    "sticky": true,
+    "views": {
+        "dock": {
+          "templateUrl": "partials/frameworktemplates/duoworld-framework.dock.html",
+          "controller": "duoworld-framework-shell-dock-ctrl"
+        }
+    }
+  },
+  { 
+    "name": "launcher",
+    "url": "/launcher",
+    "sticky": true,
+    "views": {
+        "launcher": {
+          "templateUrl": "partials/frameworktemplates/duoworld-framework.launcher.html",
+          "controller": "duoworld-framework-shell-launcher-ctrl"
+        }
+    }
+  },
+  { 
+    "name": "userprofile",
+    "parent": "launcher",
+    "url": "/userprofile",
+    "sticky": true,
+    "views": {
+        "userprofile": {
+          "templateUrl": "partials/frameworktemplates/duoworld-framework.launcher.userprofile.html",
+          "controller": "duoworld-framework-shell-launcher-userprofile-ctrl"
+        }
+    }
+  },
+  { 
+    "name": "marketplace",
+    "parent": "launcher",
+    "url": "/marketplace",
+    "sticky": true,
+    "views": {
+        "marketplace": {
+          "templateUrl": "partials/frameworktemplates/duoworld-framework.launcher.marketplace.html",
+          "controller": "duoworld-framework-shell-launcher-marketplace-ctrl"
+        }
+    }
+  },
+  { 
+    "name": "tennantexplorer",
+    "parent": "launcher",
+    "url": "/tennantexplorer",
+    "sticky": true,
+    "views": {
+        "tennantexplorer": {
+          "templateUrl": "partials/frameworktemplates/duoworld-framework.launcher.tennantexplorer.html",
+          "controller": "duoworld-framework-shell-launcher-tennantexplorer-ctrl"
+        }
+    }
+  },
+  { 
+    "name": "settings",
+    "parent": "launcher",
+    "url": "/settings",
+    "sticky": true,
+    "views": {
+        "settings": {
+          "templateUrl": "partials/frameworktemplates/duoworld-framework.launcher.settings.html",
+          "controller": "duoworld-framework-shell-launcher-settings-ctrl"
+        }
+    }
+  },
+  { 
+    "name": "connect",
+    "parent": "launcher",
+    "url": "/connect",
+    "sticky": true,
+    "views": {
+        "connect": {
+          "templateUrl": "partials/frameworktemplates/duoworld-framework.launcher.connect.html",
+          "controller": "duoworld-framework-shell-launcher-connect-ctrl"
+        }
+    }
+  }
+]

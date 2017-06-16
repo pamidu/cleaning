@@ -26,7 +26,7 @@
 	define('CLIENT_ID', 'ca_9pe4HdCJwrmkTZfHXTzOzKewSMurVOJi'); // Client ID of main stripe account
  
 	define("SVC_QUEUE_TYPE", "RabbitMQ"); //Queue type can be configured here
-	define("SVC_QUEUE_HOST", "172.17.0.2"); //location of the RabbitMQ server can be configured in here
+	define("SVC_QUEUE_HOST", "172.18.0.20"); //location of the RabbitMQ server can be configured in here
 	define("SVC_QUEUE_USERNAME", "guest"); //username for rabbitMQ
 	define("SVC_QUEUE_PASSWORD", "guest"); //password for RabbitMQ
 

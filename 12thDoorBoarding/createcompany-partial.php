@@ -2,7 +2,8 @@
 <md-card class="commonContentShell md-whiteframe-1dp" layout="column" ng-switch="createCompanySuccess">
     <section id="formContainer" flex layout="column" layout-align="center center" ng-switch-when="false">
         <section id="containerMainText" layout="column" layout-align="start center">
-            <span>Business Information</span>
+            <span>Almost there...</span>
+            <span>Enter your business information</span>
         </section>
         <form name="createCompanyForm" ng-submit="submitCreateCompanyDetails(createCompanyDetails)" autocomplete="off">
             <md-input-container md-no-float class="md-block" flex>

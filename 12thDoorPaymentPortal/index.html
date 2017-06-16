@@ -1,42 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
     <title>12thDoor | Payment</title>
     <link rel="shortcut icon" href="dw-favicon.png" type="image/png">
-	<link rel="stylesheet" href="/bower_components/angular-material/angular-material.min.css">
-    <link rel="stylesheet" href="paymentPortal-styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css">
+
+    <link rel="stylesheet" href="styles/paymentPortal-styles.css">
+    <link rel="stylesheet" href="styles/interactDialog.css">
+    
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700italic,700,900,900italic' rel='stylesheet' type='text/css'> 
 </head>
-<!--[if lt IE 10]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-        your browser</a> to improve your experience.</p>
-    <![endif]-->
-<body id="platformentry-container" ng-app="platformPaymentPortal" ng-cloak ng-controller="main-ctrl">
+
+<body ng-app="platformPaymentPortal" ng-cloak ng-controller="portal-exploredocument-ctrl">
     <md-toolbar class="md-primary">
-        <div class="md-toolbar-tools">
-            <img src="img/12thDoor_logo_white.png" width="121" height="32" ng-click="accessindex()"/> 
-        </div>
+        <div layout="row" layout-align="start center" style="height: 48px;">
+          <div layout="row" layout-align="start center" flex>
+              <div class="logo" layout="row" layout-align="start center">
+                  <img src="assets/img/12thDoor_logo_white.png" width="121" height="32" ng-click="accessindex()"/> 
+              </div>
+          </div>
+
+          <div layout="row" layout-align="start center">
+                <md-button class="md-icon-button" aria-label="Print" ng-click="print()">
+                   <md-icon md-svg-icon="img/ic_print_24px.svg"></md-icon>
+                   <md-tooltip><span>Print</span></md-tooltip>
+                </md-button>
+                  <div class="toolbar-separator" aria-hidden="false"></div>
+                <md-button class="md-icon-button" aria-label="Download" ng-click="download()">
+                   <md-icon md-svg-icon="img/ic_file_download_24px.svg"></md-icon>
+                   <md-tooltip><span>Download</span></md-tooltip>
+                </md-button>
+          </div>
+        </div> 
     </md-toolbar>
-	<div id="viewContainer" layout="column" layout-align="center center" ui-view md-theme="default" md-theme-watch="true"></div>
-    <!-- <div class="cygilContainer">
-        <img src="12thDoor_logo_black_alpha.png" width="296" height="328" />
-    </div> -->
-	<script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
-	<script type="text/javascript" src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="/bower_components/angular-aria/angular-aria.min.js"></script>
-    <script type="text/javascript" src="/bower_components/angular-messages/angular-messages.min.js"></script>
-    <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.min.js"></script>	
-    <script type="text/javascript" src="/bower_components/angular-material/angular-material.min.js"></script>
-    <script type="text/javascript" src="/uimicrokernel/uimicrokernel.js"></script>
-    <!-- <script type="text/javascript" src="paymentPortal.js"></script> -->
-    <script type="text/javascript" src="controllers/paymentPortalNew.js"></script>
-    <script type="text/javascript" src="controllers/interactDoc.js"></script>
-    <script type="text/javascript" src="js/stripe.payment.tool.js"></script>
+  <div id="documentContainer" ui-view md-theme="default" md-theme-watch="true">
+  </div> 
+
+   
+
     <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <!--   <script src="scripts/vendor-0fd66ac4e7.js"></script>  -->
+
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.4.9/angular-material.min.js"></script>
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.2/angular-route.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-animate.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-aria.js"></script>
+ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+
+    <script src="scripts/uimicrokernel/uimicrokernel.js"></script> 
+    <script src="scripts/controllers/paymentPortalNew.js"></script>
+    <script type="text/javascript" src="scripts/controllers/interactDoc.js"></script>
+    <script type="text/javascript" src="scripts/stripe.payment.tool.js"></script>
+    <script type="text/javascript" src="scripts/2checkoutFactory.js"></script>
+    <script type="text/javascript" src="scripts/ms-currency/currencyFilter.js"></script>
 
     <script type="text/javascript">
-        console.log("version 6.0.2.0");
+      console.log('%c Payment Portal App version 6.1.0.28', 'font-size: 25px;');
     </script>
 
 </body>

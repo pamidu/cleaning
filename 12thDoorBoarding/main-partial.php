@@ -7,11 +7,11 @@
 	<section class="navOptionsContainer" layout="row" layout="center center">
 		<div class="process addbusiness md-whiteframe-1dp" layout="column" layout-align="center center">
 			<img src="addbusiness.png" width="106" height="106"/>
-			<md-button ng-click="navigateCreateCompanyProcess()" class="md-primary" ng-click="vm.submit()" style="border:2px solid">Add Business</md-button> 
+			<md-button ng-click="navigateCreateCompanyProcess()" class="md-primary" style="border:2px solid">Add Business</md-button> 
 		</div>
-		<div class="process joinbusiness md-whiteframe-1dp" layout="column" layout-align="center center">
+		<!-- <div class="process joinbusiness md-whiteframe-1dp" layout="column" layout-align="center center">
 			<img src="joinbusiness.png" width="106" height="106"/>
-			<md-button ng-click="navigateJoinCompanyProcess()" class="md-primary" ng-click="vm.submit()" style="border:2px solid">Join Business</md-button> 
-		</div>
+			<md-button ng-click="navigateJoinCompanyProcess()" class="md-primary" style="border:2px solid">Join Business</md-button> 
+		</div> -->
 	</section>
 </div>

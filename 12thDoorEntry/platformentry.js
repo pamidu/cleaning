@@ -107,7 +107,7 @@ p_entry_module.config(['$stateProvider', '$urlRouterProvider', function ($sp, $u
 
 //Platform entry view main controller - start
 p_entry_module.controller("platformEntry-main-ctrl", ["$scope", function ($scope) {
-    
+    console.log('12thDoor Entry Module : v1.0.5');
 }]);
 
 //Sign in view Controller - Start
@@ -219,6 +219,8 @@ p_entry_module.controller("platformEntry-signup-ctrl", ["$rootScope","$window", 
     $scope.signupdetails = {};
 
     $scope.signupsuccess = false;
+
+    var platformRedirectLink = $window.location.protocol + "//" + $window.location.host + "/";
 
     var getUserEmailDomain = function () {
         var val = $scope.signupdetails.EmailAddress;
@@ -364,6 +366,21 @@ p_entry_module.controller("platformEntry-signup-ctrl", ["$rootScope","$window", 
             console.log(error);
         });
 
+    };
+
+    $scope.socialSignup = function(socialLink){ 
+
+        switch(socialLink){
+            case 'facebook':
+                location.replace(platformRedirectLink+'/signup/facebookRegister');
+                break;
+            case 'twitter':
+                location.replace(platformRedirectLink+'/signup/twitterRegister/?connect=twitter');
+                break;
+            case 'google':
+                location.replace(platformRedirectLink+'/signup/googlePlusRegister');
+                break;
+        }
     };
 
     $scope.switchEntryView = function (stateinchange) {

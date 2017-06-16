@@ -1,201 +1,215 @@
-<!-- exploredocument-partial.html -->
-<div id="invoice" class="page-layout blank" layout="row">
-    <div class="invoice-container">
-        <md-button class="md-fab md-primary portal_cta" aria-label="pay invoice" ng-click="showPaymentPortalDialog($event,paymentMethod)">
-        <!-- ng-click="switchportalViews('interactdocument')" -->
-            <md-icon md-svg-src="img/ic_attach_money_white_24px.svg"></md-icon>
-        </md-button>
-        <!-- INVOICE -->
-        <div class="card md-whiteframe-8dp">
-            <div class="header" layout="row" layout-align="space-between start">
-                <div class="ids" layout="column">
-                    <div layout="row" class="seller" layout-align="start center">
-                        <div class="logo md-accent-bg" layout="row" layout-align="center center">
-                            <div>{{companyData.companyName | limitTo:1}}</div>
-                        </div>
+<md-button class="md-fab md-primary portal_cta" aria-label="pay invoice" ng-click="showPaymentPortalDialog(paymentMethod,$event)" style="position: fixed;bottom: 30px;right: 30px;">
+  <md-icon md-svg-src="assets/img/ic_attach_money_white_24px.svg"></md-icon>
+</md-button>              
+<div id="invoices" layout="row">
+  <div class="center" layout="column" layout-align="center center" flex>
+     <div class="content-card" layout="column">
+        <div class="content-wrapper">
+           <div class="thread-detail">
+              <div class="invTemplate-1">
+                 <div class="invoice-container">
+                       <div class="detail-wrapper" >
+                          <div class="detail-header" layout="row" layout-xs="column">
+                             <div class="ids" layout="column" flex>
+                                <div layout="row" class="seller" layout-align="start center" flex>
+                                   <div class="brandlogo" layout="row" layout-align="center center">
+                                      <img src="{{companyLogo}}" width="156" height="156">
+                                   </div>
+                                   <div class="divider"></div>
+                                   <div class="detail">
+                                      <div class="address">
+                                         <ms-address-component address-data="ObjCompanyAddress" ent-type="'company'" align="left" >
+                                         </ms-address-component>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div layout="row" class="client" layout-align="start center" flex>
+                                   <div class="logo" layout="row" layout-align="center center">
+                                      <div>{{profileData.profileName[0] | uppercase}}</div>
+                                   </div>
+                                   <div class="divider"></div>
+                                   <div class="detail">
+                                      <div class="address"><ms-address-component address-data="ObjCusAddress" ent-type="'client'" align="left" >
+                                      </ms-address-component></div>
+                                   </div>
+                                </div>
+                             </div>
+                             <div class="summary" layout="column" flex>
+                                <div class="code" layout="row" layout-align="end start">
+                                     <div layout="column" flex>
+                                         <div class="label">INVOICE</div>
+                                     </div>
+                                     <div layout="column">
+                                          <div class="value">{{invoiceDataMy.invoiceNo}}</div>
+                                     </div>
+                                 </div>
+                                 <div class="space" layout flex>
+                                 </div>
+                                 <div layout="row" layout-align="end end" flex>
+                                     <div layout="column" flex>
+                                        <div class="label cellSpacer">DATE</div>
+                                        <div class="label cellSpacer">DUE DATE</div>
+                                        <div class="label cellSpacer">P.O</div>
+                                        <div class="label cellSpacer">CURRENCY</div>
+                                        <div class="label cellSpacer">BALANCE DUE</div>
+                                     </div>
 
-                        <div class="divider"></div>
+                                     <div layout="column">
+                                        <div class="value cellSpacer">{{invoiceDataMy.startDate | toDateObject}}</div>
+                                        <div ng-if="invoiceDataMy.peymentTerm != 'multipleDueDates'" class="value cellSpacer">{{invoiceDataMy.dueDate | toDateObject}}</div>
+                                        <div ng-if="invoiceDataMy.peymentTerm == 'multipleDueDates'" class="value cellSpacer">Multiple Due Dates</div>
+                                        <div class="value cellSpacer">{{invoiceDataMy.poNumber}}</div>
+                                         <div class="value cellSpacer">{{invoiceDataMy.changedCurrency}}</div>
+                                         <div class="value cellSpacer">{{balanceDue / exchangeRate | currency:invoiceDataMy.changedCurrency+' '}}</div>
+                                     </div>
+                                 </div>
+                             </div>
 
-                        <div class="detail">
-                           <span>{{companyData.companyName}}</span></br>
-                            <span>{{companyData.country}},{{companyData.city}}</span></br>
-                            <!-- <span>{{companyData.city}}</span></br> -->
-                            <span>{{companyData.state}}</span></br>
-                            <span>Email:{{companyData.companyEmail}}</span></br>
-                            <span>Web:{{companyData.website}}</span></br>
-                           <!--  <span ng-show="invoiceData.invoiceStakeHolders.tennantDetails.address2">{{invoiceData.invoiceStakeHolders.tennantDetails.address2}}</span></br> -->
-                            <span>{{invoiceData.invoiceStakeHolders.tennantDetails.zip}}<span>
-                        </div>
-                    </div>
+                          </div>
+                          <span class="invoiceComment" style="margin-left: 0;">{{invoiceDataMy.comments}}</span>
+                          <div class="detail-content">
+                              <div class="line-items-wrapper" style="overflow-x:auto;">
+                                <table class="invoice-table">
+                                  <thead class="tableHeader">
+                                     <th>#</th>
+                                     <th class="text-left">DESCRIPTION</th>
+                                     <th class="text-center">QUANTITY</th>
+                                     <th class="text-center">UOM</th>
+                                     <th class="text-center">UNIT PRICE</th>
+                                     <th class="text-center">DISCOUNT</th>
+                                     <th class="text-right">AMOUNT</th>
+                                  </thead>
+                                  <tbody class="tableBody">
+                                     <tr ng-repeat="product in invoiceDataMy.invoiceLines">
+                                        <td style="width:3%;">{{$index + 1}}</td>
+                                        <td class="text-left" style="width:35%">
+                                          <div> {{product.productName}}</div>
+                                          <div class="detail"> {{product.olp}}</div>
+                                        </td>
+                                        <td class="text-center" style="width:5%">
+                                           {{product.quantity}}
+                                        </td>
+                                        <td class="text-center" style="width:5%">
+                                           {{product.productUnit}}
+                                        </td>
+                                        <td class="text-center" style="width:15%">
+                                           {{product.price / exchangeRate|number:2}}
+                                        </td>
+                                        <td class="text-center" style="width:8%">
+                                           {{product.discount}} %
+                                        </td>
+                                        <td class="text-right" style="width:15%">
+                                           {{product.amount / exchangeRate|number:2}}
+                                        </td>
+                                     </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              
+                              <span class="tableSwipeIndicator">Swipe horizontaly on the table to see all the columns</span>
 
-                    <div layout="row" class="sellerCus" layout-align="start center">
-                        <div class="logo md-accent-bg" layout="row" layout-align="center center">
-                            <div>{{profileData.firstName | limitTo:1}}</div>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="detail">
-                        <span>{{profileData.firstName}} &nbsp; {{profileData.lastName}}</span>
-                                <span>{{profileData.billingAddress.name}}</span></br>
-                                <span>{{profileData.billingAddress.country}}&nbsp;{{profileData.billingAddress.state}}</span></br>
-                                <span>{{profileData.billingAddress.city}}&nbsp; {{profileData.billingAddress.street}}</span></br>
-                                <span>{{profileData.billingAddress.zip}}</span>
-                                <span>Email:{{profileData.email}}</span></br>
-                        </div>
-                        </div>
+                              <table class="invoice-table-footer">
+                                <tbody>
+                                   <tr class="subtotal">
+                                      <td>SUBTOTAL</td>
+                                      <td>{{invoiceDataMy.subTotal / exchangeRate | currency:invoiceDataMy.changedCurrency+' '}}</td>
+                                   </tr>
+                                   <tr class="tax" ng-repeat="item in invoiceDataMy.taxAmounts">
+                                      <td>{{item.taxName | uppercase }}</td>
+                                      <td>{{item.salesTax / exchangeRate | currency:invoiceDataMy.changedCurrency+' '}}</td>
+                                   </tr>
+                                   <tr class="shipping">
+                                      <td>SHIPPING</td>
+                                      <td>{{invoiceDataMy.shipping / exchangeRate | currency:invoiceDataMy.changedCurrency+' '}}</td>
+                                   </tr>
+                                   <tr class="total">
+                                      <td>TOTAL</td>
+                                      <td>{{invoiceDataMy.netAmount / exchangeRate | currency:invoiceDataMy.changedCurrency+' '}}</td>
+                                   </tr>
+                                   <tr class="paid">
+                                      <td>PAID</td>
+                                      <td>- {{paidAmount  / exchangeRate | currency:invoiceDataMy.changedCurrency+' '}}</td>
+                                   </tr>
+                                   <tr class="balancedue">
+                                      <td>BALANCE DUE</td>
+                                      <td>{{balanceDue / exchangeRate | currency:invoiceDataMy.changedCurrency+' '}}</td>
+                                   </tr>
+                                </tbody>
+                              </table>
+                          
+                          <span ng-if="invoiceDataMy.peymentTerm == 'multipleDueDates'" class="paymentHeader">Payment Schedule</span>
 
-                    <!-- <div layout="row" class="client" layout-align="start center">
-                        <div class="label" layout="row" layout-align="end center">
-                            <div translate="INVOICE.CLIENT">CLIENT</div>
-                        </div>
+                          <div class="line-items-wrapper" style="overflow-x:auto;">
+                                <table class="invoice-table" ng-if="invoiceDataMy.peymentTerm == 'multipleDueDates'" style="margin-bottom: 32px;">
+                                  <thead class="tableHeader" style="color: rgba(0, 0, 0, 0.54);">
+                                     <th>#</th>
+                                     <th class="text-left">DATE</th>
+                                     <th class="text-center">PERCENTAGE (%)</th>
+                                     <th class="text-right">AMOUNT</th>
+                                  </thead>
+                                  <tbody class="tableBody">
+                                     <tr ng-repeat="tt in invoiceDataMy.multiDueDates">
+                                        <td style="width:3%;">{{$index + 1}}</td>
+                                        <td class="text-left" style="width:60%">
+                                          <div>{{tt.dueDate | toDateObject}}</div>
+                                        </td>
+                                        <td class="text-center" style="width:17%">
+                                           {{tt.percentage}}%
+                                        </td>
+                                        <td class="text-right" style="width:20%">
+                                           {{(tt.dueDatePrice / invoiceDataMy.exchangeRate).toFixed(2)}}
+                                        </td>
+                                     </tr>
+                                  </tbody>
+                                </table>
+                          </div>
+                          </div>
 
-                        <div class="divider"></div>
+                          <div class="detail-footer">
+                             <div class="footerSegments" layout="column" ng-show="checkedOffline">
+                                <span class="segmentHeader">Payment Information</span>
+                                <div class="segmentContent">
+                                   <span ng-bind-html="offlinePayments">
+                                   </span>
+                                </div>
+                             </div>
+                             <div class="footerSegments" ng-if="invoiceDataMy.notes != '-'">
+                                <span class="segmentHeader">Notes</span>
+                                <div class="segmentContent">
+                                   <span ng-bind-html="invoiceDataMy.notes"></span>
+                                </div>
+                             </div>
+                             <div ng-show="cusFielData.length != 0" class="footerSegments">
+                                <span class="segmentHeader">Additional Information</span>
+                                <div class="segmentContent" layout="row" ng-repeat="detail in cusFielData">
+                                   <span ng-show="detail.value" class="contactSegment" flex>{{detail.labelShown}} : {{detail.value}}</span>
+                                </div>
+                             </div>
 
-                        <div class="detail">
-                            <div class="title">{{profileData.firstName}} &nbsp; {{profileData.lastName}}</div>
-                            <span>{{profileData.billingAddress.name}}</span></br>
-                            <span>{{profileData.billingAddress.country}}&nbsp;{{profileData.billingAddress.state}}</span></br>
-                            <span>{{profileData.billingAddress.city}}&nbsp; {{profileData.billingAddress.street}}</span></br>
-                            <span>{{profileData.billingAddress.zip}}</span>
-                            <span>Email:{{profileData.email}}</span></br>
-                        </div>
-                    </div> -->
-                </div>
-
-                <table class="summary">
-                    <tr class="code">
-                        <td class="label" translate="INVOICE.INVOICE">INVOICE</td>
-                        <td class="value">{{invoiceDataMy.invoiceID}}</td>
-                    </tr>
-
-                    <tr>
-                        <td class="label" translate="INVOICE.INVOICE_DATE">INVOICE DATE</td>
-                        <td class="value">{{invoiceDataMy.invoiceSummary.generatedDate | datetime}}</td>
-                    </tr>
-
-                    <tr>
-                        <td class="label" translate="INVOICE.DUE_DATE">DUE DATE</td>
-                        <td class="value">{{invoiceDataMy.invoiceSummary.dueDate | datetime}}</td>
-                    </tr>
-
-                    <tr>
-                        <td class="label" translate="INVOICE.TOTAL_DUE">TOTAL DUE</td>
-                        <td class="value">{{invoiceDataMy.invoiceSummary.changedCurrency}}&nbsp{{invoiceDataMy.invoiceSummary.valueBalance|number:2}}</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="content">
-                <table class="simple invoice-table">
-                    <thead>
-                        <th translate="INVOICE.SERVICE">DESCRIPTION</th>
-                        <th translate="INVOICE.UNIT">UNIT</th>
-                        <th class="text-right" translate="INVOICE.UNIT_PRICE">UNIT PRICE</th>
-                        <th class="text-right" translate="INVOICE.DISCOUNT">DISCOUNT</th>
-                        <th class="text-right" translate="INVOICE.QUANTITY">QUANTITY</th>
-                        <th class="text-right" translate="INVOICE.TOTAL">TOTAL</th>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="product in invoiceDataMy.invoiceLineItems">
-                            <td>
-                                <div class="title"> {{product.productName}}</div>
-                                <div class="detail"> {{product.Detail}}</div>
-                            </td>
-                            <td>
-                                {{product.productUnit}}
-                            </td>
-                            <td class="text-right">
-                              <!--   {{product.amount | currency}} -->
-                                {{product.price|number:2}} 
-                            </td>
-                            <td class="text-right">
-                                {{product.discount}} %
-                            </td>
-                            <td class="text-right">
-                                {{product.quantity}}
-                            </td>
-                            <td class="text-right">
-                                <!--  {{product.price * product.quantity|number:2}} -->
-                                {{product.amount|number:2}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div style="height: 50px;">
-                    
-                </div>
-
-                <table class="simple invoice-table-footer">
-                    <tbody>
-                        <tr class="subtotal">
-                            <td translate="INVOICE.SUBTOTAL">SUBTOTAL</td>
-                            <td>{{invoiceDataMy.invoiceSummary.changedCurrency}}&nbsp {{invoiceDataMy.invoiceBreakdown.subtotal|number:2}}</td>
-                        </tr>
-                        <!-- <tr class="tax">
-                            <td>DISCOUNT</td>
-                            <td>-{{invoiceDataMy.invoiceBreakdown.totalDiscount}}</td>
-                        </tr> -->
-                        <tr class="tax" ng-repeat="taxData in invoiceDataMy.invoiceBreakdown.taxAmounts">
-                            <td translate="INVOICE.TAX">{{taxData.taxName}}{{taxData.rate}}%</td>
-                            <td>{{invoiceDataMy.invoiceSummary.changedCurrency}}&nbsp {{taxData.salesTax|number:2}}</td>
-                        </tr>
-                        <tr class="tax">
-                            <td>SHIPPING</td>
-                            <td>-{{invoiceDataMy.invoiceSummary.shipping|number:2}}</td>
-                        </tr>
-                        <tr class="tax">
-                            <td>TAX</td>
-                            <td>{{invoiceDataMy.invoiceSummary.taxAmount|number:2}}</td>
-                        </tr>
-                        <tr class="tax">
-                            <td>TOTAL&nbsp{{invoiceDataMy.invoiceSummary.changedCurrency}}</td>
-                            <td>{{invoiceDataMy.invoiceSummary.changedCurrency}}&nbsp {{invoiceDataMy.invoiceSummary.netAmount|number:2}}</td>
-                        </tr>
-                        <tr class="tax">
-                            <td>PAID</td>
-                            <td>-{{invoiceDataMy.invoiceSummary.paidAmount|number:2}}</td>
-                        </tr>
-
-                       
-<!--                         <tr class="discount">
-                            <td translate="INVOICE.DISCOUNT">DISCOUNT</td>
-                            <td>-{{invoiceDataMy.invoiceBreakdown.totalDiscount | currency}}</td>
-                        </tr> -->
-
-
-                    
-                </div>
-               
-                
-                        <tr class="total">
-                            <td translate="INVOICE.TOTAL">BALANCE DUE &nbsp{{invoiceDataMy.invoiceSummary.changedCurrency}}</td>
-                            <td>{{invoiceDataMy.invoiceSummary.valueBalance|number:2}} </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- <div class="footer"> -->
-             <!--    <div class="note" translate="INVOICE.NOTE">Please pay within {{invoiceData.termtype}}. Thank you for your business.</div>
-                
-                <div layout="row" layout-align="start start">
-                    <div class="logo md-accent-bg" layout="row" layout-align="center center">
-                        <div>{{invoiceData.Name | limitTo:1}}</div>
-                    </div>
-                    <div class="small-note" translate="INVOICE.SMALL_NOTE">
-                        In condimentum malesuada efficitur. Mauris volutpat placerat auctor. Ut ac congue dolor. Quisque
-                        scelerisque lacus sed feugiat fermentum. Cras aliquet facilisis pellentesque. Nunc hendrerit
-                        quam at leo commodo, a suscipit tellus dapibus. Etiam at felis volutpat est mollis lacinia.
-                        Mauris placerat sem sit amet velit mollis, in porttitor ex finibus. Proin eu nibh id libero
-                        tincidunt lacinia et eget eros.
-                    </div>
-                </div> -->
-            <!-- </div> -->
+                             <div class="footerSegments" ng-if="invoiceDataMy.isCurrencyChanged == true">
+                                <span class="segmentHeader" >Currency Exchange Rate</span>
+                                <div class="segmentContent">
+                                    <span>{{invoiceDataMy.changedCurrency+" "+invoiceDataMy.exchangeRate }}</span>
+                                </div>
+                            </div>
+                            
+                             <div class="footerSegments" ng-if="showShippingInDetailsView">
+                                <span class="segmentHeader">Shipping Information</span>
+                                <div class="segmentContent" style="padding-bottom: 18px;">
+                                   <span ng-show="profileData.shippingAddress.s_street">{{profileData.shippingAddress.s_street}},</span>
+                                   <span ng-show="profileData.shippingAddress.s_city">{{profileData.shippingAddress.s_city}},</span>
+                                   <span ng-show="profileData.shippingAddress.s_state">{{profileData.shippingAddress.s_state}},</span>
+                                   <span ng-show="profileData.shippingAddress.s_zip">{{profileData.shippingAddress.s_zip}},</span>
+                                   <span ng-show="profileData.shippingAddress.s_country">{{profileData.shippingAddress.s_country}}</span>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                      <div class="page-break"></div>
+                  </div>
+              </div>
+           </div>
         </div>
-        <!-- / INVOICE -->
-
-        <!-- Use the following element to add breaks to your pages -->
-        <!-- This will make sure that the section after this element will be printed on a new page -->
-        <!-- <div class="page-break"></div> -->
-
-    </div>
+     </div>
+  </div>
 </div>

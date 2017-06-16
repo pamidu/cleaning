@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
     <title>12thDoor | Estimate</title>
     <link rel="shortcut icon" href="dw-favicon.png" type="image/png">
    <!--  <link rel="stylesheet" href="styles/app-8a51f6dc1a.css">
@@ -14,16 +14,34 @@
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700italic,700,900,900italic' rel='stylesheet' type='text/css'> 
 </head>
 
-<body  ng-app="platformEstimatePortal" ng-cloak ng-controller="main-ctrl" style="overflow: scroll!important;">
+<body  ng-app="platformEstimatePortal" ng-cloak ng-controller="portal-exploredocument-ctrl">
     <md-toolbar class="md-primary">
-        <div class="md-toolbar-tools">
-            <img src="assets/img/12thDoor_logo_white.png" width="121" height="32" ng-click="accessindex()"/> 
+    <div layout="row" layout-align="start center" style="height: 48px;">
+        <div layout="row" layout-align="start center" flex>
+            <div class="logo" layout="row" layout-align="start center">
+                <img src="assets/img/12thDoor_logo_white.png" width="121" height="32" ng-click="accessindex()"/> 
+            </div>
         </div>
-    </md-toolbar>
-	<div layout="column" layout-align="center center" ui-view md-theme="default" md-theme-watch="true" style="padding: 24px;"></div>
-   
 
+        <div layout="row" layout-align="start center">
+              <md-button class="md-icon-button" aria-label="Print" ng-click="print()">
+                 <md-icon md-svg-icon="img/ic_print_24px.svg"></md-icon>
+                 <md-tooltip><span>Print</span></md-tooltip>
+              </md-button>
+                <div class="toolbar-separator" aria-hidden="false"></div>
+              <md-button class="md-icon-button" aria-label="Download" ng-click="download()">
+                 <md-icon md-svg-icon="img/ic_file_download_24px.svg"></md-icon>
+                 <md-tooltip><span>Download</span></md-tooltip>
+              </md-button>
+        </div>
+    </div>    
+    </md-toolbar>
+
+    <div id="documentContainer" ui-view md-theme="default" md-theme-watch="true">
+    </div>
+  
     <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <!--   <script src="scripts/vendor-0fd66ac4e7.js"></script>  -->
 
   <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
@@ -41,17 +59,15 @@
     <script src="/bower_components/angular-material/angular-material.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
-    <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
 
-
-	<script src="scripts/uimicrokernel/uimicrokernel.js"></script> 
+    <script src="scripts/uimicrokernel/uimicrokernel.js"></script> 
     <script src="scripts/controllers/estimatePortalNew.js"></script>
-    <script type="text/javascript" src="scripts/controllers/interactDoc.js"></script>
     <script type="text/javascript" src="scripts/stripe.payment.tool.js"></script>
     <script type="text/javascript" src="scripts/ms-currency/currencyFilter.js"></script>
 
     <script type="text/javascript">
-        console.log("Estimate portal version 6.1.0.1");
+        console.log('%c Estimate Portal App version 6.1.0.20', 'font-size: 25px;');
     </script>
 
 </body>

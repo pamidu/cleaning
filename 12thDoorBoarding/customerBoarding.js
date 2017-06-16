@@ -50,17 +50,21 @@ p_boarding_module.config(['$stateProvider', '$urlRouterProvider', function ($sp,
     $urp.otherwise('/main');
     $sp.state('main', {
         url: '/main',
-        templateUrl: 'main-partial.php',
-        controller: 'boarding-main-ctrl'
-    }).state('createcompany', {
-        url: '/createcompany',
         templateUrl: 'createcompany-partial.php',
         controller: 'boarding-createcompany-ctrl'
-    }).state('joincompany', {
-        url: '/joincompany',
-        templateUrl: 'joincompany-partial.php',
-        controller: 'boarding-joincompany-ctrl'
     });
+
+    // .state('createcompany', {
+    //     url: '/createcompany',
+    //     templateUrl: 'createcompany-partial.php',
+    //     controller: 'boarding-createcompany-ctrl'
+    // });
+
+    // .state('joincompany', {
+    //     url: '/joincompany',
+    //     templateUrl: 'joincompany-partial.php',
+    //     controller: 'boarding-joincompany-ctrl'
+    // });
 }]);
 //Platform entry view route configuration - End
 p_boarding_module.controller("boarding-parent-ctrl", ["$scope", "$state", "$location", function ($scope, $state, $location) {

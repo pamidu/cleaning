@@ -1,8 +1,72 @@
+body{
+  overflow: hidden!important;
+  background-color:#f5f5f5;
+}
+
+body md-toolbar{
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  z-index: 55!important;
+  background-color: #335E8B;
+  box-shadow : 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+.logo{
+    width: 142px;
+    padding-right: 16px;
+    padding-left: 12px;
+    cursor: pointer;
+}
+
+.toolbar-separator{
+  height: 24px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+#documentContainer{
+  padding: 32px;
+  height:calc(100% - 48px);
+  width:100%;
+  box-sizing: border-box;
+  overflow:auto;  
+}
+
+#documentContainer .portal_cta{
+  position:absolute;
+  bottom:24px;
+  right:24px;   
+}
+
+#documentContainer #invoices{
+  /*border:1px solid yellow;  */
+}
+
 #invoices .center .content-card .content-wrapper .thread-detail {
-  position: relative;
+  /*border:1px solid green; */
+  /*position: relative;*/
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 {
-  padding: 0;
+  
+}
+
+/*#invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .toolbar {
+  position: relative;
+  padding: 8px 24px;
+  height: 64px;
+  min-height: 64px;
+  max-height: 64px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  background-color:#fff; 
+}*/
+
+#invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container{
+  box-sizing:border-box; 
+  padding: 24px;
+  width: 960px;
+  background-color:#fff;
+  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2), 0px 7px 10px 1px rgba(0, 0, 0, 0.14), 0px 2px 16px 1px rgba(0, 0, 0, 0.12);
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper {
   width: 100%;
@@ -21,11 +85,14 @@
   color: rgba(0, 0, 0, 0.54);
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .ids .detail {
-  width: 160px;
+  width: 320px;
+  margin-top: 5px;
+  margin-bottom: 7px;
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .ids .seller {
   margin-bottom: 48px;
   padding-left: 16px;
+  font-size: 13px;
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .ids .seller .logo {
   width: 156px;
@@ -34,6 +101,7 @@
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .ids .client {
   padding-left: 16px;
+  font-size: 13px;
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .ids .client .logo {
   width: 156px;
@@ -49,8 +117,8 @@
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary {
   font-size: 15px;
 }
-#invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary .tableSpacer {
-  height: 78px;
+#invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary .space {
+  min-height:100px;
   /*height: 99px;*/
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary .label {
@@ -64,6 +132,7 @@
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary .value {
   color: black;
+  min-width: 137px;
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary .value.cellSpacer {
   padding-top: 8px;
@@ -72,6 +141,7 @@
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary .code {
   font-size: 35px;
   font-weight: 300;
+  height:45px;
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary .code td {
   /*padding-bottom: 32px;*/
@@ -89,12 +159,31 @@
   color: rgba(0, 0, 0, 0.87);
 }
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-content .invoice-table {
-  width: 100% !important;
+  width: 100%;
   margin-top: 0px;
   font-size: 15px;
   padding: 0px 14px;
   border-collapse: separate;
 }
+
+#invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-content .tableSwipeIndicator {
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    background: rgba(0, 0, 0, 0.1);
+    display: none;
+    padding: 8px;
+    margin-top: 32px;
+    border-radius: 3px;
+}
+
+#invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-content .tableSwipeIndicator {
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    background: rgba(0, 0, 0, 0.1);
+    display: none;
+    padding: 8px;
+    margin-top: 32px;
+    border-radius: 3px;
+}
+
 #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-content .invoice-table thead tr th {
   padding: 8px !important;
   padding-bottom: 24px !important;
@@ -355,3 +444,66 @@
     line-height: normal;
   }
 }
+
+md-dialog .md-dialog-content {
+    padding: 24px;
+}
+
+md-dialog md-dialog-actions {
+    min-height: 64px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-top: 1px solid rgba(0,0,0,.084);
+}
+
+md-dialog md-dialog-actions .md-button {
+    margin: 0 8px;
+    border: 2px solid;
+}
+
+.md-button.md-default-theme.md-primary, .md-button.md-primary {
+    color: rgb(45,98,150);
+}
+
+@media only screen and (max-width: 768px) {
+
+  #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container{
+    width: 100%;
+  }
+
+  #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .ids .seller {
+    margin-bottom:24px; 
+  }
+
+  #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .ids .client {
+    margin-bottom:24px; 
+  }
+
+  #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary {
+    padding-top:24px;
+    border-top:1px solid rgb(200,200,200);  
+  }
+
+  #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header {
+    height: auto;
+    min-height: 300px;
+    padding-bottom: 24px;
+    border-bottom:1px solid rgb(200,200,200); 
+  }
+
+  #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary .code {
+    font-size: 26px;
+    height:35px;
+  }
+
+  #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-header .summary .space {
+    display:none; 
+  }
+
+  #invoices .center .content-card .content-wrapper .thread-detail .invTemplate-1 .invoice-container .detail-wrapper .detail-content .tableSwipeIndicator {
+      display: block;
+  }
+
+}
+
+

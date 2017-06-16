@@ -20,6 +20,13 @@ body{
 }
 
 #viewContainer{
+	position:relative;
+	width:100%;
+	height:calc(100% - 48px);
+	overflow:auto;      
+}
+
+/*#viewContainer{
 	position:absolute;
 	z-index:5;
 	top:0;
@@ -27,11 +34,12 @@ body{
 	width:100%;
 	height:100%;
 	overflow:hidden;      
-}
+}*/
 
 .commonContentShell{
 	width:500px;
-	padding:32px; 
+	padding:32px;
+	padding-top:0px  
 }
 
 
@@ -41,6 +49,7 @@ body{
 
 #containerMainText{
 	width:100%;
+	padding-top:32px; 
 	padding-bottom:32px;  
 }
 
@@ -50,7 +59,7 @@ body{
 }
 
 #containerMainText span:nth-child(2){
-	font-size:15px;  
+	font-size:18px;  
 }
 
 #formContainer form{

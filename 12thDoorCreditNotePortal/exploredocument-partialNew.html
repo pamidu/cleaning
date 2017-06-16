@@ -1,180 +1,188 @@
-<!-- exploredocument-partial.html -->
-<div id="invoice" class="page-layout blank" layout="row">
-    <div class="invoice-container">
-       <!--  <md-button class="md-fab md-primary portal_cta" aria-label="pay invoice" ng-click="showPaymentPortalDialog($event,paymentMethod)"> -->
-        <!-- ng-click="switchportalViews('interactdocument')" -->
-           <!--  <md-icon md-svg-src="img/ic_attach_money_white_24px.svg"></md-icon>
-        </md-button> -->
-        <!-- INVOICE -->
-        <div class="card md-whiteframe-8dp">
-            <div class="header" layout="row" layout-align="space-between start">
-                <div class="ids" layout="column">
-                    <div layout="row" class="seller" layout-align="start center">
-                        <div class="logo md-accent-bg" layout="row" layout-align="center center">
-                            <div>{{companyData.companyName | limitTo:1}}</div>
-                        </div>
+<div id="invoices" layout="row">
+    <div class="center" layout="column" layout-align="center center" flex>
+        <div class="content-card" layout="column">
+            <div class="content-wrapper">
+                <div class="thread-detail">
+                    <div class="invTemplate-1">
+                        <div class="invoice-container">
+                                <div class="detail-wrapper">
+                                    <div class="detail-header" layout="row" layout-xs="column">
+                                        <div class="ids" layout="column" flex>
+                                            <div layout="row" class="seller" layout-align="start center" flex>
+                                                <div class="brandlogo" layout="row" layout-align="center center">
+                                                    <img src="{{companyLogo}}" width="156" height="156">
+                                                </div>
+                                                <div class="divider"></div>
+                                                <div class="detail">
+                                                    <div class="address">
+                                                        <ms-address-component address-data="ObjCompanyAddress" ent-type="'company'" align="left">
+                                                        </ms-address-component>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div layout="row" class="client" layout-align="start center" flex>
+                                                <div class="logo" layout="row" layout-align="center center">
+                                                    <div>{{profileData.profileName[0] | uppercase}}</div>
+                                                </div>
+                                                <div class="divider"></div>
+                                                <div class="detail">
+                                                    <div class="address">
+                                                        <ms-address-component address-data="ObjCusAddress" ent-type="'client'" align="left">
+                                                        </ms-address-component>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="summary" layout="column" flex>
+                                            <div class="code" layout="row" layout-align="end start">
+                                                <div layout="column" flex>
+                                                    <div class="label">CREDIT NOTE</div>
+                                                </div>
+                                                <div layout="column">
+                                                    <div class="value">{{creditNoteData.creditNoteNo}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="space" layout flex>
+                                            </div>
+                                            <div layout="row" layout-align="end end" flex>
 
-                        <div class="divider"></div>
+                                                <div layout="column" flex>
+                                                    <div class="label cellSpacer">DATE</div>
+                                                    <div class="label cellSpacer">CURRENCY</div>
+                                                </div>
 
-                        <div class="detail">
-                           <span>{{companyData.companyName}}</span></br>
-                            <span>{{companyData.country}},{{companyData.city}}</span></br>
-                            
-                            <span>{{companyData.state}}</span></br>
-                            <span>Email:{{companyData.companyEmail}}</span></br>
-                            <span>Web:{{companyData.website}}</span></br>
-                            <span>{{invoiceData.invoiceStakeHolders.tennantDetails.zip}}</span>
+                                                <div layout="column">
+                                                    <div class="value cellSpacer">{{creditNoteData.createDate | toDateObject}}</div>
+                                                    <div class="value cellSpacer">{{creditNoteData.baseCurrency}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="invoiceComment" style="margin-left: 0;">{{creditNoteData.comments}}</span>
+                                    <div class="detail-content">
+                                        <div class="line-items-wrapper" style="overflow-x:auto;">
+                                            <table class="invoice-table">
+                                                <thead class="tableHeader">
+                                                    <th>#</th>
+                                                    <th class="text-left">DESCRIPTION</th>
+                                                    <th class="text-center">QUANTITY</th>
+                                                    <th class="text-center">UOM</th>
+                                                    <th class="text-center">UNIT PRICE</th>
+                                                    <th class="text-center">DISCOUNT</th>
+                                                    <th class="text-right">AMOUNT</th>
+                                                </thead>
+                                                <tbody class="tableBody">
+                                                    <tr ng-repeat="product in creditNoteData.creditNoteProducts">
+                                                        <td style="width:3%;">{{$index + 1}}</td>
+                                                        <td class="text-left" style="width:35%">
+                                                            <div> {{product.productName}}</div>
+                                                            <div class="detail"> {{product.olp}}</div>
+                                                        </td>
+                                                        <td class="text-center" style="width:5%">
+                                                            {{product.quantity}}
+                                                        </td>
+                                                        <td class="text-center" style="width:5%">
+                                                            {{product.productUnit}}
+                                                        </td>
+                                                        <td class="text-center" style="width:15%">
+                                                            {{product.price * exchangeRate|number:2}}
+                                                        </td>
+                                                        <td class="text-center" style="width:8%">
+                                                            {{product.discount}} %
+                                                        </td>
+                                                        <td class="text-right" style="width:15%">
+                                                            {{product.amount * exchangeRate|number:2}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                          <span class="tableSwipeIndicator">Swipe horizontaly on the table to see all the columns</span>
+
+                                        <table class="invoice-table-footer">
+                                            <tbody>
+                                                <tr class="subtotal">
+                                                    <td>SUBTOTAL</td>
+                                                    <td>{{creditNoteData.subTotal * exchangeRate | currency:creditNoteData.changedCurrency+' '}}</td>
+                                                </tr>
+                                                <!-- <tr class="tax">
+                                                    <td>TAX</td>
+                                                    <td>{{creditNoteData.salesTaxAmount * exchangeRate | currency:creditNoteData.changedCurrency+' '}}</td>
+                                                </tr> -->
+                                                
+                                                <tr class="tax" ng-repeat="item in creditNoteData.taxAmounts">
+                                                    <td>{{item.taxName | uppercase }}</td>
+                                                    <td>{{item.salesTax / exchangeRate| currency:creditNoteData.changedCurrency+' '}}</td>
+                                                </tr>
+
+                                                <tr class="shipping">
+                                                    <td>SHIPPING</td>
+                                                    <td>{{creditNoteData.shipping * exchangeRate | currency:creditNoteData.changedCurrency+' '}}</td>
+                                                </tr>
+                                                <tr class="total">
+                                                    <td>APPLIED</td>
+                                                    <td>{{creditNoteData.netAmount * exchangeRate | currency:creditNoteData.changedCurrency+' '}}</td>
+                                                </tr>
+
+                                                <tr class="balancedue">
+                                                    <td>REMAINING</td>
+                                                    <td>{{creditNoteData.balance | currency:creditNoteData.changedCurrency+' '}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <div class="footerSegments" ng-if="creditNoteData.paidInvoice && creditNoteData.paidInvoice.length > 0">
+                                            <span class="segmentHeader" style="display: block; width: 100%; padding-left: 18px; height: 48px; line-height: 48px; font-weight: 500; font-size: 15px; color: rgba(0, 0, 0, 0.5); text-transform: uppercase;">INVOICE(S) APPLIED</span>
+                                        </div>
+
+                                        <div class="line-items-wrapper" style="overflow-x:auto;">
+                                            <table class="invoice-table" ng-if="creditNoteData.paidInvoice && creditNoteData.paidInvoice.length > 0">
+                                                <thead class="tableHeader">
+                                                    <th class="text-left" style="width:3%;">#</th>
+                                                    <th class="text-left" style="width:60%;min-width: 102px;">DATE</th>
+                                                    <th class="text-center" style="width:15%">INVOICE NO</th>
+                                                    <th class="text-right" style="width:25%">APPLIED</th>
+                                                </thead>
+                                                <tbody class="tableBody">
+                                                    <tr ng-repeat="tt in creditNoteData.paidInvoice">
+                                                        <td class="text-left" style="width:3%">{{$index + 1}}</td>
+                                                        <td class="text-left" style="width:60%">
+                                                            {{tt.sdate | toDateObject}}
+                                                        </td>
+                                                        <td class="text-center" style="width:15%">
+                                                            {{tt.invono}}
+                                                        </td>
+                                                        <td class="text-right" style="width:25%">
+                                                            {{tt.amount}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <div class="detail-footer">
+                                        <div class="footerSegments" ng-show="creditNoteData.notes">
+                                            <span class="segmentHeader">Notes</span>
+                                            <div class="segmentContent">
+                                                <span ng-bind-html="creditNoteData.notes"></span>
+                                            </div>
+                                        </div>
+
+                                        <div ng-if="creditNoteData.customFields.length" class="footerSegments">
+                                             <span class="segmentHeader">Additional Information</span>
+                                             <div class="segmentContent" layout="row" ng-repeat="detail in creditNoteData.customFields">
+                                                <span ng-show="detail.value" class="contactSegment" flex>{{detail.labelShown}} : {{detail.value}}</span>
+                                             </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            <div class="page-break"></div>
                         </div>
                     </div>
-
-                    <div layout="row" class="sellerCus" layout-align="start center">
-                        <div class="logo md-accent-bg" layout="row" layout-align="center center">
-                            <div>{{profileData.firstName | limitTo:1}}</div>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="detail">
-                        <span>{{profileData.firstName}} &nbsp; {{profileData.lastName}}</span>
-                                <span>{{profileData.billingAddress.name}}</span></br>
-                                <span>{{profileData.billingAddress.country}}&nbsp;{{profileData.billingAddress.state}}</span></br>
-                                <span>{{profileData.billingAddress.city}}&nbsp; {{profileData.billingAddress.street}}</span></br>
-                                <span>{{profileData.billingAddress.zip}}</span>
-                                <span>Email:{{profileData.email}}</span></br>
-                        </div>
-                        </div>
-
                 </div>
-
-                <table class="summary">
-                    <tr class="code">
-                        <td class="label" translate="INVOICE.INVOICE">CREDIT NOTE</td>
-                        <td class="value">{{creditNoteData.creditNoteNo}}</td>
-                    </tr>
-
-                    <tr>
-                        <td class="label" translate="INVOICE.INVOICE_DATE">INVOICE DATE</td>
-                        <td class="value">{{creditNoteData.createDate | datetime}}</td>
-                    </tr>
-
-                    <tr>
-                        <td class="label" translate="INVOICE.DUE_DATE">DUE DATE</td>
-                        <td class="value">{{creditNoteData.date | datetime}}</td>
-                    </tr>
-
-                    <tr>
-                        <td class="label" translate="INVOICE.TOTAL_DUE">TOTAL DUE</td>
-                        <td class="value">{{creditNoteData.changedCurrency}}&nbsp{{creditNoteData.balance|number:2}}</td>
-                    </tr>
-                </table>
             </div>
-
-            <div class="content">
-                <table class="simple invoice-table">
-                    <thead>
-                        <th translate="INVOICE.SERVICE">DESCRIPTION</th>
-                        <th translate="INVOICE.UNIT">UNIT</th>
-                        <th class="text-right" translate="INVOICE.UNIT_PRICE">UNIT PRICE</th>
-                        <th class="text-right" translate="INVOICE.DISCOUNT">DISCOUNT</th>
-                        <th class="text-right" translate="INVOICE.QUANTITY">QUANTITY</th>
-                        <th class="text-right" translate="INVOICE.TOTAL">TOTAL</th>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="product in creditNoteData.creditNoteProducts">
-                            <td>
-                                <div class="title"> {{product.productName}}</div>
-                                <div class="detail"> {{product.Detail}}</div>
-                            </td>
-                            <td>
-                                {{product.productUnit}}
-                            </td>
-                            <td class="text-right">
-                                {{product.price|number:2}} 
-                            </td>
-                            <td class="text-right">
-                                {{product.discount}} %
-                            </td>
-                            <td class="text-right">
-                                {{product.quantity}}
-                            </td>
-                            <td class="text-right">
-                                <!--  {{product.price * product.quantity|number:2}} -->
-                                {{product.amount|number:2}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div style="height: 50px;">
-                    
-                </div>
-
-                <table class="simple invoice-table-footer">
-                    <tbody>
-                        <tr class="subtotal">
-                            <td translate="INVOICE.SUBTOTAL">SUBTOTAL</td>
-                            <td>{{creditNoteData.changedCurrency}}&nbsp {{creditNoteData.subTotal|number:2}}</td>
-                        </tr>
-                        
-                        <tr class="tax" ng-repeat="taxData in creditNoteData.taxAmounts">
-                            <td translate="INVOICE.TAX">{{taxData.taxName}}{{taxData.rate}}%</td>
-                            <td>{{creditNoteData.changedCurrency}}&nbsp {{taxData.salesTax|number:2}}</td>
-                        </tr>
-                        <tr class="tax">
-                            <td>SHIPPING</td>
-                            <td>-{{creditNoteData.shipping|number:2}}</td>
-                        </tr>
-                    <!--     <tr class="tax">
-                            <td>TAX</td>
-                            <td>{{taxData.salesTax|number:2}} </td>
-                        </tr> -->
-                        <tr class="tax">
-                            <td>TOTAL&nbsp{{creditNoteData.changedCurrency}}</td>
-                            <td>{{creditNoteData.changedCurrency}}&nbsp {{creditNoteData.netAmount|number:2}}</td>
-                        </tr>
-                       <!--  <tr class="tax">
-                            <td>PAID</td>
-                            <td>-{{creditNoteData.paidAmount|number:2}}</td>
-                        </tr> -->
-
-                       
-<!--                         <tr class="discount">
-                            <td translate="INVOICE.DISCOUNT">DISCOUNT</td>
-                            <td>-{{invoiceDataMy.invoiceBreakdown.totalDiscount | currency}}</td>
-                        </tr> -->
-
-
-                    
-                </div>
-               
-                
-                        <tr class="total">
-                            <td translate="INVOICE.TOTAL">BALANCE DUE &nbsp{{creditNoteData.changedCurrency}}</td>
-                            <td>{{creditNoteData.balance|number:2}} </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- <div class="footer"> -->
-             <!--    <div class="note" translate="INVOICE.NOTE">Please pay within {{invoiceData.termtype}}. Thank you for your business.</div>
-                
-                <div layout="row" layout-align="start start">
-                    <div class="logo md-accent-bg" layout="row" layout-align="center center">
-                        <div>{{invoiceData.Name | limitTo:1}}</div>
-                    </div>
-                    <div class="small-note" translate="INVOICE.SMALL_NOTE">
-                        In condimentum malesuada efficitur. Mauris volutpat placerat auctor. Ut ac congue dolor. Quisque
-                        scelerisque lacus sed feugiat fermentum. Cras aliquet facilisis pellentesque. Nunc hendrerit
-                        quam at leo commodo, a suscipit tellus dapibus. Etiam at felis volutpat est mollis lacinia.
-                        Mauris placerat sem sit amet velit mollis, in porttitor ex finibus. Proin eu nibh id libero
-                        tincidunt lacinia et eget eros.
-                    </div>
-                </div> -->
-            <!-- </div> -->
         </div>
-        <!-- / INVOICE -->
-
-        <!-- Use the following element to add breaks to your pages -->
-        <!-- This will make sure that the section after this element will be printed on a new page -->
-        <!-- <div class="page-break"></div> -->
-
     </div>
 </div>

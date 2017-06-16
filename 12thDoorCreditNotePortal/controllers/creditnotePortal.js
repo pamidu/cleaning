@@ -1,7 +1,7 @@
-var p_payment_portal_module = angular.module("platformPaymentPortal", ["ui.router","ngAnimate","uiMicrokernel","ngMaterial","ngMessages","stripe-payment-tools"]);
+var p_creditNote_portal_module = angular.module("platformPaymentPortal", ["ui.router","ngAnimate","uiMicrokernel","ngMaterial","ngMessages", "ngSanitize","stripe-payment-tools"]);
 
 //Platform entry theme resgister
-p_payment_portal_module.config(function($mdThemingProvider){
+p_creditNote_portal_module.config(function($mdThemingProvider){
 
   $mdThemingProvider.definePalette('12thDoorPrimary', {
     '50': '235B91',
@@ -55,7 +55,7 @@ p_payment_portal_module.config(function($mdThemingProvider){
 });
 
 //Platform entry view route configuration - Start
-p_payment_portal_module.config(['$stateProvider','$urlRouterProvider', function($sp, $urp){
+p_creditNote_portal_module.config(['$stateProvider','$urlRouterProvider', function($sp, $urp){
 	$urp.otherwise('/exploredocument');
 	$sp
 	.state('exploredocument', {
@@ -64,13 +64,13 @@ p_payment_portal_module.config(['$stateProvider','$urlRouterProvider', function(
 		templateUrl: 'exploredocument-partialNew.html',
 		controller: 'portal-exploredocument-ctrl'
 	})
-	.state('interactdocument', {
-		url: '/interactdocumentN',
-		templateUrl: 'interactdocument-partialNew.html',
-		controller: 'portalInteractdocumentCtrl'
-	});
+	// .state('interactdocument', {
+	// 	url: '/interactdocumentN',
+	// 	templateUrl: 'interactdocument-partialNew.html',
+	// 	controller: 'portalInteractdocumentCtrl'
+	// });
 }]);
-p_payment_portal_module.factory("$invoiceNav",[function(){
+p_creditNote_portal_module.factory("$invoiceNav",[function(){
   var invoiceObj = {}
   return {
     setObject : function(obj){
@@ -83,14 +83,17 @@ p_payment_portal_module.factory("$invoiceNav",[function(){
 
 }]);
 
-p_payment_portal_module.controller("main-ctrl", ["$scope","$location",function($scope,$location){
-    $scope.accessindex = function(){
+// p_creditNote_portal_module.controller("main-ctrl", ["$scope","$location",function($scope,$location){
+//     $scope.accessindex = function(){
+//         location.replace('http://test.12thdoor.com/12thDoorEntry/index.html#/signin');
+//     };
+// }]);
+
+p_creditNote_portal_module.controller("portal-exploredocument-ctrl", ["$scope", "$rootScope","$http","$timeout","$state","$location","$stateParams","$invoiceNav","$mdDialog","$mdToast","AddressService",function ($scope, $rootScope, $http, $timeout, $state, $location, $stateParams,$invoiceNav,$mdDialog,$mdToast,AddressService){
+  
+  $scope.accessindex = function(){
         location.replace('http://test.12thdoor.com/12thDoorEntry/index.html#/signin');
     };
-}]);
-
-p_payment_portal_module.controller("portal-exploredocument-ctrl", ["$scope","$http","$timeout","$state","$location","$stateParams","$invoiceNav","$mdDialog","$mdToast",function ($scope, $http, $timeout, $state, $location, $stateParams,$invoiceNav,$mdDialog,$mdToast){
-  console.log($invoiceNav)
 
   console.log("in exploredocument");
   $scope.disableButton = function() {
@@ -104,7 +107,7 @@ var loadInvoiceData = function(){
   console.log('running !');
   console.log($stateParams);
 	         $http({
-            url : "/services/duosoftware.creditNote.service/creditNote/getCreditNoteByGUID?creditNoteGUID="+$stateParams.guCreditN,
+            url : "/services/duosoftware.creditNote.service/creditNote/getJWTCreditNoteByGUID?creditNoteGUID="+$stateParams.guCreditN,
             method :"POST",
             headers : {
                 securityToken : $stateParams.securityToken,
@@ -114,26 +117,20 @@ var loadInvoiceData = function(){
         	console.log(response);
           $scope.paymentTerm=response.data.peymentTerm;
           $scope.invoiceBreakdown=response.data.invoiceBreakdown;
-          // if (response.data.invoiceBreakdown.peymentTerm =='multipleDueDates') {
-          //   for (var i = 0; i < $scope.paymentTerm.length; i++) {
-          //     $scope.paymentTerm[i].;
-          //   }
-           // invoiceBreakdown.netAmount-invoiceBreakdown
-
-          // }else{
-
-          // }
-
-
         	$scope.creditNoteData=[];
         	$scope.creditNoteData=response.data;
-          $invoiceNav.setObject(response.data)
+          $rootScope.creditNoteData=$scope.creditNoteData;
+          console.log($scope.creditNoteData);
 
+          $scope.creditNoteData.notes = $scope.creditNoteData.notes.replace(/(?:\r\n|\r|\n)/g, '</br>');
+
+          $scope.exchangeRate = response.data.exchangeRate;
+          $invoiceNav.setObject(response.data)
         	$scope.profileID=response.data.profileID;
           $scope.paymentMethod=response.data.paymentMethod;
 
     $http({
-      url : "/services/duosoftware.profile.service/profile/getProfileByKey?profilekey="+$scope.profileID,
+      url : "/services/duosoftware.profile.service/profile/getProfileByKey?uniqueID=" + $scope.profileID,
       method : "POST",
       headers : {
                 securityToken : $stateParams.securityToken,
@@ -142,28 +139,22 @@ var loadInvoiceData = function(){
       }).then(function(response){
       	console.log(response);
       	$scope.profileData=response.data;
-       //  $scope.payObj.payment.profileName = $scope.profileData.profileName
-       //  $scope.payObj.payment.profileEmail=$scope.profileData.email;
-       //  $scope.payObj.payment.invoiceNo=$scope.creditNoteData.invoiceID;
-       //  $scope.payObj.payment.paymentMethod=$scope.paymentMethod;
-       //  $scope.payObj.payment.paymentLog.description="credit note added by"+$scope.profileData.createUser;
-
-      	// console.log($scope.profileData);
-      	
+        console.log($scope.profileData);
+        $scope.ObjCusAddress = AddressService.setAddress($scope.profileData.profileName,$scope.profileData.billingAddress.street,$scope.profileData.billingAddress.city,$scope.profileData.billingAddress.state,$scope.profileData.billingAddress.zip,$scope.profileData.billingAddress.country,$scope.profileData.phone,$scope.profileData.mobile,$scope.profileData.fax,$scope.profileData.email,$scope.profileData.website);
       	},function(response){
         console.log("error loading profile");
-
       })
 
   },function(response){
-            $mdDialog.show(
-              $mdDialog.alert()
-              .parent(angular.element(document.body))
-              .content('Error loading invoice data.')
-              .ariaLabel('Alert Dialog Demo')
-              .ok('OK')
-              .targetEvent()
-            );
+            // $mdDialog.show(
+            //   $mdDialog.alert()
+            //   .parent(angular.element(document.body))
+            //   .content('Error loading creditNote data.')
+            //   .ariaLabel('Alert Dialog Demo')
+            //   .ok('OK')
+            //   .targetEvent()
+            // );
+          console.log("Error loading creditNote data.");
   })
 };
 
@@ -181,15 +172,15 @@ $scope.loadSettingData=function(){
       }
   }).then(function(response){
   	console.log(response);
-    //$scope.payObj.payment.pattern = response.data[0].preference.paymentPref.paymentPrefix + response.data[0].preference.paymentPref.paymentSequence;
-    
-  	// $scope.offlinePayments=response.data[0].preference.paymentPref.paymentMethods;
+   
   	$scope.companyData=response.data[0].profile;
   	console.log($scope.companyData);
   	var partialPaymentsAllowed=response.data[0].preference.invoicePref.allowPartialPayments;
   	$scope.invoicePrefData=response.data[0].preference.invoicePref;
     $scope.paymentPrefData=response.data[0].preference.paymentPref;
+    $scope.companyLogo = response.data[0].profile.companyLogo.imageUrl;
 
+    $scope.ObjCompanyAddress = AddressService.setAddress($scope.companyData.companyName,$scope.companyData.street,$scope.companyData.city,$scope.companyData.state,$scope.companyData.zip,$scope.companyData.country,$scope.companyData.phoneNo,"",$scope.companyData.fax,$scope.companyData.companyEmail,$scope.companyData.website);
     //$scope.payObj.payment.baseCurrency=$scope.companyData.baseCurrency;
 
     $scope.activePayments=response.data[0].payments;
@@ -200,6 +191,86 @@ $scope.loadSettingData=function(){
 }
 
 $scope.loadSettingData();
+
+ $scope.print = function(){
+    console.log($rootScope.creditNoteData);
+    var creditNoteNo = $rootScope.creditNoteData.creditNoteNo;
+    debugger;
+     pdfReq().then(function(response) {
+          b64toBlob(response.data.result,function(blob){
+
+            printData(creditNoteNo+".pdf",blob);
+          })
+    });
+  }
+
+  $scope.download = function(){
+    
+    console.log($rootScope.creditNoteData);
+    var creditNoteNo = $rootScope.creditNoteData.creditNoteNo;
+    debugger;
+     pdfReq().then(function(response) {
+          b64toBlob(response.data.result,function(blob){
+
+            downloadData(creditNoteNo+".pdf",blob);
+          })
+    });
+
+  }
+
+    function b64toBlob(b64Data,callback) {
+        var contentType = 'application/pdf';
+        var sliceSize = 512;
+        b64Data = b64Data.replace(/^[^,]+,/, '');
+        b64Data = b64Data.replace(/\s/g, '');
+        var byteCharacters = window.atob(b64Data);
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            var byteArray = new Uint8Array(byteNumbers);
+
+            byteArrays.push(byteArray);
+        }
+
+        blob = new Blob(byteArrays, {type: contentType});
+        callback(blob)
+    }
+
+    function printData(fileName,blob){
+      var fileURL = URL.createObjectURL(blob);
+      var print = window.open(fileURL,'','width=1200,height=900');
+      print.focus();
+      print.print(); 
+    }
+
+    function downloadData(fileName, blob){
+          var a = document.createElement("a");
+        var url = window.URL.createObjectURL(blob);
+
+          document.body.appendChild(a);
+          a.style = "display: none";
+            a.href = url;
+            a.download = fileName;
+            a.click();
+            window.URL.revokeObjectURL(url);
+    }
+
+    function pdfReq(){
+      return $http({
+        url: "/services/duosoftware.process.service/process/generatePDF?uniqueID="+$rootScope.creditNoteData.creditNoteNo+"&cls=creditNote",
+        method: "POST",
+        headers: {
+          securityToken: $stateParams.securityToken
+        }
+      })
+    }
  
     $scope.switchportalViews = function(switchedState){
         $state.go(switchedState);
@@ -261,7 +332,7 @@ $scope.loadSettingData();
 
 	}]);
 
- p_payment_portal_module.filter('datetime', function($filter){
+ p_creditNote_portal_module.filter('datetime', function($filter){
     return function(input){
       if(input == null){ return ""; } 
      
@@ -270,4 +341,95 @@ $scope.loadSettingData();
 
     };
 });
+
+p_creditNote_portal_module.filter('toDateObject', toDateObject);
+
+function toDateObject($filter) {
+    return function(value) {
+      var datenow = moment(value);
+
+      if(datenow.isValid){
+        var tempDate = new Date(datenow);
+        return $filter('date')(tempDate, 'MMM d, y');
+      }
+    };
+}
+
+p_creditNote_portal_module.directive('msAddressComponent', msAddressComponent);
+    /** @ngInject */
+function msAddressComponent()
+    {
+        var addressComponentDirective = {
+            restrict: 'E',
+            scope   : {
+                addressData: '=',
+                entType : '='
+            },
+            template:[
+                '<div class="addressCompHolder">',
+                '<div class="title">{{addressData.name}}</div>',
+                '<div class="address">{{addressData.street}} </div>',
+                '<div class="address">{{addressData.city}} {{addressData.state}}</div>',
+                '<div class="address">{{addressData.zip}} {{addressData.country}}</div>',
+                '<div class="phone">',
+                '<span ng-if="addressData.phoneNo">t. {{addressData.phoneNo}}</span>',
+                '<span ng-show="cusInfo" ng-if="addressData.mobile">, {{addressData.mobile}}</span>',
+                '<span ng-show="bizInfo" ng-if="addressData.fax"> f. {{addressData.fax}}</span>',
+                '</div>',
+                '<div ng-if="addressData.email" class="email">{{addressData.email}}</div>',
+                '<div ng-show="bizInfo" class="website">{{addressData.website}}</div>',
+                '</div>'
+            ].join(''),
+            link: function(scope, attrs, elem){
+
+                scope.cusInfo = false;
+                scope.bizInfo = false;
+
+                scope.$watch('addressData', function(newVal){
+                    if(newVal){
+                        scope.addressData = newVal;
+                    };
+                }, true);
+
+                if(scope.entType === 'company'){
+                    scope.bizInfo = true;
+                }else{
+                   // scope.cuzInfo = true;
+                   scope.cusInfo = true;
+                }
+
+            }
+        };
+
+        return addressComponentDirective;
+    }
+
+p_creditNote_portal_module.factory('AddressService', Address);
+    Address.$inject = [];
+
+    function Address()
+    {
+      var addresses={
+        setAddress:setAddress
+      };
+      return addresses;
+      
+      function setAddress(name,street,city,state,zip,country,phoneNo,mobile,fax,email,website)
+      {
+        //console.log(name+street);
+        var MyAddress={name:name,
+        street:street,
+        city:city,
+        state:state,
+        zip:zip,
+        country:country,
+        phoneNo:phoneNo,
+        mobile:mobile,
+        fax:fax,
+        email:email,
+        website:website
+        };
+        return MyAddress;
+      }  
+    }
 
